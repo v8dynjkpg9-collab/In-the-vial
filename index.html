@@ -247,10 +247,10 @@ h3.sh{font-family:var(--sans);font-weight:600;font-size:18px;color:var(--ink);ma
 /* ============ TIER CHIP ============ */
 .chip-tier{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;font-weight:600;padding:5px 11px;border-radius:3px;letter-spacing:.04em;border:1px solid transparent;white-space:nowrap}
 .chip-tier .dot{width:8px;height:8px;border-radius:50%}
-.ta{background:var(--green-wash);color:var(--green-deep);border-color:rgba(66,102,60,.3)}.ta .dot{background:var(--green)}
-.tb{background:var(--teal-wash);color:var(--teal-deep);border-color:rgba(52,94,99,.3)}.tb .dot{background:var(--teal)}
-.tc{background:var(--ochre-wash);color:var(--ochre-deep);border-color:rgba(138,100,32,.3)}.tc .dot{background:var(--ochre)}
-.td{background:var(--rust-wash);color:var(--rust-deep);border-color:rgba(158,66,39,.3)}.td .dot{background:var(--rust)}
+.chip-tier.ta{background:var(--green-wash);color:var(--green-deep);border-color:rgba(66,102,60,.3)}.chip-tier.ta .dot{background:var(--green)}
+.chip-tier.tb{background:var(--teal-wash);color:var(--teal-deep);border-color:rgba(52,94,99,.3)}.chip-tier.tb .dot{background:var(--teal)}
+.chip-tier.tc{background:var(--ochre-wash);color:var(--ochre-deep);border-color:rgba(138,100,32,.3)}.chip-tier.tc .dot{background:var(--ochre)}
+.chip-tier.td{background:var(--rust-wash);color:var(--rust-deep);border-color:rgba(158,66,39,.3)}.chip-tier.td .dot{background:var(--rust)}
 
 /* compound cards */
 .compounds{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
@@ -401,12 +401,14 @@ h3.sh{font-family:var(--sans);font-weight:600;font-size:18px;color:var(--ink);ma
 .trowg{display:grid;grid-template-columns:160px 1fr 1fr;border-bottom:1px solid var(--line-2)}
 .trowg:last-child{border-bottom:none}
 .trowg.h{background:var(--paper-3)}
+/* NOTE: .tc here is a test-guide table cell — scoped to .trowg so it never
+   collides with the .chip-tier.tc evidence-tier chip, which is a different thing. */
 .trowg.h .tc{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4)}
-.tc{padding:15px 17px;font-size:13.5px;border-right:1px solid var(--line-2);color:var(--ink-2)}
-.tc:last-child{border-right:none}
-.tc .assay{font-family:var(--mono);font-weight:600;font-size:14px;color:var(--rust-deep)}
-.tc .sub{font-family:var(--mono);font-size:10.5px;color:var(--ink-4);margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
-.tc.cant{color:var(--ink-3)}
+.trowg .tc{padding:15px 17px;font-size:13.5px;border-right:1px solid var(--line-2);color:var(--ink-2)}
+.trowg .tc:last-child{border-right:none}
+.trowg .tc .assay{font-family:var(--mono);font-weight:600;font-size:14px;color:var(--rust-deep)}
+.trowg .tc .sub{font-family:var(--mono);font-size:10.5px;color:var(--ink-4);margin-top:3px;text-transform:uppercase;letter-spacing:.04em}
+.trowg .tc.cant{color:var(--ink-3)}
 .keyline{margin-top:24px;background:var(--paper-2);border:1px solid var(--line-strong);border-radius:3px;padding:24px 26px}
 .keyline .big{font-family:var(--serif);font-size:clamp(24px,3.5vw,32px);color:var(--ink);line-height:1.1}
 .keyline .big span{color:var(--rust)}
@@ -467,9 +469,9 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 @media(max-width:640px){
   .spec{grid-template-columns:1fr 1fr}
   .trowg{grid-template-columns:1fr}
-  .tc{border-right:none;border-bottom:1px solid var(--line-2)}
+  .trowg .tc{border-right:none;border-bottom:1px solid var(--line-2)}
   .trowg.h{display:none}
-  .tc.assaycell{background:var(--paper-3)}
+  .trowg .tc.assaycell{background:var(--paper-3)}
   .hero .wrap{padding-top:40px;padding-bottom:40px}
   /* evidence-scale rows: bar + tier on top, description below */
   .srow{flex-wrap:wrap;gap:10px 14px;padding:16px 18px}
