@@ -1,0 +1,255 @@
+{
+  "lastReviewed": {
+    "en": "June 2026",
+    "es": "junio de 2026"
+  },
+  "lanes": [
+    {
+      "title": {
+        "en": "Compounding & the bulks list",
+        "es": "Preparación magistral y la lista de sustancias a granel"
+      },
+      "entries": [
+        {
+          "title": {
+            "en": "PCAC review of research peptides",
+            "es": "Revisión del PCAC de péptidos de investigación"
+          },
+          "status": "pending",
+          "statusLabel": {
+            "en": "Pending",
+            "es": "Pendiente"
+          },
+          "body": {
+            "en": "The FDA's Pharmacy Compounding Advisory Committee meets <strong>July 23–24, 2026</strong> to weigh BPC-157, TB-500, Epitalon, Semax and others for the 503A Bulks List — the substances pharmacies may legally compound.",
+            "es": "El Comité Asesor de Preparación Magistral de Farmacia de la FDA se reúne el <strong>23–24 de julio de 2026</strong> para evaluar BPC-157, TB-500, Epitalon, Semax y otros para la Lista de Sustancias a Granel 503A — las sustancias que las farmacias pueden preparar legalmente."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> the decision point for whether these become legally compoundable. But a favorable vote still runs through rulemaking that takes 12–24 months — nothing flips overnight.",
+            "es": "<strong>Qué significa:</strong> el punto de decisión sobre si estas pasan a ser legalmente preparables. Pero un voto favorable aún pasa por una reglamentación que tarda 12–24 meses — nada cambia de la noche a la mañana."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: FDA compounding advisory committee docket",
+            "es": "Actualizado junio de 2026 · Fuente: expediente del comité asesor de preparación de la FDA"
+          }
+        },
+        {
+          "title": {
+            "en": "Category 2 removals (BPC-157, TB-500, CJC-1295)",
+            "es": "Eliminaciones de Categoría 2 (BPC-157, TB-500, CJC-1295)"
+          },
+          "status": "flux",
+          "statusLabel": {
+            "en": "In flux",
+            "es": "En cambio"
+          },
+          "body": {
+            "en": "In April 2026 these were removed from \"Category 2\" (flagged safety risks for compounding) but not moved to Category 1. GHK-Cu has been treated more favorably.",
+            "es": "En abril de 2026 estas se retiraron de la \"Categoría 2\" (riesgos de seguridad señalados para la preparación) pero no se movieron a la Categoría 1. El GHK-Cu se ha tratado de forma más favorable."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> a genuine gray zone — neither prohibited nor authorized. Don't read removal as a green light.",
+            "es": "<strong>Qué significa:</strong> una verdadera zona gris — ni prohibida ni autorizada. No leas la eliminación como una luz verde."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: FDA compounding category lists",
+            "es": "Actualizado junio de 2026 · Fuente: listas de categorías de preparación de la FDA"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "GLP-1 enforcement",
+        "es": "Aplicación sobre GLP-1"
+      },
+      "entries": [
+        {
+          "title": {
+            "en": "Shortages resolved → compounded copies barred",
+            "es": "Escasez resuelta → copias magistrales prohibidas"
+          },
+          "status": "closed",
+          "statusLabel": {
+            "en": "Closed",
+            "es": "Cerrado"
+          },
+          "body": {
+            "en": "Tirzepatide shortage declared over December 2024, semaglutide February 2025. By mid-2025, compounding \"essentially a copy\" of either became impermissible for 503A and 503B facilities.",
+            "es": "La escasez de tirzepatida se declaró terminada en diciembre de 2024, la de semaglutida en febrero de 2025. Para mediados de 2025, preparar \"esencialmente una copia\" de cualquiera de las dos se volvió inadmisible para las instalaciones 503A y 503B."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> the mass-compounded GLP-1 window has largely closed; patient-specific 503A compounding survives only in narrow documented cases.",
+            "es": "<strong>Qué significa:</strong> la ventana de GLP-1 preparados en masa se ha cerrado en gran medida; la preparación 503A específica para el paciente sobrevive solo en casos documentados y limitados."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: FDA drug shortage & compounding guidance",
+            "es": "Actualizado junio de 2026 · Fuente: guía de la FDA sobre escasez y preparación de medicamentos"
+          }
+        },
+        {
+          "title": {
+            "en": "Proposed permanent 503B exclusion",
+            "es": "Exclusión permanente propuesta de 503B"
+          },
+          "status": "pending",
+          "statusLabel": {
+            "en": "Comment period",
+            "es": "Periodo de comentarios"
+          },
+          "body": {
+            "en": "An FDA proposal (April 30, 2026) would permanently remove semaglutide, tirzepatide and liraglutide from the 503B bulks list.",
+            "es": "Una propuesta de la FDA (30 de abril de 2026) eliminaría permanentemente la semaglutida, la tirzepatida y la liraglutida de la lista de sustancias a granel 503B."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> the direction of travel is toward locking the door permanently for outsourcing facilities.",
+            "es": "<strong>Qué significa:</strong> la dirección del cambio es hacia cerrar la puerta de forma permanente para las instalaciones de externalización."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: Federal Register proposal",
+            "es": "Actualizado junio de 2026 · Fuente: propuesta del Federal Register"
+          }
+        },
+        {
+          "title": {
+            "en": "Telehealth marketing warning letters",
+            "es": "Cartas de advertencia por marketing de telesalud"
+          },
+          "status": "live",
+          "statusLabel": {
+            "en": "Ongoing",
+            "es": "En curso"
+          },
+          "body": {
+            "en": "More than 30 warning letters issued to telehealth companies for false or misleading marketing of compounded peptides.",
+            "es": "Más de 30 cartas de advertencia emitidas a empresas de telesalud por marketing falso o engañoso de péptidos magistrales."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> enforcement attention on the marketing layer is real and escalating.",
+            "es": "<strong>Qué significa:</strong> la atención de aplicación sobre la capa de marketing es real y va en aumento."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: FDA warning letter database",
+            "es": "Actualizado junio de 2026 · Fuente: base de datos de cartas de advertencia de la FDA"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Cosmetics & MoCRA",
+        "es": "Cosméticos y MoCRA"
+      },
+      "entries": [
+        {
+          "title": {
+            "en": "Small-business exemption",
+            "es": "Exención para pequeñas empresas"
+          },
+          "status": "live",
+          "statusLabel": {
+            "en": "In effect",
+            "es": "En vigor"
+          },
+          "body": {
+            "en": "Under MoCRA, a business with average annual U.S. cosmetic sales under $1M (prior 3 years) is exempt from GMP, facility registration, and product listing. Safety substantiation and serious-adverse-event reporting (within 15 business days) still apply to everyone.",
+            "es": "Bajo MoCRA, un negocio con ventas cosméticas anuales promedio en EE. UU. inferiores a $1M (últimos 3 años) está exento de GMP, registro de instalaciones y listado de productos. La justificación de seguridad y el reporte de eventos adversos graves (dentro de 15 días hábiles) siguen aplicando a todos."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> a small topical brand — e.g., a GHK-Cu serum — carries a fairly light mandatory burden, especially using an FDA-registered contract manufacturer. The line that matters most is cosmetic vs. drug claims.",
+            "es": "<strong>Qué significa:</strong> una pequeña marca de tópicos — p. ej., un sérum de GHK-Cu — conlleva una carga obligatoria bastante ligera, sobre todo usando un fabricante por contrato registrado ante la FDA. La línea que más importa son las afirmaciones cosméticas vs. de fármaco."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: FDA MoCRA guidance (Section 612)",
+            "es": "Actualizado junio de 2026 · Fuente: guía MoCRA de la FDA (Sección 612)"
+          }
+        },
+        {
+          "title": {
+            "en": "GMP rulemaking & allergen labeling",
+            "es": "Reglamentación GMP y etiquetado de alérgenos"
+          },
+          "status": "pending",
+          "statusLabel": {
+            "en": "Pending",
+            "es": "Pendiente"
+          },
+          "body": {
+            "en": "Cosmetic GMP regulations still in development (expected to align with ISO 22716); fragrance-allergen labeling remains future rulemaking. Registrations renew every two years.",
+            "es": "Las regulaciones GMP de cosméticos siguen en desarrollo (se espera que se alineen con ISO 22716); el etiquetado de alérgenos de fragancias sigue siendo reglamentación futura. Los registros se renuevan cada dos años."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> requirements will tighten; build with a GMP-oriented manufacturer so you're not caught out.",
+            "es": "<strong>Qué significa:</strong> los requisitos se endurecerán; construye con un fabricante orientado a GMP para que no te pillen desprevenido."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: FDA cosmetics rulemaking",
+            "es": "Actualizado junio de 2026 · Fuente: reglamentación de cosméticos de la FDA"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Grey-market enforcement",
+        "es": "Aplicación en el mercado gris"
+      },
+      "entries": [
+        {
+          "title": {
+            "en": "Reseller & vendor exposure",
+            "es": "Exposición de revendedores y vendedores"
+          },
+          "status": "live",
+          "statusLabel": {
+            "en": "Ongoing",
+            "es": "En curso"
+          },
+          "body": {
+            "en": "Selling unapproved compounds for de facto human use is treated as introducing unapproved new drugs into commerce regardless of \"research use only\" labeling, with enforcement reaching the reachable domestic reseller.",
+            "es": "Vender compuestos no aprobados para uso humano de facto se trata como introducir nuevos fármacos no aprobados en el comercio, sin importar el etiquetado de \"solo para uso en investigación\", con una aplicación que alcanza al revendedor nacional accesible."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> the disclaimer on a vial does not protect the seller; intended use governs. The structural reason resale is the high-risk position.",
+            "es": "<strong>Qué significa:</strong> el descargo de responsabilidad en un vial no protege al vendedor; el uso previsto es lo que rige. La razón estructural por la que la reventa es la posición de alto riesgo."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: FDCA enforcement actions",
+            "es": "Actualizado junio de 2026 · Fuente: acciones de aplicación de la FDCA"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Business & ownership",
+        "es": "Negocio y propiedad"
+      },
+      "entries": [
+        {
+          "title": {
+            "en": "Corporate Transparency Act",
+            "es": "Ley de Transparencia Corporativa"
+          },
+          "status": "flux",
+          "statusLabel": {
+            "en": "In flux",
+            "es": "En cambio"
+          },
+          "body": {
+            "en": "A March 2025 interim final rule exempts U.S.-formed entities and U.S. persons from federal beneficial-ownership reporting; the final rule is pending and the law's constitutionality was upheld on appeal. New York's LLC Transparency Act took effect January 1, 2026 for foreign LLCs.",
+            "es": "Una regla final provisional de marzo de 2025 exime a las entidades formadas en EE. UU. y a las personas estadounidenses del reporte federal de titularidad real; la regla final está pendiente y la constitucionalidad de la ley se confirmó en apelación. La Ley de Transparencia de LLC de Nueva York entró en vigor el 1 de enero de 2026 para las LLC extranjeras."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> \"anonymous LLC\" claims are about a public registry, not immunity — courts and plaintiffs still reach owners through discovery. Privacy isn't protection.",
+            "es": "<strong>Qué significa:</strong> las afirmaciones de \"LLC anónima\" se refieren a un registro público, no a inmunidad — los tribunales y los demandantes aún alcanzan a los propietarios mediante el descubrimiento de pruebas. La privacidad no es protección."
+          },
+          "meta": {
+            "en": "Updated June 2026 · Source: FinCEN rulemaking & court rulings",
+            "es": "Actualizado junio de 2026 · Fuente: reglamentación de FinCEN y fallos judiciales"
+          }
+        }
+      ]
+    }
+  ]
+}
