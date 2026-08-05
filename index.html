@@ -443,7 +443,7 @@ h3.sh{font-family:var(--sans);font-weight:600;font-size:18px;color:var(--ink);ma
 .cdek{color:var(--ink-2);font-size:17px;max-width:60ch;line-height:1.55}
 /* molecular plate */
 .mol-plate{margin:24px 0}
-.mol-svg{width:100%;height:120px;display:block}
+.mol-svg{width:100%;height:auto;display:block}
 .mol-svg .bond{stroke:var(--ink-3);stroke-width:1.5}
 .mol-svg .tail{stroke:var(--ochre);stroke-width:1.5;fill:none}
 .res{cursor:pointer}
@@ -783,19 +783,31 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
           <div class="plate-row">
             <div class="vial-fig" aria-hidden="true">
               <svg viewBox="0 0 220 200" preserveAspectRatio="xMidYMid meet">
-                <ellipse cx="110" cy="17" rx="11" ry="3.4" fill="var(--paper-4)" stroke="var(--ink)" stroke-width="1.2"/>
-                <rect x="90" y="17" width="40" height="7" rx="2.5" fill="var(--line-strong)" stroke="var(--ink)" stroke-width="1.3"/>
-                <path d="M92,24 L128,24 L126,45 L94,45 Z" fill="var(--line-strong)" stroke="var(--ink)" stroke-width="1.3" stroke-linejoin="round"/>
-                <path d="M99,27 L98.4,43 M107,27 L106.7,43 M113,27 L113.3,43 M121,27 L121.6,43" stroke="var(--ink-3)" stroke-width="0.8"/>
-                <rect x="99" y="45" width="22" height="10" rx="1" fill="var(--ink-3)" opacity="0.32"/>
-                <path d="M99,45 L99,53 L82,65 L82,169 C82,182 138,182 138,169 L138,65 L121,53 L121,45 Z" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M83,104 C95,99 108,109 120,109 C127,109 132,105 137,104 L137,169 C137,181.5 83,181.5 83,169 Z" fill="var(--ghk)" opacity="0.2"/>
-                <path d="M83,104 C95,99 108,109 120,109 C127,109 132,105 137,104" fill="none" stroke="var(--ghk)" stroke-width="1.5"/>
-                <path d="M90,74 C87,110 87,142 92,166" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.55" stroke-linecap="round"/>
+                <defs>
+                  <clipPath id="vialBore"><path d="M99,56 L99,60 L84.5,69.5 L84.5,167 C84.5,178.5 135.5,178.5 135.5,167 L135.5,69.5 L121,60 L121,56 Z"/></clipPath>
+                </defs>
+                <ellipse cx="110" cy="171" rx="30" ry="5" fill="var(--ink)" opacity="0.07"/>
+                <ellipse cx="110" cy="15.5" rx="11.5" ry="3.6" fill="var(--paper-4)" stroke="var(--ink)" stroke-width="1.2"/>
+                <path d="M98.5,15.5 L98.5,20 A11.5,3.6 0 0 0 121.5,20 L121.5,15.5" fill="var(--paper-4)" stroke="var(--ink)" stroke-width="1.2" stroke-linejoin="round"/>
+                <path d="M92,21 L128,21 L126.4,45 L93.6,45 Z" fill="var(--line-strong)" stroke="var(--ink)" stroke-width="1.3" stroke-linejoin="round"/>
+                <path d="M97,23 L96.5,43.5 M103,23 L102.7,43.5 M110,23 L110,43.5 M117,23 L117.3,43.5 M123,23 L123.5,43.5" stroke="var(--ink-3)" stroke-width="0.7" opacity="0.75"/>
+                <path d="M93.4,22.4 L127,22.4" stroke="var(--paper)" stroke-width="1.1" opacity="0.45"/>
+                <path d="M96.6,45 L123.4,45 L121.4,55.5 L98.6,55.5 Z" fill="var(--ink-3)" opacity="0.42" stroke="var(--ink)" stroke-width="1" stroke-linejoin="round"/>
+                <path d="M99,55.5 L99,59.5 L83,69 L83,168 C83,180.5 137,180.5 137,168 L137,69 L121,59.5 L121,55.5" fill="var(--paper-2)" stroke="var(--ink)" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/>
+                <g clip-path="url(#vialBore)">
+                  <path d="M84.5,106 C95,101.5 108,110.5 120,110.5 C127,110.5 131,107 135.5,105.6 L135.5,178 L84.5,178 Z" fill="var(--ghk)" opacity="0.22"/>
+                  <path d="M84.5,150 L135.5,150 L135.5,178 L84.5,178 Z" fill="var(--ghk)" opacity="0.10"/>
+                </g>
+                <path d="M84.5,106 C95,101.5 108,110.5 120,110.5 C127,110.5 131,107 135.5,105.6" fill="none" stroke="var(--ghk)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M86.5,71 L86.5,166.5 M133.5,71 L133.5,166.5" stroke="var(--ink-4)" stroke-width="0.7" opacity="0.4"/>
+                <path d="M100.5,57.5 L100.5,60.5 L86.5,69.8 M119.5,57.5 L119.5,60.5 L133.5,69.8" fill="none" stroke="var(--ink-4)" stroke-width="0.7" opacity="0.4"/>
+                <path d="M90,76 C87.4,110 87.4,142 91.6,164" fill="none" stroke="#ffffff" stroke-width="3.2" opacity="0.6" stroke-linecap="round"/>
+                <path d="M129,84 C130.6,108 130.6,134 128.6,158" fill="none" stroke="#ffffff" stroke-width="1.4" opacity="0.3" stroke-linecap="round"/>
+                <path d="M92,172.5 C100,176.5 120,176.5 128,172.5" fill="none" stroke="#ffffff" stroke-width="1.6" opacity="0.35" stroke-linecap="round"/>
                 <path d="M130,29 L150,29" stroke="var(--ink-4)" stroke-width="1"/><text x="154" y="32" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">CRIMP CAP</text>
-                <path d="M122,50 L150,58" stroke="var(--ink-4)" stroke-width="1"/><text x="154" y="61" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">STOPPER</text>
-                <path d="M138,136 L150,136" stroke="var(--ink-4)" stroke-width="1"/><text x="154" y="133" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">GHK-Cu</text><text x="154" y="145" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">SOLUTION</text>
-                <path d="M82,104 L54,104" stroke="var(--ink-4)" stroke-width="1" stroke-dasharray="2 3"/><text x="50" y="101" text-anchor="end" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">FILL LINE</text>
+                <path d="M123,50 L150,58" stroke="var(--ink-4)" stroke-width="1"/><text x="154" y="61" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">STOPPER</text>
+                <path d="M137,136 L150,136" stroke="var(--ink-4)" stroke-width="1"/><text x="154" y="133" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">GHK-Cu</text><text x="154" y="145" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">SOLUTION</text>
+                <path d="M83,106 L54,106" stroke="var(--ink-4)" stroke-width="1" stroke-dasharray="2 3"/><text x="50" y="103" text-anchor="end" font-family="var(--mono)" font-size="9" fill="var(--ink-3)">FILL LINE</text>
               </svg>
             </div>
             <div class="prose" style="margin:0">
@@ -1668,45 +1680,89 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'ghk':{seq:'GHK',hi:[],copper:true},
     'sema':{seq:'HAEGTFTSDVSS',hi:[0],tail:true,ellipsis:true}
   };
+
+  /* Residues accept either a plain one-letter string ('GHK') or an array, so
+     non-standard residues (Aib, D-Phe, D-2-Nal) can carry their own labels:
+       [{c:'Aib',n:'α-aminoisobutyric acid',ns:'ácido α-aminoisobutírico'},'H',…] */
+  function chainResidues(cfg){
+    if(Array.isArray(cfg.seq))return cfg.seq.map(function(x){return typeof x==='string'?{c:x}:x;});
+    return cfg.seq.split('').map(function(c){return {c:c};});
+  }
+  function resName(res){
+    var en=AA[res.c]||'';
+    if(I18N.lang==='es')return res.ns||AA_ES[en]||res.n||en||L(DYN.residue);
+    return res.n||en||L(DYN.residue);
+  }
+  /* Bond trimmed to bead edges so it meets the circles cleanly at any angle. */
+  function bond(svg,x1,y1,x2,y2,r,cls){
+    var dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);
+    if(!len)return;
+    var ux=dx/len,uy=dy/len;
+    svg.appendChild(el('line',{'class':cls||'bond',x1:x1+ux*r,y1:y1+uy*r,x2:x2-ux*r,y2:y2-uy*r}));
+  }
+
   function render(svg,cfg,mini,readout){
-    var seq=cfg.seq.split(''), r=mini?9:13, gap=mini?24:34, mL=mini?12:20, mT=mini?10:18;
-    var extra=(cfg.copper?gap+6:0)+(cfg.tail?70:0)+(cfg.ellipsis?24:0);
-    var w=mL*2+(seq.length-1)*gap+extra, h=mini?52:120, cy=mini?26:56;
-    var vbW=mini?Math.max(w,340):w;
-    svg.setAttribute('viewBox','0 0 '+vbW+' '+h);
+    var all=chainResidues(cfg), seq=all, trunc=false;
+    var cap=mini?8:(cfg.max||99);
+    if(seq.length>cap){seq=all.slice(0,cap);trunc=true;}
+    var r=mini?9:13, gap=mini?24:34, mL=mini?14:22;
+    var amp=mini?4:7;                       /* zig-zag: real backbones alternate */
+    var cy=mini?26:60;
+    var showEll=cfg.ellipsis||trunc;
+    /* tail needs room for the zig-zag (~45px) plus its label, which clipped at 78 */
+    var extra=(cfg.copper?gap+10:0)+(cfg.tail?(mini?60:135):0)+(showEll?26:0);
+    var w=mL*2+(seq.length-1)*gap+extra, h=mini?52:120;
+    svg.setAttribute('viewBox','0 0 '+(mini?Math.max(w,340):w)+' '+h);
     while(svg.firstChild)svg.removeChild(svg.firstChild);
-    var x=mL;
-    for(var i=0;i<seq.length;i++){
-      if(i>0)svg.appendChild(el('line',{'class':'bond',x1:x-gap+r,y1:cy,x2:x-r,y2:cy}));
-      var g=el('g',{'class':'res'+(cfg.hi.indexOf(i)>-1?' hi':'')});
-      g.appendChild(el('circle',{cx:x,cy:cy,r:r}));
-      var tx=el('text',{x:x,y:cy+(mini?3:4),'text-anchor':'middle'});tx.textContent=seq[i];g.appendChild(tx);
-      if(!mini&&readout){(function(letter,node){
-        g.addEventListener('mouseenter',function(){
-          var enName=AA[letter]||'',name=I18N.lang==='es'?(AA_ES[enName]||L(DYN.residue)):(enName||L(DYN.residue));
+
+    var pos=[],i;
+    for(i=0;i<seq.length;i++)pos.push({x:mL+i*gap,y:cy+((i%2===0)?-amp:amp)});
+
+    for(i=1;i<seq.length;i++)bond(svg,pos[i-1].x,pos[i-1].y,pos[i].x,pos[i].y,r);
+
+    for(i=0;i<seq.length;i++){
+      var p=pos[i], lbl=seq[i].c, isHi=cfg.hi.indexOf(i)>-1;
+      var g=el('g',{'class':'res'+(isHi?' hi':'')});
+      g.appendChild(el('circle',{cx:p.x,cy:p.y,r:r}));
+      var small=lbl.length>1;
+      var tx=el('text',{x:p.x,y:p.y+(mini?3:4),'text-anchor':'middle'});
+      if(small)tx.setAttribute('font-size',mini?'7':'9');
+      tx.textContent=lbl;g.appendChild(tx);
+      if(!mini&&readout){(function(res,node,grp){
+        grp.addEventListener('mouseenter',function(){
           var term=cfg.hi.indexOf(node)>-1?' · '+L(DYN.terminal):'';
-          readout.innerHTML='<b>'+letter+'</b> — '+name+term+' · '+L(DYN.position)+' '+(node+1);
-          document.querySelectorAll('.res.on').forEach(function(o){o.classList.remove('on');});g.classList.add('on');
+          readout.innerHTML='<b>'+res.c+'</b> — '+resName(res)+term+' · '+L(DYN.position)+' '+(node+1);
+          document.querySelectorAll('.res.on').forEach(function(o){o.classList.remove('on');});
+          grp.classList.add('on');
         });
-      })(seq[i],i);}
+      })(seq[i],i,g);}
       svg.appendChild(g);
-      x+=gap;
     }
-    if(cfg.ellipsis){var e=el('text',{x:x-gap+r+6,y:cy+4,'font-family':'var(--mono)','font-size':mini?'10':'13',fill:'var(--ink-4)'});e.textContent='···';svg.appendChild(e);x+=24;}
+
+    var last=pos[seq.length-1], x=last.x, y=last.y;
+    if(showEll){
+      var e=el('text',{x:x+r+8,y:y+4,'font-family':'var(--mono)','font-size':mini?'10':'13',fill:'var(--ink-4)'});
+      e.textContent='···';svg.appendChild(e);x+=26;
+    }
     if(cfg.copper){
-      svg.appendChild(el('line',{'class':'bond',x1:x-gap+r,y1:cy,x2:x-6,y2:cy}));
-      var d=r+2,ion=el('g',{'class':'ion'});
-      ion.appendChild(el('path',{d:'M'+x+','+(cy-d)+' L'+(x+d)+','+cy+' L'+x+','+(cy+d)+' L'+(x-d)+','+cy+' Z'}));
-      var it=el('text',{x:x,y:cy+3,'text-anchor':'middle'});it.textContent='Cu';ion.appendChild(it);
+      var cx2=x+gap, d=r+2;
+      bond(svg,x,y,cx2,y,r);
+      var ion=el('g',{'class':'ion'});
+      ion.appendChild(el('path',{d:'M'+cx2+','+(y-d)+' L'+(cx2+d)+','+y+' L'+cx2+','+(y+d)+' L'+(cx2-d)+','+y+' Z'}));
+      var it=el('text',{x:cx2,y:y+3,'text-anchor':'middle'});it.textContent='Cu';ion.appendChild(it);
       svg.appendChild(ion);
     }
     if(cfg.tail){
-      var tx0=x-gap+r, ty=cy, pts='';
-      for(var t=0;t<5;t++){tx0+=8;ty=(t%2===0)?cy-8:cy+8;pts+=(t===0?'M':'L')+tx0+','+ty+' ';}
+      var tx0=x+(showEll?4:r), ty=y, pts='M'+tx0+','+ty+' ';
+      for(var t=0;t<5;t++){tx0+=9;ty=(t%2===0)?y-9:y+9;pts+='L'+tx0+','+ty+' ';}
       svg.appendChild(el('path',{'class':'tail',d:pts}));
-      var lt=el('text',{x:tx0+4,y:cy+4,'font-family':'var(--mono)','font-size':mini?'9':'11',fill:'var(--ochre-deep)'});lt.textContent=mini?'':'C18 tail';svg.appendChild(lt);
+      if(!mini){
+        var lt=el('text',{x:tx0+5,y:y+4,'font-family':'var(--mono)','font-size':'11',fill:'var(--ochre-deep)'});
+        lt.textContent=cfg.tailLabel||'C18 tail';svg.appendChild(lt);
+      }
     }
   }
+
   document.querySelectorAll('.mol-svg[data-chain]').forEach(function(svg){
     var key=svg.getAttribute('data-chain');
     var readout=document.querySelector('.mol-readout[data-readout="'+key+'"]');
