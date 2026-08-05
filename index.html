@@ -1905,7 +1905,14 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     for(i=1;i<seq.length;i++)bond(svg,pos[i-1].x,pos[i-1].y,pos[i].x,pos[i].y,r);
 
     for(i=0;i<seq.length;i++){
-      var p=pos[i], lbl=seq[i].c, isHi=cfg.hi.indexOf(i)>-1;
+      var p=pos[i], isHi=cfg.hi.indexOf(i)>-1;
+      /* On-bead label stays short (matches the single-letter standard residues);
+         the hover readout below already shows the full code (res.c) and full
+         descriptive name (resName), so shortening the bead loses no information.
+         Non-standard codes like 'D-2-Nal' / 'D-Phe' take their last hyphen
+         segment ('Nal' / 'Phe') — still identifiable, and small enough to fit
+         a bead the same size as every other residue. */
+      var full=seq[i].c, segs=full.split('-'), lbl=segs[segs.length-1];
       var g=el('g',{'class':'res'+(isHi?' hi':'')});
       g.appendChild(el('circle',{cx:p.x,cy:p.y,r:r}));
       var small=lbl.length>1;
