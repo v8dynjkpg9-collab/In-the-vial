@@ -1042,7 +1042,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     </div>
   </header>
   <main class="wrap">
-    <div><span class="stamp"><span class="d"></span><span id="tracker-reviewed">Last reviewed: June 2026</span></span></div>
+    <div><span class="stamp"><span class="d"></span><span id="tracker-reviewed">Last reviewed: August 2026</span></span></div>
     <p class="keyrow">Status key: <span class="pill live">In effect</span> <span class="pill pending">Pending</span> <span class="pill flux">In flux</span> <span class="pill closed">Closed / barred</span></p>
     <div id="tracker-lanes"><p class="lead-muted">Loading tracker…</p></div>
     <div class="callout"><h4>How this tracker is kept honest</h4><p>Once a month: re-check the FDA compounding pages and the PCAC docket, scan two or three law-firm regulatory trackers, update any row that changed, and move the "last reviewed" date. Entries that go stale without a fresh date should be trusted less — including these. Nothing here is legal advice.</p></div>
@@ -1193,7 +1193,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <div class="readout">
           <div class="rtitle"><span>Live readout</span><span>U-100 syringe</span></div>
           <div class="hero-stat"><div class="v" id="o-units">8.0</div><div class="u">units on a U-100 syringe · <span id="o-vol">0.08</span> mL draw</div></div>
-          <div class="grid2"><div class="stat"><div class="v" id="o-conc">5,000</div><div class="l">mcg / mL</div></div><div class="stat"><div class="v" id="o-perunit">50</div><div class="l">mcg / unit</div></div><div class="stat"><div class="v" id="o-doses">37</div><div class="l">doses / vial</div></div><div class="stat"><div class="v" id="o-days">37</div><div class="l">days @ 1/day</div></div></div>
+          <div class="grid2"><div class="stat"><div class="v" id="o-conc">5,000</div><div class="l">mcg / mL</div></div><div class="stat"><div class="v" id="o-perunit">50</div><div class="l">mcg / unit</div></div></div>
           <div class="syr"><svg viewBox="0 0 320 46" preserveAspectRatio="none"><rect x="2" y="14" width="280" height="18" rx="2" fill="none" stroke="var(--line-strong)"/><rect id="fill" x="2" y="14" width="22" height="18" rx="2" fill="var(--rust)" opacity=".8"/><g stroke="var(--line-strong)"><line x1="58" y1="14" x2="58" y2="9"/><line x1="114" y1="14" x2="114" y2="9"/><line x1="170" y1="14" x2="170" y2="9"/><line x1="226" y1="14" x2="226" y2="9"/></g><rect x="282" y="18" width="14" height="10" fill="var(--paper-4)"/><line x1="296" y1="23" x2="316" y2="23" stroke="var(--line-strong)" stroke-width="2"/></svg></div>
           <div class="err" id="err" style="display:none"></div>
           <div class="warn-inline" id="warn" style="display:none"></div>
@@ -1220,7 +1220,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <label class="check"><input type="checkbox" data-w="1"><span class="ctext">Measured quantity is within ~±10% of the label claim<span class="csub">Right molecule, wrong amount, is still a dosing problem.</span></span></label>
       </div>
       <div class="grp coa"><h3>Injectable safety — if it will be injected</h3>
-        <label class="check"><input type="checkbox" data-w="3"><span class="ctext">Endotoxin tested (LAL), below ~0.25 EU/mL <span class="crit">CRITICAL</span><span class="csub">Sterile ≠ endotoxin-free. Dead bacteria leave a pyrogen purity can't see.</span></span></label>
+        <label class="check"><input type="checkbox" data-w="3"><span class="ctext">Endotoxin tested (LAL / rFC), with the limit stated <span class="crit">CRITICAL</span><span class="csub">Sterile ≠ endotoxin-free. Dead bacteria leave a pyrogen purity can't see. There is no single universal cut-off — the limit depends on route and maximum dose, so the COA should state which limit it was judged against.</span></span></label>
         <label class="check"><input type="checkbox" data-w="2"><span class="ctext">Heavy metals screened (ICP-MS)<span class="csub">Catches mercury, lead, arsenic, cadmium — invisible on HPLC.</span></span></label>
         <label class="check"><input type="checkbox" data-w="1"><span class="ctext">Sterility tested<span class="csub">Separate from endotoxin; both matter for anything injected.</span></span></label>
       </div>
@@ -1248,7 +1248,8 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <div class="trowg"><div class="tc assaycell"><span class="assay">LC-MS/MS</span><div class="sub">identity</div></div><div class="tc">Whether it's actually the molecule it claims to be.</div><div class="tc cant">The amount of any contaminants present.</div></div>
         <div class="trowg"><div class="tc assaycell"><span class="assay">LAL / rFC</span><div class="sub">endotoxin</div></div><div class="tc">Bacterial pyrogen load — fever-causing residue from gram-negative bacteria.</div><div class="tc cant">Chemical purity or whether live microbes are present.</div></div>
         <div class="trowg"><div class="tc assaycell"><span class="assay">ICP-MS</span><div class="sub">heavy metals</div></div><div class="tc">Mercury, lead, arsenic, cadmium from reagents or equipment.</div><div class="tc cant">Anything about the peptide's identity or potency.</div></div>
-        <div class="trowg"><div class="tc assaycell"><span class="assay">Sterility</span><div class="sub">TAMC / TYMC</div></div><div class="tc">Whether live bacteria, yeast, or mold will grow from the sample.</div><div class="tc cant">Endotoxin — dead bacteria leave it behind even when sterile.</div></div>
+        <div class="trowg"><div class="tc assaycell"><span class="assay">Sterility</span><div class="sub">USP &lt;71&gt;</div></div><div class="tc">Whether anything grows at all. Pass/fail — no growth is permitted.</div><div class="tc cant">Endotoxin — dead bacteria leave it behind even when sterile.</div></div>
+        <div class="trowg"><div class="tc assaycell"><span class="assay">TAMC / TYMC</span><div class="sub">microbial count</div></div><div class="tc">How many bacteria, yeast or mould are present, counted against a limit.</div><div class="tc cant">Sterility. A product can meet a count limit and still not be sterile.</div></div>
         <div class="trowg"><div class="tc assaycell"><span class="assay">GC-MS</span><div class="sub">residual solvents</div></div><div class="tc">Leftover manufacturing solvents in the finished product.</div><div class="tc cant">Identity, potency, or biological contamination.</div></div>
       </div>
       <div class="keyline"><div class="big"><span>99% pure</span> does not mean safe to inject.</div><p>A compound can be 99% the correct molecule and still carry endotoxin or heavy metals far above any acceptable limit — because purity, identity, and safety are measured on different instruments. A complete picture needs HPLC and mass spec and, for anything injected, endotoxin and heavy-metal screening.</p></div>
@@ -1401,6 +1402,14 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     risk:{low:{en:'Low risk',es:'Riesgo bajo'},some:{en:'Some risk',es:'Algo de riesgo'},high:{en:'High risk',es:'Riesgo alto'},severe:{en:'Severe risk',es:'Riesgo grave'}}
   };
   var ES={
+    /* --- audit fixes: analytical accuracy + tracker stamp --- */
+    'Endotoxin tested (LAL / rFC), with the limit stated':'Prueba de endotoxinas (LAL / rFC), con el límite indicado',
+    'Sterile ≠ endotoxin-free. Dead bacteria leave a pyrogen purity can\'t see. There is no single universal cut-off — the limit depends on route and maximum dose, so the COA should state which limit it was judged against.':'Estéril ≠ libre de endotoxinas. Las bacterias muertas dejan un pirógeno que la pureza no puede ver. No existe un único límite universal — depende de la vía y de la dosis máxima, así que el COA debería indicar frente a qué límite se evaluó.',
+    'Whether anything grows at all. Pass/fail — no growth is permitted.':'Si crece algo en absoluto. Apto/no apto — no se permite ningún crecimiento.',
+    'microbial count':'recuento microbiano',
+    'How many bacteria, yeast or mould are present, counted against a limit.':'Cuántas bacterias, levaduras o mohos hay, contados frente a un límite.',
+    'Sterility. A product can meet a count limit and still not be sterile.':'La esterilidad. Un producto puede cumplir un límite de recuento y aun así no ser estéril.',
+    'Last reviewed: August 2026':'Última revisión: agosto de 2026',
     /* --- retatrutide + ipamorelin --- */
     'Retatrutide':'Retatrutida',
     'A triple-receptor agonist with the largest weight loss yet recorded in a trial — and no approval, no approved source, and unfinished phase 3.':'Un agonista de triple receptor con la mayor pérdida de peso registrada hasta ahora en un ensayo — y sin aprobación, sin fuente aprobada y con la fase 3 sin terminar.',
@@ -1799,16 +1808,15 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 
   /* ---- calculator ---- */
   var mg=document.getElementById('mg'),ml=document.getElementById('ml'),dose=document.getElementById('dose');
-  var oU=document.getElementById('o-units'),oV=document.getElementById('o-vol'),oC=document.getElementById('o-conc'),oP=document.getElementById('o-perunit'),oD=document.getElementById('o-doses'),oDay=document.getElementById('o-days'),fill=document.getElementById('fill'),err=document.getElementById('err'),warn=document.getElementById('warn');
+  var oU=document.getElementById('o-units'),oV=document.getElementById('o-vol'),oC=document.getElementById('o-conc'),oP=document.getElementById('o-perunit'),fill=document.getElementById('fill'),err=document.getElementById('err'),warn=document.getElementById('warn');
   function fmt(n,d){return Number(n).toLocaleString('en-US',{minimumFractionDigits:d||0,maximumFractionDigits:d||0});}
   function calc(){
     var m=parseFloat(mg.value),w=parseFloat(ml.value),ds=parseFloat(dose.value);
     if(!(m>0)||!(w>0)||!(ds>0)){err.style.display='block';err.textContent=L(DYN.err);warn.style.display='none';return;}
     err.style.display='none';
-    var concMcg=(m*1000)/w,perUnit=concMcg/100,units=ds/perUnit,vol=ds/concMcg,doses=(m*1000)/ds;
+    var concMcg=(m*1000)/w,perUnit=concMcg/100,units=ds/perUnit,vol=ds/concMcg;
     oC.textContent=fmt(concMcg);oP.textContent=fmt(perUnit,perUnit<10?1:0);
     oU.textContent=fmt(units,units<10?1:0);oV.textContent=vol.toFixed(2);
-    oD.textContent=Math.floor(doses);oDay.textContent=Math.floor(doses);
     var frac=Math.max(0,Math.min(1,units/100));
     fill.setAttribute('width',(4+frac*276).toFixed(1));
     fill.setAttribute('fill', units>100 ? 'var(--ochre)' : 'var(--rust)');

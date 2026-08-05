@@ -39,6 +39,26 @@ def main():
     errs, warns = [], []
     check_bilingual(data, "lastReviewed", "root", warns, require_distinct=False)
 
+    # The tracker's whole credibility rests on its dates. index.html carries a
+    # STATIC "Last reviewed" stamp that JS overwrites from this file at runtime —
+    # so with JS the page is right while the served HTML can quietly disagree.
+    # That drifted to a two-month-stale date once; crawlers and no-JS readers saw
+    # it. Fail the check rather than let it happen silently again.
+    import os, re as _re
+    html_path = os.path.join(os.path.dirname(os.path.abspath(path)), "index.html")
+    want = (data.get("lastReviewed") or {}).get("en")
+    if want and os.path.isfile(html_path):
+        html = open(html_path, encoding="utf-8").read()
+        m = _re.search(r'id="tracker-reviewed"[^>]*>([^<]*)<', html)
+        if not m:
+            bad("index.html: no #tracker-reviewed stamp found", errs)
+        else:
+            static = m.group(1).replace("Last reviewed:", "").strip()
+            if static != want:
+                bad(f"index.html static stamp says {static!r} but tracker.json "
+                    f"lastReviewed.en is {want!r} — no-JS readers and crawlers "
+                    f"see the stale one", errs)
+
     lanes = data.get("lanes")
     if not isinstance(lanes, list) or not lanes:
         bad("root: 'lanes' must be a non-empty array", errs)
