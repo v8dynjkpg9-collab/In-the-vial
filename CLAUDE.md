@@ -49,6 +49,57 @@ Paper-and-ink investigative *case file*. Neutral ink, single muted rust accent r
 - Never add vendor links, "where to buy," affiliate codes, or dosing protocols. That is the entire premise.
 - The tracker's credibility rests on real "last reviewed" dates — never auto-bump one. Automate *gathering*, keep a human on *publishing*.
 
+## The review team
+
+Tooling lives in `.claude/` **inside this repo** — skills, hooks, settings and agents all
+version-controlled together. (They previously sat in the parent folder, outside git, where the hook
+path never resolved and nothing was backed up.)
+
+**You are the writer.** Editing `index.html` is a serial, single-threaded job: it is one ~250KB
+file, so two agents editing it concurrently clobber each other. Never delegate the edit itself.
+Delegate *judgement*, and apply the results yourself.
+
+**Checks are scripts, not agents.** Anything deterministic is a script, because a script's output
+can be audited and an agent reporting "I ran the check" cannot be told apart from one that didn't.
+
+```bash
+python3 .claude/skills/i18n-check/check_i18n.py index.html      # untranslated strings
+python3 .claude/skills/tracker/validate_tracker.py tracker.json # tracker schema
+python3 .claude/skills/design-scale/audit_scale.py index.html   # design-system sprawl
+bash .claude/hooks/js-syntax-check.sh index.html                # JS syntax (also a PostToolUse hook)
+```
+
+**Two agents exist, for the two things no script can judge:**
+
+| Agent | Judges | Why not a script |
+|---|---|---|
+| [`evidence-auditor`](.claude/agents/evidence-auditor.md) | Are the scientific and regulatory claims true, and correctly tiered? | Requires reading primary sources and deciding what they actually support. |
+| [`design-critic`](.claude/agents/design-critic.md) | Does it *look* right at real breakpoints? | Requires seeing rendered type, rhythm and balance. |
+
+Both are **read-only** by design. That is what lets them run in parallel safely while you hold the
+only write lock.
+
+### Adding a compound
+
+1. Draft the page yourself, following [new-compound](.claude/skills/new-compound/SKILL.md).
+2. Run `evidence-auditor` on the draft **before** wiring it in. Fabricated trial results are the
+   most damaging failure available on this site and the least visible.
+3. Apply its BLOCKING findings, then wire in all six places and add the ES keys (~45 per compound).
+4. Run the scripts. Gate on *delta*: a change must add **zero** new orphans.
+5. Run `design-critic` at 390 / 768 / 1280px.
+
+### Known gaps
+
+- **Untranslated attributes.** The i18n TreeWalker is `SHOW_TEXT` only, so the 11 `aria-label`
+  attributes stay English in Spanish mode — a screen-reader user switching to ES still hears
+  English. Not yet fixed.
+- **Mobile asserts on hidden views are meaningless.** `.view{display:none}`, so a hidden view
+  contributes nothing to `scrollWidth`. Navigate to the view first, then assert — and check in
+  **both** languages, since Spanish strings run longer and overflow is often a translation bug.
+- **Five duplicate `ES` keys** (`TIER A`, `TIER C`, `Regulatory status`, `Open the toolkit →`,
+  `Animals (extensive):`). Values are currently identical so behaviour is unaffected, but the
+  object literal silently takes the last one — if two ever diverge it fails invisibly.
+
 ## Deploy
 
 `main` → connected static host (Cloudflare Pages) → auto-publishes on push. Build command is empty; output directory is `/`. Nothing to compile.
