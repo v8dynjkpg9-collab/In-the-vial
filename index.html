@@ -11,10 +11,180 @@
 <meta property="og:description" content="The label is a claim. Learn to read the proof. Independent, evidence-graded, non-commercial.">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0,0,24,34'><rect%20x='7'%20y='2'%20width='10'%20height='5'%20rx='1'%20fill='%23CBC5B2'%20stroke='%2323201A'%20stroke-width='1.2'/><path%20d='M8.5,7L8.5,10L6,12.5L6,27C6,31,18,31,18,27L18,12.5L15.5,10L15.5,7Z'%20fill='%23FCFBF7'%20stroke='%2323201A'%20stroke-width='1.6'/><path%20d='M6.4,19C8,18,10,20,12,20C14,20,16,18,17.6,19L17.6,27C17.6,30.2,6.4,30.2,6.4,27Z'%20fill='%232C6E8F'/></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonts are self-hosted: the site makes no third-party requests, so visitors
+     are never exposed to an outside server just by loading the page. -->
 <style>
+/* IBM Plex Mono 400 · latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/ibm-plex-mono-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* IBM Plex Mono 400 · latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/ibm-plex-mono-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* IBM Plex Mono 500 · latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/ibm-plex-mono-500-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* IBM Plex Mono 500 · latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(fonts/ibm-plex-mono-500-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* IBM Plex Mono 600 · latin-ext */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/ibm-plex-mono-600-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* IBM Plex Mono 600 · latin */
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/ibm-plex-mono-600-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* IBM Plex Sans 400 · latin-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans-var-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* IBM Plex Sans 400 · latin */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* IBM Plex Sans 500 · latin-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans-var-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* IBM Plex Sans 500 · latin */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* IBM Plex Sans 600 · latin-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans-var-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* IBM Plex Sans 600 · latin */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* IBM Plex Sans 700 · latin-ext */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans-var-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* IBM Plex Sans 700 · latin */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(fonts/ibm-plex-sans-var-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Instrument Serif 400 italic · latin-ext */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/instrument-serif-400-italic-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Instrument Serif 400 italic · latin */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/instrument-serif-400-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* Instrument Serif 400 · latin-ext */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/instrument-serif-400-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Instrument Serif 400 · latin */
+@font-face {
+  font-family: 'Instrument Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/instrument-serif-400-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root{
   /* --- paper surfaces --- */
   --paper:#F4F1E8;
@@ -1007,12 +1177,14 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <p><strong>No products, no endorsements.</strong> This site sells nothing, links to no sellers, and recommends no vendor. Mentions of compounds, tests, or labs are descriptive, not endorsements.</p>
     </div></section>
     <section class="block"><div class="lnum">02 — Privacy</div><div class="prose">
-      <p><strong>The short version:</strong> collect as little as possible, and don't sell personal data.</p>
-      <p><strong>Analytics.</strong> Aggregate, privacy-respecting analytics may be used to see which pages are useful. <span style="color:var(--ink-4)">[Name your tool — e.g., Plausible or Cloudflare Web Analytics.]</span></p>
-      <p><strong>Cookies.</strong> The site aims to run with no non-essential cookies. <span style="color:var(--ink-4)">[Update if that changes.]</span></p>
-      <p><strong>Newsletter / contact.</strong> Any email you submit is used only for its stated purpose and never sold. <span style="color:var(--ink-4)">[Name your email provider.]</span></p>
-      <p><strong>Hosting.</strong> Served by a static host that may process basic technical request data per its own policy. <span style="color:var(--ink-4)">[Name your host.]</span></p>
-    </div><div class="callout warn"><h4>Fill in the brackets before launch</h4><p>Complete the bracketed notes once you choose your analytics tool, host, and email provider. Keeping this accurate is good practice and often a legal requirement once you collect any data.</p></div></section>
+      <p><strong>The short version:</strong> this site collects nothing about you. There are no accounts, no forms, no analytics, and no tracking cookies. There is no database, so there is nothing about you to store, leak, or sell.</p>
+      <p><strong>No analytics or tracking.</strong> No analytics service, tag manager, advertising pixel, or session-recording tool runs on this site. Your visit is not counted, profiled, or shared.</p>
+      <p><strong>No cookies.</strong> The site sets no cookies. The only thing it keeps is your language choice (English or Spanish), stored in your own browser so the site remembers it next time. It never leaves your device, and clearing your browser data erases it.</p>
+      <p><strong>No third-party requests.</strong> Fonts and every other asset are served from this site itself. Loading a page does not cause your browser to contact any outside company — no font CDN, no external scripts — so no third party learns you were here.</p>
+      <p><strong>The calculators run entirely on your device.</strong> Everything you type into the dose calculator, the COA checker, or the vendor scorecard is processed in your browser and never transmitted anywhere. Nothing you enter is sent to a server, logged, or seen by anyone — including us.</p>
+      <p><strong>Hosting.</strong> Like any website, the host that serves these pages processes basic technical request data (such as IP address and browser type) to deliver the page and protect against abuse, under its own privacy policy. That is standard for the entire web and is not used here to identify or track you.</p>
+      <p><strong>If this ever changes.</strong> If analytics or a newsletter is ever added, this section will be updated to name the specific provider before that tool goes live — and it will never include grey-market sellers.</p>
+    </div></section>
     <section class="block"><div class="lnum">03 — Terms of use</div><div class="prose">
       <p><strong>Use at your own risk.</strong> Provided for informational purposes without warranties; the operator is not liable for loss or harm from use of or reliance on its content, to the fullest extent permitted by law.</p>
       <p><strong>No professional relationship.</strong> Using this site does not create a doctor-patient, attorney-client, or advisor relationship.</p>
@@ -1041,18 +1213,42 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 (function(){
   var views=[].slice.call(document.querySelectorAll('.view'));
   var navMap={home:'home',science:'science',bpc157:'science',ghkcu:'science',sema:'science',toolkit:'toolkit',tracker:'tracker',about:'about',legal:'about'};
-  function showView(id){
+  /* Switch the visible view. Pure display change — no history side effects. */
+  function setView(id){
     if(!document.getElementById('view-'+id))id='home';
     views.forEach(function(v){v.classList.toggle('on',v.id==='view-'+id);});
     var navId=navMap[id];
     document.querySelectorAll('.navlinks a').forEach(function(a){a.classList.toggle('here', a.getAttribute('data-nav')===navId);});
     window.scrollTo(0,0);
+    // never leave a freshly shown view's blocks stuck in their pre-reveal state
+    setTimeout(function(){[].forEach.call(document.querySelectorAll('.view.on .block'),function(b){b.classList.add('in');});},20);
+    return id;
+  }
+  function hashView(){
+    var h=(location.hash||'').replace('#','');
+    return document.getElementById('view-'+h)?h:'home';
+  }
+  /* User-initiated navigation: switch the view AND add a history entry, so the
+     browser back button works and any section can be linked to directly. */
+  function showView(id){
+    var real=setView(id);
+    try{
+      if(!history.state||history.state.view!==real)history.pushState({view:real},'','#'+real);
+    }catch(e){/* pushState can be blocked on file:// — view still switches */}
   }
   document.body.addEventListener('click',function(e){
     var t=e.target.closest('[data-view]');
     if(t){e.preventDefault();showView(t.getAttribute('data-view'));closeMenu();}
   });
-  if(location.hash){var h=location.hash.replace('#','');if(document.getElementById('view-'+h))showView(h);}
+  // back / forward, and manually edited hashes
+  window.addEventListener('popstate',function(){setView(hashView());closeMenu();});
+  window.addEventListener('hashchange',function(){setView(hashView());});
+  // initial load: honour a deep link and record it as the first history entry
+  (function(){
+    var start=hashView();
+    setView(start);
+    try{history.replaceState({view:start},'','#'+start);}catch(e){}
+  })();
 
   /* ---- mobile nav menu ---- */
   var navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navlinks');
@@ -1285,12 +1481,13 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'No dosing guidance.':'Sin orientación de dosificación.','Calculators illustrate arithmetic for educational purposes. They are not instructions to use any substance and do not recommend any dose.':'Las calculadoras ilustran aritmética con fines educativos. No son instrucciones para usar ninguna sustancia y no recomiendan ninguna dosis.',
     'Unapproved compounds.':'Compuestos no aprobados.','Many substances discussed are not approved for human use and may be illegal to sell or use for human consumption in your jurisdiction. Selling them for human use can carry serious legal liability.':'Muchas sustancias tratadas no están aprobadas para uso humano y pueden ser ilegales de vender o usar para el consumo humano en tu jurisdicción. Venderlas para uso humano puede conllevar una responsabilidad legal grave.',
     'No products, no endorsements.':'Sin productos, sin avales.','This site sells nothing, links to no sellers, and recommends no vendor. Mentions of compounds, tests, or labs are descriptive, not endorsements.':'Este sitio no vende nada, no enlaza a ningún vendedor y no recomienda a ningún proveedor. Las menciones de compuestos, pruebas o laboratorios son descriptivas, no avales.',
-    '02 — Privacy':'02 — Privacidad','The short version:':'La versión corta:','collect as little as possible, and don\'t sell personal data.':'recolectar lo menos posible y no vender datos personales.',
-    'Analytics.':'Analítica.','Aggregate, privacy-respecting analytics may be used to see which pages are useful.':'Se puede usar analítica agregada y respetuosa con la privacidad para ver qué páginas son útiles.','[Name your tool — e.g., Plausible or Cloudflare Web Analytics.]':'[Nombra tu herramienta — p. ej., Plausible o Cloudflare Web Analytics.]',
-    'Cookies.':'Cookies.','The site aims to run with no non-essential cookies.':'El sitio busca funcionar sin cookies no esenciales.','[Update if that changes.]':'[Actualiza si eso cambia.]',
-    'Newsletter / contact.':'Boletín / contacto.','Any email you submit is used only for its stated purpose and never sold.':'Cualquier correo que envíes se usa solo para su propósito declarado y nunca se vende.','[Name your email provider.]':'[Nombra tu proveedor de correo.]',
-    'Hosting.':'Alojamiento.','Served by a static host that may process basic technical request data per its own policy.':'Servido por un alojamiento estático que puede procesar datos técnicos básicos de las solicitudes según su propia política.','[Name your host.]':'[Nombra tu alojamiento.]',
-    'Fill in the brackets before launch':'Rellena los corchetes antes del lanzamiento','Complete the bracketed notes once you choose your analytics tool, host, and email provider. Keeping this accurate is good practice and often a legal requirement once you collect any data.':'Completa las notas entre corchetes una vez que elijas tu herramienta de analítica, alojamiento y proveedor de correo. Mantener esto exacto es buena práctica y a menudo un requisito legal en cuanto recolectas cualquier dato.',
+    '02 — Privacy':'02 — Privacidad','The short version:':'La versión corta:','this site collects nothing about you. There are no accounts, no forms, no analytics, and no tracking cookies. There is no database, so there is nothing about you to store, leak, or sell.':'este sitio no recopila nada sobre ti. No hay cuentas, ni formularios, ni analítica, ni cookies de rastreo. No hay base de datos, así que no hay nada tuyo que almacenar, filtrar o vender.',
+    'No analytics or tracking.':'Sin analítica ni rastreo.','No analytics service, tag manager, advertising pixel, or session-recording tool runs on this site. Your visit is not counted, profiled, or shared.':'En este sitio no se ejecuta ningún servicio de analítica, gestor de etiquetas, píxel publicitario ni herramienta de grabación de sesiones. Tu visita no se cuenta, ni se perfila, ni se comparte.',
+    'No cookies.':'Sin cookies.','The site sets no cookies. The only thing it keeps is your language choice (English or Spanish), stored in your own browser so the site remembers it next time. It never leaves your device, and clearing your browser data erases it.':'El sitio no establece cookies. Lo único que guarda es tu elección de idioma (inglés o español), almacenada en tu propio navegador para recordarla la próxima vez. Nunca sale de tu dispositivo, y borrar los datos del navegador la elimina.',
+    'No third-party requests.':'Sin solicitudes a terceros.','Fonts and every other asset are served from this site itself. Loading a page does not cause your browser to contact any outside company — no font CDN, no external scripts — so no third party learns you were here.':'Las tipografías y todos los demás recursos se sirven desde este mismo sitio. Cargar una página no hace que tu navegador contacte a ninguna empresa externa — sin CDN de fuentes, sin scripts externos — por lo que ningún tercero se entera de que estuviste aquí.',
+    'The calculators run entirely on your device.':'Las calculadoras funcionan por completo en tu dispositivo.','Everything you type into the dose calculator, the COA checker, or the vendor scorecard is processed in your browser and never transmitted anywhere. Nothing you enter is sent to a server, logged, or seen by anyone — including us.':'Todo lo que escribes en la calculadora de dosis, el verificador de COA o la tarjeta de puntuación del vendedor se procesa en tu navegador y nunca se transmite a ningún lugar. Nada de lo que introduces se envía a un servidor, se registra ni lo ve nadie — incluidos nosotros.',
+    'Hosting.':'Alojamiento.','Like any website, the host that serves these pages processes basic technical request data (such as IP address and browser type) to deliver the page and protect against abuse, under its own privacy policy. That is standard for the entire web and is not used here to identify or track you.':'Como en cualquier sitio web, el alojamiento que sirve estas páginas procesa datos técnicos básicos de la solicitud (como la dirección IP y el tipo de navegador) para entregar la página y protegerse contra abusos, según su propia política de privacidad. Eso es estándar en toda la web y aquí no se usa para identificarte ni rastrearte.',
+    'If this ever changes.':'Si esto cambia alguna vez.','If analytics or a newsletter is ever added, this section will be updated to name the specific provider before that tool goes live — and it will never include grey-market sellers.':'Si alguna vez se añade analítica o un boletín, esta sección se actualizará para nombrar al proveedor específico antes de que esa herramienta entre en funcionamiento — y nunca incluirá vendedores del mercado gris.',
     '03 — Terms of use':'03 — Términos de uso','Use at your own risk.':'Úsalo bajo tu propio riesgo.','Provided for informational purposes without warranties; the operator is not liable for loss or harm from use of or reliance on its content, to the fullest extent permitted by law.':'Se ofrece con fines informativos sin garantías; el operador no es responsable de pérdidas o daños derivados del uso o la confianza en su contenido, en la máxima medida permitida por la ley.',
     'No professional relationship.':'Sin relación profesional.','Using this site does not create a doctor-patient, attorney-client, or advisor relationship.':'Usar este sitio no crea una relación médico-paciente, abogado-cliente ni de asesor.',
     'Your responsibility.':'Tu responsabilidad.','You are responsible for complying with the laws that apply to you.':'Eres responsable de cumplir las leyes que te aplican.',
