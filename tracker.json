@@ -1,7 +1,7 @@
 {
   "lastReviewed": {
-    "en": "June 2026",
-    "es": "junio de 2026"
+    "en": "August 2026",
+    "es": "agosto de 2026"
   },
   "lanes": [
     {
@@ -12,25 +12,25 @@
       "entries": [
         {
           "title": {
-            "en": "PCAC review of research peptides",
-            "es": "Revisión del PCAC de péptidos de investigación"
+            "en": "PCAC recommends six peptides — including BPC-157",
+            "es": "El PCAC recomienda seis péptidos — incluido el BPC-157"
           },
           "status": "pending",
           "statusLabel": {
-            "en": "Pending",
-            "es": "Pendiente"
+            "en": "Awaiting FDA",
+            "es": "A la espera de la FDA"
           },
           "body": {
-            "en": "The FDA's Pharmacy Compounding Advisory Committee meets <strong>July 23–24, 2026</strong> to weigh BPC-157, TB-500, Epitalon, Semax and others for the 503A Bulks List — the substances pharmacies may legally compound.",
-            "es": "El Comité Asesor de Preparación Magistral de Farmacia de la FDA se reúne el <strong>23–24 de julio de 2026</strong> para evaluar BPC-157, TB-500, Epitalon, Semax y otros para la Lista de Sustancias a Granel 503A — las sustancias que las farmacias pueden preparar legalmente."
+            "en": "At its July 23–24, 2026 meeting the FDA's Pharmacy Compounding Advisory Committee voted to recommend <strong>BPC-157, TB-500, KPV, MOTS-c, Epitalon and Semax</strong> for the 503A Bulks List, and declined to recommend emideltide (DSIP). The margins were narrow — <strong>8–6 with one abstention</strong> for BPC-157, TB-500 and KPV, and 7–5 for MOTS-c — and the votes went against the objections of FDA's own career scientists, who said they lacked the evidence to assess safety and effectiveness. Their central objection was that there is no universally accepted chemical formula for these compounds.",
+            "es": "En su reunión del 23–24 de julio de 2026, el Comité Asesor de Preparación Magistral de Farmacia de la FDA votó a favor de recomendar <strong>BPC-157, TB-500, KPV, MOTS-c, Epitalón y Semax</strong> para la Lista de Sustancias a Granel 503A, y no recomendó la emideltida (DSIP). Los márgenes fueron estrechos — <strong>8–6 con una abstención</strong> para BPC-157, TB-500 y KPV, y 7–5 para MOTS-c — y los votos fueron en contra de las objeciones de los propios científicos de carrera de la FDA, que dijeron que carecían de evidencia para evaluar la seguridad y la eficacia. Su objeción central fue que no existe una fórmula química universalmente aceptada para estos compuestos."
           },
           "means": {
-            "en": "<strong>What it means:</strong> the decision point for whether these become legally compoundable. But a favorable vote still runs through rulemaking that takes 12–24 months — nothing flips overnight.",
-            "es": "<strong>Qué significa:</strong> el punto de decisión sobre si estas pasan a ser legalmente preparables. Pero un voto favorable aún pasa por una reglamentación que tarda 12–24 meses — nada cambia de la noche a la mañana."
+            "en": "<strong>What it means:</strong> a recommendation, not a rule change. The committee does not bind the FDA, nothing has been added to any list, and any change requires formal rulemaking. Nothing about what you can lawfully buy changed on 24 July. And the reason FDA's scientists balked — that you cannot properly evaluate a substance whose identity is not pinned down — is the same argument this site makes about the vial in your hand.",
+            "es": "<strong>Qué significa:</strong> es una recomendación, no un cambio de norma. El comité no obliga a la FDA, nada se ha añadido a ninguna lista y cualquier cambio requiere una reglamentación formal. Nada de lo que puedes comprar legalmente cambió el 24 de julio. Y la razón por la que los científicos de la FDA se resistieron — que no se puede evaluar bien una sustancia cuya identidad no está fijada — es el mismo argumento que este sitio hace sobre el vial que tienes en la mano."
           },
           "meta": {
-            "en": "Updated June 2026 · Source: FDA compounding advisory committee docket",
-            "es": "Actualizado junio de 2026 · Fuente: expediente del comité asesor de preparación de la FDA"
+            "en": "Updated August 2026 · Source: FDA PCAC meeting, July 23–24 2026; RAPS and Pharmaceutical Executive reporting",
+            "es": "Actualizado agosto de 2026 · Fuente: reunión del PCAC de la FDA, 23–24 de julio de 2026; reportajes de RAPS y Pharmaceutical Executive"
           }
         },
         {

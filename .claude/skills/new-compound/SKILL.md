@@ -81,7 +81,7 @@ Every new visible English string must get an `ES` dictionary entry keyed by the 
 text, or it silently stays English in Spanish mode. After adding the page, run:
 
 ```bash
-python3 .claude/skills/i18n-check/check_i18n.py in-the-vial/index.html
+python3 .claude/skills/i18n-check/check_i18n.py index.html
 ```
 
 Add an `ES` entry for each real orphan it lists (brand names, units, and assay codes
