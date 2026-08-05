@@ -28,12 +28,18 @@ Add `<div class="view" id="view-SLUG">` modeled on an existing page. The anatomy
 - **Residue-chain plate** — `<div class="plate mol-plate">` with
   `<svg class="mol-svg" data-chain="CHAINKEY" role="img" aria-label="…">` and a
   `<div class="mol-readout" data-readout="CHAINKEY">…</div>`.
-- **Reserved photo figure** — copy the existing `<figure class="figure">` block
-  (drops a real image/clip in `assets/` later).
+- **No figure.** Do *not* copy the `<figure class="figure">` block from the BPC-157 page — it is a
+  bespoke COA illustration for that compound, not a reusable placeholder, and copying it ships wrong
+  content plus 17 untranslated SVG labels. Add a figure only when a real asset for *this* compound
+  exists.
 - `<div class="spec">` grid — Class / Evidence tier / Human data / Regulatory status.
 - `<div class="prose">` — `<h3 class="sh">` sections: What it is · How it's proposed
   to work · State of the evidence · Studied in humans vs. animals · Risks & unknowns ·
-  Regulatory status · a `<table class="ledger">` of claim vs. evidence vs. verdict.
+  Regulatory status · then the claims ledger.
+- **The claims ledger must be wrapped:**
+  `<div class="ledger-wrap"><table class="ledger">…</table></div>`. Unwrapped, the table pushes the
+  page wider than the viewport on mobile. This is easy to miss because it only fails **in Spanish**,
+  where the longer strings tip it over — English alone looks fine.
 - Close with the "Verify this yourself" `<div class="callout">`.
 
 Keep the honest, evidence-tiered tone; verdict cells use `vd vpart` / `vd vno` / `vd vok`.
@@ -82,6 +88,14 @@ Add an `ES` entry for each real orphan it lists (brand names, units, and assay c
 are expected to stay English). See the [i18n-check](../i18n-check/SKILL.md) skill.
 
 ## Verify
+
+> [!warning] Asserting on a hidden view measures nothing
+> `.view{display:none}`, so a view that is not currently shown contributes **zero** to
+> `document.documentElement.scrollWidth`. Checking the width on page load "passes" without ever
+> testing the new page. **Navigate to the view first**, then assert — and do it in **both
+> languages**, because Spanish strings run longer and overflow is as often a translation problem
+> as a CSS one.
+
 
 Run the [verify](../verify/SKILL.md) skill: JS syntax (the hook), i18n coverage, then
 [preview](../preview/SKILL.md) and click the new card → page, hover the residue chain,
