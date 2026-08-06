@@ -698,7 +698,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <a href="#science" data-view="science" data-nav="science" data-i18n="nav.science">Science</a>
         <a href="#toolkit" data-view="toolkit" data-nav="toolkit" data-i18n="nav.toolkit">Toolkit</a>
         <a href="#tracker" data-view="tracker" data-nav="tracker" data-i18n="nav.tracker">Tracker</a>
-        <a href="#about" data-view="about" data-nav="about" data-i18n="nav.about">About</a>
+        <a href="#about" data-view="about" data-nav="about" data-i18n="nav.about">About</a><a href="#method" data-view="method" data-nav="method" data-i18n="nav.method">Method</a>
       </div>
       <button class="langbtn" id="langBtn" type="button" aria-label="Switch language / Cambiar idioma"><b>EN</b> · ES</button>
       <button class="navtoggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
@@ -1131,6 +1131,54 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 </div>
 
 <!-- ============ TOOLKIT ============ -->
+<!-- ============ METHODOLOGY ============ -->
+<div class="view" id="view-method">
+  <header class="hero">
+    <div class="wrap" style="padding-top:44px;padding-bottom:44px">
+      <div class="filestrip"><span class="dot"></span>Methodology<span class="rule"></span>File 06</div>
+      <h1>How this site decides <em>what it claims.</em></h1>
+      <p class="lede">A grade is only worth what the method behind it is worth. This page states who writes the site, what is searched, how evidence tiers are assigned, where the limits are, and how to get something corrected.</p>
+    </div>
+  </header>
+  <main class="wrap reading">
+    <div class="prose">
+      <h3 class="sh">Who writes this</h3>
+      <p>This site is written and maintained by <strong>Alexander Ayala</strong>, a Health Science undergraduate at the University of South Florida, a Florida-licensed Certified Nursing Assistant, and a Patient Care Technician working in hospital medical-surgical care.</p>
+      <p>What that background is good for: reading clinical literature, taking evidence quality seriously, and a working familiarity with how care and documentation actually function. It is a healthcare background, not a laboratory or legal one.</p>
+      <div class="callout warn"><h4>What that background is not</h4><p>No medical degree, no pharmacy licence, no formal training in analytical chemistry, and no legal qualification. This site nonetheless makes claims about chromatography, endotoxin testing and federal compounding rules. That gap is exactly why every substantive claim on the compound pages now carries a citation to a primary source: you are not being asked to trust the author's authority, because the author does not claim any. Check the sources.</p></div>
+      <p><strong>No external peer review.</strong> Nothing here is reviewed by an independent expert before publication. Treat it as a well-sourced starting point for your own reading, not as a settled reference.</p>
+      <h3 class="sh">Independence and affiliation</h3>
+      <p>This is a personal, independent project. It is <strong>not affiliated with, endorsed by, funded by, or representative of</strong> the University of South Florida, AdventHealth, or any employer, school, laboratory or vendor. Nothing here is written on behalf of any organisation, and no organisation reviews it.</p>
+      <p>No vendor money, no affiliate links, no purchase recommendations — the financial position is stated in full on the <a href="#about" data-view="about">independence policy</a>.</p>
+      <h3 class="sh">What gets searched</h3>
+      <p>Compound pages are built from primary literature located through PubMed and ClinicalTrials.gov, plus the relevant regulatory record — Federal Register notices, FDA guidance and advisory-committee materials, and published enforcement actions.</p>
+      <p>Every cited DOI is checked against the DOI registry to confirm it resolves to the exact title, journal and year listed. A reference that cannot be resolved does not get published.</p>
+      <h3 class="sh">How evidence tiers are assigned</h3>
+      <p>The tier answers one narrow question: <em>how strong is the evidence in humans?</em> It is not a measure of how promising, interesting or popular a compound is.</p>
+      <table class="ledger"><thead><tr><th>Tier</th><th>What it requires</th><th>What it does not mean</th></tr></thead><tbody>
+        <tr><td><strong>A</strong></td><td>Regulatory approval plus large, multi-year randomised controlled trials with published outcomes.</td><td>That any given vial contains the approved product.</td></tr>
+        <tr><td><strong>B</strong></td><td>Real human studies exist, but are small, short, mixed, or not yet through phase 3.</td><td>Proven. Promising and unfinished are different things.</td></tr>
+        <tr><td><strong>C</strong></td><td>Animal or in-vitro work only, with no rigorous human efficacy trials.</td><td>That the compound does nothing — only that humans have not been tested.</td></tr>
+        <tr><td><strong>D</strong></td><td>Mechanistic speculation, anecdote or forum report, with no meaningful direct evidence either way.</td><td>Disproven. Absence of evidence is the finding.</td></tr>
+      </tbody></table>
+      <p>Where evidence differs by route of administration, the tier is split rather than averaged — GHK-Cu is graded separately for topical and injectable use, because the underlying evidence genuinely differs.</p>
+      <div class="callout"><h4>Grading against interest, on purpose</h4><p>Semaglutide is Tier A. It is included precisely because a site that only ever graded compounds poorly would be an anti-peptide site wearing evidence as a costume. The scale has to be able to return a high grade or it is not a scale.</p></div>
+      <h3 class="sh">Known limits</h3>
+      <ul>
+        <li><strong>Single author, no peer review.</strong> Errors are likelier than in a reviewed publication.</li>
+        <li><strong>Literature searches are point-in-time.</strong> Each compound page states the month its evidence was last searched. A page without a recent date should be trusted less — including these.</li>
+        <li><strong>Citation counts are uneven by design.</strong> A short reference list often reflects a thin literature rather than a shallow search. Where that is true, the page says so.</li>
+        <li><strong>Regulatory content moves faster than the site.</strong> <a href="#tracker" data-view="tracker">The regulatory tracker</a> carries its own review date; nothing here is legal advice.</li>
+        <li><strong>Conflicts of interest in the sources themselves</strong> are flagged where identified — for example, where the most-cited reviews of a compound are authored by someone selling it.</li>
+      </ul>
+      <h3 class="sh">Corrections</h3>
+      <p>If something here is wrong, it should be fixed and the fix should be visible. Report errors to <a href="mailto:corrections@in-the-vial.com">corrections@in-the-vial.com</a>.</p>
+      <p>Factual corrections are made promptly, and material changes are noted with the date on the affected page. The full edit history of this site is public in its source repository, so any change can be inspected rather than taken on trust.</p>
+      <div class="callout"><h4>The standard this site asks of sellers</h4><p>Show your evidence, state your limits, date your claims, and make it possible to check you. This page exists so the same standard can be applied here.</p></div>
+    </div>
+  </main>
+</div>
+
 <!-- ============ RETATRUTIDE ============ -->
 <div class="view" id="view-reta">
   <main class="wrap reading cpage">
@@ -1355,7 +1403,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <div class="fbrand"><svg viewBox="0 0 24 34" aria-hidden="true"><rect class="cap" x="7" y="2" width="10" height="5" rx="1"/><path class="ridge" d="M9.2,2.8 L9.2,6.2 M11.5,2.8 L11.5,6.2 M13.8,2.8 L13.8,6.2"/><path class="glass" d="M8.5,7 L8.5,10 L6,12.5 L6,27 C6,31 18,31 18,27 L18,12.5 L15.5,10 L15.5,7 Z"/><path class="fluid" d="M6.4,19 C8,18 10,20 12,20 C14,20 16,18 17.6,19 L17.6,27 C17.6,30.2 6.4,30.2 6.4,27 Z"/></svg>In The Vial</div>
         <div class="ftag">Independent buyer literacy and harm reduction for research peptides.</div>
       </div>
-      <div class="flinks"><span class="lbl">Pages</span><a href="#science" data-view="science">Science library</a><a href="#toolkit" data-view="toolkit">Buyer toolkit</a><a href="#tracker" data-view="tracker">Regulatory tracker</a><a href="#about" data-view="about">About &amp; independence</a><a href="#legal" data-view="legal">Disclaimer &amp; privacy</a></div>
+      <div class="flinks"><span class="lbl">Pages</span><a href="#science" data-view="science">Science library</a><a href="#toolkit" data-view="toolkit">Buyer toolkit</a><a href="#tracker" data-view="tracker">Regulatory tracker</a><a href="#about" data-view="about">About &amp; independence</a><a href="#method" data-view="method">Methodology &amp; corrections</a><a href="#legal" data-view="legal">Disclaimer &amp; privacy</a></div>
     </div>
     <p class="disc"><strong>Educational and harm-reduction resource only.</strong> Nothing here is medical, legal, or dosing advice, and nothing is sold, recommended, or linked. Many research compounds are not approved for human use and may be illegal to sell or use for human consumption. Verify the laws that apply to you and consult a licensed professional before any health decision.</p>
   </div>
@@ -1365,7 +1413,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 <script>
 (function(){
   var views=[].slice.call(document.querySelectorAll('.view'));
-  var navMap={home:'home',science:'science',bpc157:'science',ghkcu:'science',sema:'science',reta:'science',ipa:'science',toolkit:'toolkit',tracker:'tracker',about:'about',legal:'about'};
+  var navMap={home:'home',science:'science',bpc157:'science',ghkcu:'science',sema:'science',reta:'science',ipa:'science',toolkit:'toolkit',tracker:'tracker',about:'about',method:'method',legal:'about'};
   /* Switch the visible view. Pure display change — no history side effects. */
   function setView(id){
     if(!document.getElementById('view-'+id))id='home';
@@ -1462,6 +1510,70 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     risk:{low:{en:'Low risk',es:'Riesgo bajo'},some:{en:'Some risk',es:'Algo de riesgo'},high:{en:'High risk',es:'Riesgo alto'},severe:{en:'Severe risk',es:'Riesgo grave'}}
   };
   var ES={
+    'Compound pages are built from primary literature located through PubMed and ClinicalTrials.gov, plus the relevant regulatory record — Federal Register notices, FDA guidance and advisory-committee materials, and published enforcement actions.':'Las páginas de compuestos se construyen a partir de literatura primaria localizada mediante PubMed y ClinicalTrials.gov, más el registro regulatorio pertinente — avisos del Federal Register, guías de la FDA y materiales de comités asesores, y acciones de aplicación publicadas.',
+    'The regulatory tracker':'El seguimiento regulatorio',
+    'No vendor money, no affiliate links, no purchase recommendations — the financial position is stated in full on the':'Sin dinero de vendedores, sin enlaces de afiliados, sin recomendaciones de compra — la posición económica se detalla por completo en la',
+    'Methodology & corrections':'Metodología y correcciones',
+    /* --- methodology page --- */
+    'Methodology':'Metodología',
+    'File 06':'Archivo 06',
+    'How this site decides':'Cómo decide este sitio',
+    'what it claims.':'lo que afirma.',
+    'A grade is only worth what the method behind it is worth. This page states who writes the site, what is searched, how evidence tiers are assigned, where the limits are, and how to get something corrected.':'Una calificación vale lo que vale el método que hay detrás. Esta página indica quién escribe el sitio, qué se busca, cómo se asignan los niveles de evidencia, dónde están los límites y cómo pedir una corrección.',
+    'Who writes this':'Quién escribe esto',
+    'This site is written and maintained by':'Este sitio lo escribe y mantiene',
+    ', a Health Science undergraduate at the University of South Florida, a Florida-licensed Certified Nursing Assistant, and a Patient Care Technician working in hospital medical-surgical care.':', estudiante de grado en Ciencias de la Salud en la Universidad del Sur de Florida, Auxiliar de Enfermería Certificado con licencia de Florida y Técnico de Atención al Paciente en una unidad hospitalaria médico-quirúrgica.',
+    'What that background is good for: reading clinical literature, taking evidence quality seriously, and a working familiarity with how care and documentation actually function. It is a healthcare background, not a laboratory or legal one.':'Para lo que sirve esa formación: leer literatura clínica, tomarse en serio la calidad de la evidencia y conocer de primera mano cómo funcionan realmente la atención y la documentación. Es una formación sanitaria, no de laboratorio ni jurídica.',
+    'What that background is not':'Lo que esa formación no es',
+    'No medical degree, no pharmacy licence, no formal training in analytical chemistry, and no legal qualification. This site nonetheless makes claims about chromatography, endotoxin testing and federal compounding rules. That gap is exactly why every substantive claim on the compound pages now carries a citation to a primary source: you are not being asked to trust the author\'s authority, because the author does not claim any. Check the sources.':'Sin título de medicina, sin licencia de farmacia, sin formación reglada en química analítica y sin titulación jurídica. Aun así, este sitio hace afirmaciones sobre cromatografía, pruebas de endotoxinas y normas federales de preparación magistral. Precisamente por esa brecha, cada afirmación sustantiva en las páginas de compuestos lleva ahora una cita a una fuente primaria: no se te pide confiar en la autoridad del autor, porque el autor no reclama ninguna. Comprueba las fuentes.',
+    'No external peer review.':'Sin revisión externa por pares.',
+    'Nothing here is reviewed by an independent expert before publication. Treat it as a well-sourced starting point for your own reading, not as a settled reference.':'Nada de lo que hay aquí es revisado por un experto independiente antes de publicarse. Tómalo como un punto de partida bien documentado para tu propia lectura, no como una referencia definitiva.',
+    'Independence and affiliation':'Independencia y afiliación',
+    'This is a personal, independent project. It is':'Este es un proyecto personal e independiente. No está',
+    'not affiliated with, endorsed by, funded by, or representative of':'afiliado a, avalado por, financiado por, ni representa a',
+    'the University of South Florida, AdventHealth, or any employer, school, laboratory or vendor. Nothing here is written on behalf of any organisation, and no organisation reviews it.':'la Universidad del Sur de Florida, AdventHealth, ni ningún empleador, centro educativo, laboratorio o vendedor. Nada aquí se escribe en nombre de ninguna organización, y ninguna organización lo revisa.',
+    'The financial position is stated in full on the':'La posición económica se detalla por completo en la',
+    'independence policy':'política de independencia',
+    ': no vendor money, no affiliate links, no purchase recommendations.':': sin dinero de vendedores, sin enlaces de afiliados, sin recomendaciones de compra.',
+    'What gets searched':'Qué se busca',
+    'Compound pages are built from primary literature located through':'Las páginas de compuestos se construyen a partir de literatura primaria localizada mediante',
+    ', plus the relevant regulatory record — Federal Register notices, FDA guidance and advisory-committee materials, and published enforcement actions.':', más el registro regulatorio pertinente — avisos del Federal Register, guías de la FDA y materiales de comités asesores, y acciones de aplicación publicadas.',
+    'Every cited DOI is checked against the DOI registry to confirm it resolves to the exact title, journal and year listed. A reference that cannot be resolved does not get published.':'Cada DOI citado se comprueba contra el registro de DOI para confirmar que resuelve al título, la revista y el año exactos indicados. Una referencia que no se puede resolver no se publica.',
+    'How evidence tiers are assigned':'Cómo se asignan los niveles de evidencia',
+    'The tier answers one narrow question:':'El nivel responde a una sola pregunta concreta:',
+    'how strong is the evidence in humans?':'¿qué tan sólida es la evidencia en humanos?',
+    'It is not a measure of how promising, interesting or popular a compound is.':'No mide lo prometedor, interesante o popular que sea un compuesto.',
+    'Tier':'Nivel',
+    'What it requires':'Qué exige',
+    'What it does not mean':'Qué no significa',
+    'Regulatory approval plus large, multi-year randomised controlled trials with published outcomes.':'Aprobación regulatoria más ensayos controlados aleatorizados grandes, de varios años y con resultados publicados.',
+    'That any given vial contains the approved product.':'Que un vial concreto contenga el producto aprobado.',
+    'Real human studies exist, but are small, short, mixed, or not yet through phase 3.':'Existen estudios humanos reales, pero son pequeños, cortos, mixtos o aún no han superado la fase 3.',
+    'Proven. Promising and unfinished are different things.':'Probado. Prometedor y sin terminar no son lo mismo.',
+    'Animal or in-vitro work only, with no rigorous human efficacy trials.':'Solo trabajo animal o in vitro, sin ensayos rigurosos de eficacia en humanos.',
+    'That the compound does nothing — only that humans have not been tested.':'Que el compuesto no haga nada — solo que no se ha probado en humanos.',
+    'Mechanistic speculation, anecdote or forum report, with no meaningful direct evidence either way.':'Especulación mecanicista, anécdota o relato de foro, sin evidencia directa significativa en ningún sentido.',
+    'Disproven. Absence of evidence is the finding.':'Refutado. La ausencia de evidencia es el hallazgo.',
+    'Where evidence differs by route of administration, the tier is split rather than averaged — GHK-Cu is graded separately for topical and injectable use, because the underlying evidence genuinely differs.':'Cuando la evidencia difiere según la vía de administración, el nivel se divide en lugar de promediarse — el GHK-Cu se califica por separado para uso tópico e inyectable, porque la evidencia de fondo realmente difiere.',
+    'Grading against interest, on purpose':'Calificar en contra del propio interés, a propósito',
+    'Semaglutide is Tier A. It is included precisely because a site that only ever graded compounds poorly would be an anti-peptide site wearing evidence as a costume. The scale has to be able to return a high grade or it is not a scale.':'La semaglutida es Nivel A. Se incluye precisamente porque un sitio que solo calificara mal los compuestos sería un sitio antipéptidos disfrazado de evidencia. La escala tiene que poder devolver una calificación alta o no es una escala.',
+    'Known limits':'Límites conocidos',
+    'Single author, no peer review.':'Un solo autor, sin revisión por pares.',
+    'Errors are likelier than in a reviewed publication.':'Los errores son más probables que en una publicación revisada.',
+    'Literature searches are point-in-time.':'Las búsquedas bibliográficas son de un momento concreto.',
+    'Each compound page states the month its evidence was last searched. A page without a recent date should be trusted less — including these.':'Cada página de compuesto indica el mes en que se buscó su evidencia por última vez. Una página sin una fecha reciente merece menos confianza — incluidas estas.',
+    'Citation counts are uneven by design.':'El número de citas es desigual a propósito.',
+    'A short reference list often reflects a thin literature rather than a shallow search. Where that is true, the page says so.':'Una lista de referencias corta suele reflejar una literatura escasa, no una búsqueda superficial. Cuando es así, la página lo dice.',
+    'Regulatory content moves faster than the site.':'El contenido regulatorio cambia más rápido que el sitio.',
+    'carries its own review date; nothing here is legal advice.':'tiene su propia fecha de revisión; nada aquí es asesoramiento legal.',
+    'Conflicts of interest in the sources themselves':'Los conflictos de interés en las propias fuentes',
+    'are flagged where identified — for example, where the most-cited reviews of a compound are authored by someone selling it.':'se señalan cuando se identifican — por ejemplo, cuando las revisiones más citadas de un compuesto están firmadas por alguien que lo vende.',
+    'Corrections':'Correcciones',
+    'If something here is wrong, it should be fixed and the fix should be visible. Report errors to':'Si algo aquí está mal, debe corregirse y la corrección debe verse. Informa de errores a',
+    'Factual corrections are made promptly, and material changes are noted with the date on the affected page. The full edit history of this site is public in its source repository, so any change can be inspected rather than taken on trust.':'Las correcciones de hechos se hacen sin demora, y los cambios sustanciales se anotan con la fecha en la página afectada. El historial completo de ediciones de este sitio es público en su repositorio de código, así que cualquier cambio puede inspeccionarse en lugar de aceptarse por confianza.',
+    'The standard this site asks of sellers':'El estándar que este sitio exige a los vendedores',
+    'Show your evidence, state your limits, date your claims, and make it possible to check you. This page exists so the same standard can be applied here.':'Muestra tu evidencia, declara tus límites, fecha tus afirmaciones y haz posible que te comprueben. Esta página existe para que ese mismo estándar pueda aplicarse aquí.',
+    'Method':'Método',
     'Records located via PubMed. Evidence searched August 2026. Worth noticing what these sources are and are not: the foundational work is animal pharmacology, and the human record is small and short-term metabolic. A total PubMed record of roughly a dozen papers is itself the finding — none of them tested muscle gain, fat loss, recovery or ageing in healthy adults, which is what the compound is sold for.':'Registros localizados mediante PubMed. Evidencia consultada en agosto de 2026. Vale la pena fijarse en qué son y qué no son estas fuentes: el trabajo fundacional es farmacología animal, y el registro humano es pequeño y metabólico a corto plazo. Que en PubMed haya en total alrededor de una docena de artículos es en sí mismo el hallazgo — ninguno probó ganancia muscular, pérdida de grasa, recuperación ni envejecimiento en adultos sanos, que es para lo que se vende el compuesto.',
     'Records located via PubMed. Evidence searched August 2026. These are the trials that earn the Tier A grade: 1,961 randomised participants over 68 weeks, and a separate cardiovascular-outcome trial. Note what that scale buys — an effect size measured against placebo, not a testimonial.':'Registros localizados mediante PubMed. Evidencia consultada en agosto de 2026. Estos son los ensayos que justifican el nivel A: 1.961 participantes aleatorizados durante 68 semanas, y un ensayo aparte de desenlaces cardiovasculares. Fíjate en lo que compra esa escala — un tamaño de efecto medido frente a placebo, no un testimonio.',
     'Records located via PubMed. Evidence searched August 2026. One trial, phase 2, 48 weeks — genuinely strong for its stage and still not an approval. Phase 3 is where long-term safety gets answered, and it had not reported at the time of this review.':'Registros localizados mediante PubMed. Evidencia consultada en agosto de 2026. Un ensayo, fase 2, 48 semanas — realmente sólido para su etapa y aun así no es una aprobación. La fase 3 es donde se responde la seguridad a largo plazo, y no había reportado resultados al momento de esta revisión.',
