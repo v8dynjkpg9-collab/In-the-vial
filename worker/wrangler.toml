@@ -2,16 +2,19 @@ name = "in-the-vial-subscribe"
 main = "subscribe.js"
 compatibility_date = "2026-08-05"
 
-# Buttondown shown as the default. Any provider works — only this URL and the
-# Authorization header format in subscribe.js need to change.
-[vars]
-PROVIDER_ENDPOINT = "https://api.buttondown.email/v1/subscribers"
+# STEP 2 fills these two in (wrangler kv namespace create ...).
+# SUBS  = the subscriber list, stored in your own Cloudflare account.
+# RATE  = optional abuse control; safe to leave out.
+[[kv_namespaces]]
+binding = "SUBS"
+id = "PASTE_SUBS_ID_HERE"
 
-# Optional. Without it the endpoint still works, just without rate limiting.
-# wrangler kv namespace create RATE
-# [[kv_namespaces]]
-# binding = "RATE"
-# id = "<paste-id-here>"
+# ---- optional, add later when you pick a sender -------------------------
+# The Worker runs fine without these: addresses are captured in SUBS and can
+# be exported whenever you're ready to send.
+# [vars]
+# PROVIDER_ENDPOINT = "https://api.buttondown.email/v1/subscribers"
+# then: npx wrangler secret put PROVIDER_API_KEY
 
 [[routes]]
 pattern = "in-the-vial.com/api/subscribe"

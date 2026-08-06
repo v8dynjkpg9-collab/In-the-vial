@@ -91,23 +91,45 @@ export default {
       await env.RATE.put(key, "1", { expirationTtl: 3600 });
     }
 
-    const res = await fetch(env.PROVIDER_ENDPOINT, {
-      method: "POST",
-      headers: {
-        "Authorization": `Token ${env.PROVIDER_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email_address: email, tags: ["tracker-digest"] }),
-    });
-
-    if (res.ok || res.status === 409) {
-      // 409 = already subscribed. Not an error the reader needs to see, and
-      // reporting it would leak whether an address is on the list.
-      return json({ ok: true }, 200, origin);
+    // ---- store first -------------------------------------------------
+    // The list lives in your own Cloudflare account. This works with no mail
+    // provider at all, so the form can go live before a sender is chosen —
+    // a signup box that silently fails is worse than no signup box.
+    if (env.SUBS) {
+      await env.SUBS.put(`sub:${email}`, JSON.stringify({
+        at: new Date().toISOString(),
+        list: "tracker-digest",
+      }));
     }
 
-    // Never echo the provider's response body — it can contain the address.
-    console.error("provider_error", res.status);
-    return json({ ok: false, error: "provider_error" }, 502, origin);
+    // ---- forward to a sender, only if one is configured ----------------
+    if (env.PROVIDER_ENDPOINT && env.PROVIDER_API_KEY) {
+      const res = await fetch(env.PROVIDER_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Authorization": `Token ${env.PROVIDER_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email_address: email, tags: ["tracker-digest"] }),
+      });
+
+      // 409 = already subscribed. Not an error the reader needs to see, and
+      // reporting it would leak whether an address is on the list.
+      if (!res.ok && res.status !== 409) {
+        // Never echo the provider's response body — it can contain the address.
+        console.error("provider_error", res.status);
+        // The address is already stored, so this is still a success for the
+        // reader. Failing here would make them retype an address we have.
+        if (!env.SUBS) {
+          return json({ ok: false, error: "provider_error" }, 502, origin);
+        }
+      }
+    } else if (!env.SUBS) {
+      // Nothing configured at all — refuse rather than pretend it worked.
+      console.error("no_storage_or_provider_configured");
+      return json({ ok: false, error: "not_configured" }, 503, origin);
+    }
+
+    return json({ ok: true }, 200, origin);
   },
 };
