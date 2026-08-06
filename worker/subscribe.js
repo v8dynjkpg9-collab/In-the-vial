@@ -6,9 +6,8 @@ import { NEWSLETTERS } from "./newsletter-content.js";
  * Routes:
  *   POST /api/subscribe
  *   POST /api/newsletter/test
- *   GET  /api/unsubscribe?email=...&token=...
- *
- * Broadcast sending is intentionally not enabled yet.
+ *   POST /api/newsletter/broadcast   (dry run unless {"confirm": true})
+ *   GET|POST /api/unsubscribe?email=...&token=...
  */
 
 const ALLOWED_ORIGINS = [
@@ -549,6 +548,137 @@ async function handleTestSend(request, env, origin) {
   }
 }
 
+
+/**
+ * Broadcast an issue to the list.
+ *
+ * Defaults to a dry run: you must pass {"confirm": true} to actually send.
+ * A missing flag sends nothing, because the failure mode of guessing wrong
+ * here is mailing real people a duplicate.
+ *
+ * Idempotency: a `sent:<issue>:<email>` marker is written after each
+ * successful send and checked before it. A retried, double-clicked or
+ * resumed broadcast therefore skips anyone already reached, rather than
+ * sending twice. Markers are per-issue, so a later issue is unaffected.
+ */
+async function handleBroadcast(request, env, origin) {
+  if (!authorized(request, env)) {
+    return json({ ok: false, error: "unauthorized" }, 401, origin);
+  }
+  if (!env.SUBS || !env.EMAIL || !env.UNSUBSCRIBE_SECRET) {
+    return json({ ok: false, error: "not_configured" }, 503, origin);
+  }
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ ok: false, error: "bad_request" }, 400, origin);
+  }
+
+  const issue = String(body.issue || "").trim();
+  const confirm = body.confirm === true;
+  const onlyLanguage = String(body.language || "").toLowerCase();
+  const limit = Number.isInteger(body.limit) && body.limit > 0 ? body.limit : null;
+
+  if (!issue) {
+    return json({ ok: false, error: "missing_issue" }, 400, origin);
+  }
+  if (onlyLanguage && !["en", "es"].includes(onlyLanguage)) {
+    return json({ ok: false, error: "invalid_language" }, 400, origin);
+  }
+
+  const summary = {
+    issue,
+    dryRun: !confirm,
+    considered: 0,
+    byLanguage: { en: 0, es: 0 },
+    alreadySent: 0,
+    wouldSend: 0,
+    sent: 0,
+    failed: 0,
+    skippedNoContent: 0,
+  };
+
+  let cursor;
+  do {
+    const page = await env.SUBS.list({ prefix: "sub:", cursor, limit: 200 });
+    cursor = page.list_complete ? undefined : page.cursor;
+
+    for (const key of page.keys) {
+      if (limit && summary.wouldSend + summary.sent >= limit) {
+        cursor = undefined;
+        break;
+      }
+
+      const email = key.name.slice("sub:".length);
+      if (!isValidEmail(email)) continue;
+
+      const raw = await env.SUBS.get(key.name);
+      if (!raw) continue;
+
+      let record;
+      try {
+        record = JSON.parse(raw);
+      } catch {
+        continue;
+      }
+      if (record.status && record.status !== "subscribed") continue;
+
+      // Records predating the language field are English by default.
+      const language = ["en", "es"].includes(record.language) ? record.language : "en";
+      if (onlyLanguage && language !== onlyLanguage) continue;
+
+      summary.considered += 1;
+      summary.byLanguage[language] += 1;
+
+      if (!NEWSLETTERS[language]) {
+        summary.skippedNoContent += 1;
+        continue;
+      }
+
+      // The guard. Checked before sending, written only after success, so a
+      // crash mid-send retries rather than silently dropping someone.
+      const sentKey = `sent:${issue}:${email}`;
+      if (await env.SUBS.get(sentKey)) {
+        summary.alreadySent += 1;
+        continue;
+      }
+
+      if (!confirm) {
+        summary.wouldSend += 1;
+        continue;
+      }
+
+      try {
+        const unsubscribe = await unsubscribeUrl(email, env);
+        const newsletter = NEWSLETTERS[language];
+        await env.EMAIL.send({
+          from: FROM_EMAIL,
+          to: email,
+          replyTo: REPLY_TO,
+          subject: newsletter.subject,
+          text: markdownToPlainText(newsletter.markdown, unsubscribe),
+          html: markdownToEmailHtml(newsletter.markdown, unsubscribe, language),
+          headers: {
+            "List-Unsubscribe": `<${unsubscribe}>`,
+            "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+            "X-Campaign-ID": `tracker-digest-${issue}-${language}`,
+          },
+        });
+        await env.SUBS.put(sentKey, new Date().toISOString());
+        summary.sent += 1;
+      } catch (error) {
+        // Never log the address: these logs are readable in the dashboard.
+        console.error("broadcast_send_failed", language, String(error).slice(0, 120));
+        summary.failed += 1;
+      }
+    }
+  } while (cursor);
+
+  return json({ ok: true, ...summary }, 200, origin);
+}
+
 async function handleUnsubscribe(request, env) {
   if (!env.SUBS || !env.UNSUBSCRIBE_SECRET) {
     return htmlResponse(unsubscribePage(
@@ -658,6 +788,13 @@ export default {
       request.method === "POST"
     ) {
       return handleTestSend(request, env, origin);
+    }
+
+    if (
+      url.pathname === "/api/newsletter/broadcast" &&
+      request.method === "POST"
+    ) {
+      return handleBroadcast(request, env, origin);
     }
 
     // GET  = a human clicking the link in the email body.
