@@ -21,3 +21,30 @@
 Valid signup stores + returns 200 · invalid/empty/malformed → 400 ·
 honeypot → fake 200 and NOT stored · foreign origin → 403 · GET → 405 ·
 preflight → 204 · real form submission on the live site reached KV.
+
+## Verified end-to-end (2026-08-06)
+
+- Language-aware signup: subscribed through the live site in EN and ES,
+  read both back from KV with the correct `language` field.
+- One-click unsubscribe: `POST /api/unsubscribe` accepted (was 404),
+  `List-Unsubscribe-Post: List-Unsubscribe=One-Click` set on both send paths.
+- Unsubscribe clicked from a real preview email → `unsub:` record created,
+  other subscribers untouched.
+- Unsubscribe link renders as a clickable anchor in both languages.
+
+### Key semantics confirmed (write the broadcast against these)
+
+- Unsubscribe **deletes** `sub:<email>` and **writes** `unsub:<email>`.
+- Subscribe **deletes** `unsub:<email>` and **writes** `sub:<email>`.
+- So the two states are mutually exclusive; a broadcast can iterate `sub:`
+  keys alone. Checking `unsub:` per recipient is belt-and-braces, not
+  required — but cheap, and worth keeping if KV listing is ever paginated
+  mid-write.
+- Every existing record already carries `language`, so the
+  "default missing language to en" fallback is defensive only.
+
+### Still not verified
+
+- Gmail/Yahoo's *native* Unsubscribe button (the RFC 8058 POST path).
+  The endpoint accepts POST and rejects bad signatures, but the
+  mail-client button itself has not been exercised.
