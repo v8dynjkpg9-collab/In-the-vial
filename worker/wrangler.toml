@@ -14,7 +14,7 @@ compatibility_date = "2026-08-05"
 # RATE  = optional abuse control; safe to leave out.
 [[kv_namespaces]]
 binding = "SUBS"
-id = "PASTE_SUBS_ID_HERE"
+id = "6c7174d740cc4cb99315a913dec80746"
 
 # ---- optional, add later when you pick a sender -------------------------
 # The Worker runs fine without these: addresses are captured in SUBS and can
