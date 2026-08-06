@@ -2019,7 +2019,11 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       if(!email||email.indexOf('@')<1){ say('bad','invalid'); input.focus(); return; }
       btn.disabled=true; say('ok','sending');
       fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email:email,company:f.company.value})})
+        body:JSON.stringify({
+          email:email,
+          company:f.company.value,
+          language:(document.documentElement.lang||'en').slice(0,2)
+        })})
         .then(function(r){ return r.json().catch(function(){return {ok:r.ok};}); })
         .then(function(d){
           if(d&&d.ok){ say('ok','done'); f.reset(); }

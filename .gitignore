@@ -1,2 +1,6 @@
 .DS_Store
 *.icloud
+
+# Timestamped local backups created during editing — never part of the site
+*.backup-*
+*.before-edit-*
