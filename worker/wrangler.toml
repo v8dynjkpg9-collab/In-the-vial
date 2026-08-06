@@ -1,3 +1,10 @@
+# AFTER the Worker is deployed, optionally install Cloudflare's own agent
+# tooling (skills + 5 MCP servers) per https://developers.cloudflare.com/agent-setup/prompt.md
+#   claude plugin marketplace add cloudflare/skills
+#   claude plugin install cloudflare@cloudflare
+# Then /reload-plugins. Note this grants OAuth access to the Cloudflare account
+# and is an alternative to wrangler, not a replacement for this config.
+
 name = "in-the-vial-subscribe"
 main = "subscribe.js"
 compatibility_date = "2026-08-05"
