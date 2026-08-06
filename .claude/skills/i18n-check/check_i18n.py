@@ -40,15 +40,34 @@ def extract_es_keys(src):
     return keys
 
 def extract_skip(src):
+    """Parse the runtime SKIP list.
+
+    Only simple `#id` and `.class` selectors are understood here. The browser
+    evaluates SKIP with the real CSS engine, so a compound selector like
+    `.refs ol` works at runtime but matches NOTHING in this checker — which
+    silently reports every skipped string as an orphan. Unsupported selectors
+    are surfaced rather than ignored, because a checker that quietly disagrees
+    with the runtime is worse than no checker.
+    """
     m = re.search(r"var SKIP\s*=\s*'([^']*)'", src)
-    ids, classes = set(), set()
+    ids, classes, unsupported = set(), set(), []
     if m:
         for sel in m.group(1).split(","):
             sel = sel.strip()
-            if sel.startswith("#"):
+            if not sel:
+                continue
+            if re.fullmatch(r"#[\w-]+", sel):
                 ids.add(sel[1:])
-            elif sel.startswith("."):
+            elif re.fullmatch(r"\.[\w-]+", sel):
                 classes.add(sel[1:])
+            else:
+                unsupported.append(sel)
+    if unsupported:
+        print("warning: SKIP selectors this checker cannot evaluate "
+              "(they work in the browser but are ignored here, so their "
+              "contents will be reported as orphans):", file=sys.stderr)
+        for sel in unsupported:
+            print(f"  {sel}   -> use a single class/id instead", file=sys.stderr)
     return ids, classes
 
 class Walker(HTMLParser):

@@ -367,6 +367,17 @@ h3.sh{font-family:var(--sans);font-weight:600;font-size:18px;color:var(--ink);ma
 .prose li{font-size:15.5px;margin-bottom:9px;color:var(--ink-2);padding-left:20px;position:relative}
 .prose li::before{content:"";position:absolute;left:2px;top:11px;width:7px;height:1.5px;background:var(--rust)}
 .prose em{font-style:italic;color:var(--ink)}
+/* --- citations --- */
+sup.cite{font-family:var(--mono);font-size:10px;line-height:0;vertical-align:super;margin-left:2px}
+sup.cite a{color:var(--rust-deep);text-decoration:none;padding:0 1px}
+sup.cite a:hover,sup.cite a:focus-visible{text-decoration:underline}
+.refs{margin-top:34px;padding-top:20px;border-top:1px solid var(--line-strong)}
+.refs .reflist{margin:12px 0 0;padding-left:20px}
+.refs li{font-size:13.5px;line-height:1.6;color:var(--ink-2);margin-bottom:12px}
+.refs li:target{background:var(--rust-wash);outline:2px solid var(--rust);outline-offset:4px;border-radius:2px}
+.refs cite{font-style:italic;color:var(--ink)}
+.refs a{color:var(--rust-deep);word-break:break-word}
+.refs .rtype{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line-strong);border-radius:2px;padding:1px 5px;margin-left:6px;white-space:nowrap}
 
 /* ============ TOOL BAYS ============ */
 .bays{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
@@ -935,10 +946,10 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <h3 class="sh">What it is</h3>
       <p>BPC-157 — "Body Protection Compound 157" — is a synthetic chain of 15 amino acids, corresponding to a partial sequence of a protein isolated from human gastric juice. A notable property is its stability in stomach acid. Despite the "body protection" name, it is a laboratory peptide, not an approved therapeutic.</p>
       <h3 class="sh">How it's proposed to work</h3>
-      <p>The proposed mechanisms come almost entirely from animal and cell models. The most cited is promotion of <em>angiogenesis</em> — new blood-vessel formation — alongside effects on growth-factor signaling and the nitric oxide system. Plausible and interesting, but "proposed mechanism in rodents" is very different from "demonstrated effect in people."</p>
+      <p>The proposed mechanisms come almost entirely from animal and cell models. The most cited is promotion of <em>angiogenesis</em> — new blood-vessel formation — alongside effects on growth-factor signaling and the nitric oxide system. Plausible and interesting, but "proposed mechanism in rodents" is very different from "demonstrated effect in people."<sup class="cite"><a href="#r-bpc-3">3</a></sup></p>
       <h3 class="sh">State of the evidence</h3>
-      <p>In <strong>rodent models</strong>, BPC-157 shows consistent, often impressive results across tendon, ligament, muscle, bone, and gastrointestinal injury. The preclinical literature is genuinely substantial.</p>
-      <p>In <strong>humans</strong>, there is essentially no rigorous clinical-trial evidence of efficacy — no large randomized controlled trials establishing that it heals injuries or repairs the gut. What circulates instead is anecdote and extrapolation from animal work. That gap is the single most important fact on this page.</p>
+      <p>In <strong>rodent models</strong>, BPC-157 shows consistent, often impressive results across tendon, ligament, muscle, bone, and gastrointestinal injury. The preclinical literature is genuinely substantial.<sup class="cite"><a href="#r-bpc-1">1</a></sup><sup class="cite"><a href="#r-bpc-2">2</a></sup><sup class="cite"><a href="#r-bpc-4">4</a></sup></p>
+      <p>In <strong>humans</strong>, there is essentially no rigorous clinical-trial evidence of efficacy — no large randomized controlled trials establishing that it heals injuries or repairs the gut. What circulates instead is anecdote and extrapolation from animal work. That gap is the single most important fact on this page.<sup class="cite"><a href="#r-bpc-1">1</a></sup></p>
       <div class="callout warn"><h4>Animal results don't transfer automatically</h4><p>A large fraction of compounds that work beautifully in mice fail in humans. Strong rodent data is a reason to run human trials — not a substitute for them. BPC-157 is a textbook case of a reputation resting on a bridge that hasn't been built.</p></div>
       <h3 class="sh">Studied in humans vs. animals</h3>
       <ul><li><strong>Animals (extensive):</strong> tendon-to-bone healing, ligament and muscle repair, fracture models, gastric ulcer and IBD models.</li><li><strong>Humans (minimal):</strong> no robust efficacy RCTs; safety over meaningful timeframes is not well characterized.</li></ul>
@@ -954,7 +965,18 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <tr><td>"Pharmaceutical-grade from vendors"</td><td>No approved pharmaceutical source exists; quality varies.</td><td class="vd vno">Misleading</td></tr>
       </tbody></table></div>
       <div class="callout"><h4>Verify this yourself</h4><p>Don't take this page on faith either — that's the whole ethic here. Search the compound on PubMed and notice the rigorous studies are overwhelmingly animal and in-vitro. When you see a human claim, look for the randomized controlled trial behind it. The absence of one is the answer.</p></div>
-    </div>
+    
+      <div class="refs">
+        <h3 class="sh">Sources</h3>
+        <ol class="reflist">
+          <li id="r-bpc-1">Gwyer D, Wragg NM, Wilson SL. <cite>Gastric pentadecapeptide body protection compound BPC 157 and its role in accelerating musculoskeletal soft tissue healing.</cite> Cell Tissue Res. 2019;377(2):153–159. <a href="https://doi.org/10.1007/s00441-019-03016-8" target="_blank" rel="noopener">doi:10.1007/s00441-019-03016-8</a><span class="rtype">Review</span></li>
+          <li id="r-bpc-2">Seiwerth S, et al. <cite>Stable gastric pentadecapeptide BPC 157 and wound healing.</cite> Front Pharmacol. 2021;12:627533. <a href="https://doi.org/10.3389/fphar.2021.627533" target="_blank" rel="noopener">doi:10.3389/fphar.2021.627533</a><span class="rtype">Review</span></li>
+          <li id="r-bpc-3">Chang CH, Tsai WC, Lin MS, Hsu YH, Pang JS. <cite>The promoting effect of pentadecapeptide BPC 157 on tendon healing involves tendon outgrowth, cell survival, and cell migration.</cite> J Appl Physiol. 2011;110(3):774–780. <a href="https://doi.org/10.1152/japplphysiol.00945.2010" target="_blank" rel="noopener">doi:10.1152/japplphysiol.00945.2010</a><span class="rtype">Animal / in-vitro</span></li>
+          <li id="r-bpc-4">Staresinic M, et al. <cite>Stable gastric pentadecapeptide BPC 157 and striated, smooth, and heart muscle.</cite> Biomedicines. 2022;10(12):3221. <a href="https://doi.org/10.3390/biomedicines10123221" target="_blank" rel="noopener">doi:10.3390/biomedicines10123221</a><span class="rtype">Review</span></li>
+        </ol>
+        <p class="refnote">Records located via PubMed. Evidence searched August 2026. Note that a large share of the BPC-157 literature comes from a small number of research groups — a limitation the 2019 review states directly.</p>
+      </div>
+</div>
   </main>
 </div>
 
@@ -1402,6 +1424,8 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     risk:{low:{en:'Low risk',es:'Riesgo bajo'},some:{en:'Some risk',es:'Algo de riesgo'},high:{en:'High risk',es:'Riesgo alto'},severe:{en:'Severe risk',es:'Riesgo grave'}}
   };
   var ES={
+    'Sources':'Fuentes',
+    'Records located via PubMed. Evidence searched August 2026. Note that a large share of the BPC-157 literature comes from a small number of research groups — a limitation the 2019 review states directly.':'Registros localizados mediante PubMed. Evidencia consultada en agosto de 2026. Ten en cuenta que una gran parte de la literatura sobre BPC-157 proviene de un número reducido de grupos de investigación — una limitación que la revisión de 2019 señala directamente.',
     /* --- audit fixes: analytical accuracy + tracker stamp --- */
     'Endotoxin tested (LAL / rFC), with the limit stated':'Prueba de endotoxinas (LAL / rFC), con el límite indicado',
     'Sterile ≠ endotoxin-free. Dead bacteria leave a pyrogen purity can\'t see. There is no single universal cut-off — the limit depends on route and maximum dose, so the COA should state which limit it was judged against.':'Estéril ≠ libre de endotoxinas. Las bacterias muertas dejan un pirógeno que la pureza no puede ver. No existe un único límite universal — depende de la vía y de la dosis máxima, así que el COA debería indicar frente a qué límite se evaluó.',
@@ -1687,7 +1711,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'Intellectual property.':'Propiedad intelectual.','Original content may not be republished wholesale as your own without permission. Linking is welcome.':'El contenido original no puede republicarse en su totalidad como propio sin permiso. Enlazar es bienvenido.',
     '← Back to home':'← Volver al inicio'
   };
-  var SKIP='#langBtn,#revealBtn,#chromoText,#err,#warn,.mol-readout,#coa-verdict,#coa-count,#coa-pct,#flag-verdict,#flag-count,#flag-risk,#o-units,#o-vol,#o-conc,#o-perunit,#o-doses,#o-days,#tracker-lanes,#tracker-reviewed';
+  var SKIP='.reflist,#langBtn,#revealBtn,#chromoText,#err,#warn,.mol-readout,#coa-verdict,#coa-count,#coa-pct,#flag-verdict,#flag-count,#flag-risk,#o-units,#o-vol,#o-conc,#o-perunit,#o-doses,#o-days,#tracker-lanes,#tracker-reviewed';
   function buildNodes(){
     var arr=[],wk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n;
     while(n=wk.nextNode()){
