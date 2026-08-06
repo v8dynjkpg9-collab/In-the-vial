@@ -1,0 +1,5 @@
+# in-the-vial.com — independent buyer-literacy resource, non-commercial.
+User-agent: *
+Allow: /
+
+Sitemap: https://in-the-vial.com/sitemap.xml
