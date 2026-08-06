@@ -382,6 +382,21 @@ sup.cite a:hover,sup.cite a:focus-visible{text-decoration:underline}
 .refs li:target{background:var(--rust-wash);outline:2px solid var(--rust);outline-offset:4px;border-radius:2px}
 .refs cite{font-style:italic;color:var(--ink)}
 .refs a{color:var(--rust-deep);word-break:break-word}
+.sub{margin-top:30px;border:1px solid var(--line-strong);border-radius:3px;background:var(--paper-2);padding:24px}
+.sub h4{font-family:var(--serif);font-weight:400;font-size:23px;color:var(--ink);margin-bottom:6px}
+.sub p{font-size:14px;color:var(--ink-2);max-width:60ch;margin-bottom:16px}
+.sub form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.sub input[type=email]{flex:1 1 240px;min-width:0;font-family:var(--sans);font-size:15px;padding:11px 13px;border:1px solid var(--line-strong);border-radius:3px;background:var(--paper);color:var(--ink)}
+.sub input[type=email]:focus-visible{outline:2px solid var(--rust);outline-offset:2px;border-color:var(--rust)}
+.sub button{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;border:1px solid var(--rust);border-radius:3px;background:var(--rust);color:var(--paper);cursor:pointer;transition:.15s}
+.sub button:hover{background:var(--rust-deep);border-color:var(--rust-deep)}
+.sub button[disabled]{opacity:.55;cursor:default}
+.sub .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.sub .note{font-size:12.5px;color:var(--ink-3);margin:12px 0 0;max-width:62ch}
+.sub .msg{font-size:14px;margin:12px 0 0;display:none}
+.sub .msg.on{display:block}
+.sub .msg.ok{color:var(--green-deep)}
+.sub .msg.bad{color:var(--rust-deep)}
 .refs .rtype{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);border:1px solid var(--line-strong);border-radius:2px;padding:1px 5px;margin-left:6px;white-space:nowrap}
 
 /* ============ TOOL BAYS ============ */
@@ -1093,6 +1108,19 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     <p class="keyrow">Status key: <span class="pill live">In effect</span> <span class="pill pending">Pending</span> <span class="pill flux">In flux</span> <span class="pill closed">Closed / barred</span></p>
     <div id="tracker-lanes"><p class="lead-muted">Loading tracker…</p></div>
     <div class="callout"><h4>How this tracker is kept honest</h4><p>Once a month: re-check the FDA compounding pages and the PCAC docket, scan two or three law-firm regulatory trackers, update any row that changed, and move the "last reviewed" date. Entries that go stale without a fresh date should be trusted less — including these. Nothing here is legal advice.</p></div>
+    <div class="sub">
+      <h4>Get the tracker digest</h4>
+      <p>An email when something in the regulatory tracker actually changes — a committee vote, an FDA action, an enforcement pattern worth knowing. No fixed schedule, because manufactured urgency is how the rest of this industry talks to you.</p>
+      <form id="subForm" novalidate>
+        <label class="hp" aria-hidden="true">Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+        <label class="hp" for="subEmail">Email address</label>
+        <input id="subEmail" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+        <button type="submit" id="subBtn">Subscribe</button>
+      </form>
+      <p class="msg" id="subMsg" role="status" aria-live="polite"></p>
+      <p class="note">Your address is stored only to send this digest, is never sold or shared, and every email carries a one-click unsubscribe. Nothing else about you is collected. Reading the site still contacts no outside company — see the <a href="#legal" data-view="legal">privacy notice</a>.</p>
+    </div>
+
   </main>
 </div>
 
@@ -1374,7 +1402,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 <div class="view" id="view-legal">
   <main class="wrap reading legal">
     <h1>Disclaimer, privacy &amp; terms</h1>
-    <p class="lead-muted" style="margin-top:8px">Plain-language version. <span class="mono" style="font-size:12px">Last updated: June 2026.</span></p>
+    <p class="lead-muted" style="margin-top:8px">Plain-language version. <span class="mono" style="font-size:12px">Last updated: August 2026.</span></p>
     <section class="block" style="margin-top:34px"><div class="lnum">01 — Disclaimer</div><div class="prose">
       <p><strong>Not medical advice.</strong> Content here is for general education and harm reduction only — not medical, clinical, or health advice, and not a substitute for a licensed professional. Do not use it to diagnose, treat, or make decisions about any health condition.</p>
       <p><strong>Not legal or financial advice.</strong> Regulatory and business summaries are general information, can lag current law, and are not legal or financial advice.</p>
@@ -1386,7 +1414,9 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <p><strong>The short version:</strong> this site collects nothing about you. There are no accounts, no forms, no analytics, and no tracking cookies. There is no database, so there is nothing about you to store, leak, or sell.</p>
       <p><strong>No analytics or tracking.</strong> No analytics service, tag manager, advertising pixel, or session-recording tool runs on this site. Your visit is not counted, profiled, or shared.</p>
       <p><strong>No cookies.</strong> The site sets no cookies. The only thing it keeps is your language choice (English or Spanish), stored in your own browser so the site remembers it next time. It never leaves your device, and clearing your browser data erases it.</p>
-      <p><strong>No third-party requests.</strong> Fonts and every other asset are served from this site itself. Loading a page does not cause your browser to contact any outside company — no font CDN, no external scripts — so no third party learns you were here.</p>
+      <p><strong>No third-party requests.</strong> Fonts and every other asset are served from this site itself. Loading a page does not cause your browser to contact any outside company — no font CDN, no external scripts — so no third party learns you were here. That remains true whether or not you subscribe to the newsletter; the only time any data leaves this site is if you type an address into the subscribe box and press the button.</p>
+      <p><strong>If you subscribe to the newsletter.</strong> Your email address is sent to this site's own server and then stored by the email provider that delivers the digest. It is used for nothing except sending that digest. It is never sold, rented, shared, or used to build a profile, and every email carries a one-click unsubscribe that removes you permanently. No other field is collected — not your name, not your location, not what you read here.</p>
+      <p><strong>Why this list is treated carefully.</strong> A list of people interested in research peptides is more sensitive than an ordinary mailing list. It is kept as small as it can be: one field, no tracking pixels in the emails, no open or click logging, and no linkage between your address and anything you did on this site.</p>
       <p><strong>The calculators run entirely on your device.</strong> Everything you type into the dose calculator, the COA checker, or the vendor scorecard is processed in your browser and never transmitted anywhere. Nothing you enter is sent to a server, logged, or seen by anyone — including us.</p>
       <p><strong>Hosting.</strong> Like any website, the host that serves these pages processes basic technical request data (such as IP address and browser type) to deliver the page and protect against abuse, under its own privacy policy. That is standard for the entire web and is not used here to identify or track you.</p>
       <p><strong>If this ever changes.</strong> If analytics or a newsletter is ever added, this section will be updated to name the specific provider before that tool goes live — and it will never include grey-market sellers.</p>
@@ -1489,6 +1519,13 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
   function L(o){return (o&&o[I18N.lang])||(o&&o.en)||'';}
   var AA_ES={Alanine:'Alanina',Arginine:'Arginina',Asparagine:'Asparagina',Aspartate:'Aspartato',Cysteine:'Cisteína',Glutamate:'Glutamato',Glutamine:'Glutamina',Glycine:'Glicina',Histidine:'Histidina',Isoleucine:'Isoleucina',Leucine:'Leucina',Lysine:'Lisina',Methionine:'Metionina',Phenylalanine:'Fenilalanina',Proline:'Prolina',Serine:'Serina',Threonine:'Treonina',Tryptophan:'Triptófano',Tyrosine:'Tirosina',Valine:'Valina'};
   var DYN={
+    sub:{
+      sending:{en:'Sending…',es:'Enviando…'},
+      done:{en:'Subscribed. You will only hear from this list when the tracker changes.',es:'Suscrito. Solo recibirás correos de esta lista cuando el seguimiento cambie.'},
+      invalid:{en:'That does not look like an email address.',es:'Eso no parece una dirección de correo.'},
+      failed:{en:'Could not subscribe just now. Please try again later.',es:'No se pudo completar la suscripción ahora. Inténtalo más tarde.'}
+    },
+
     err:{en:'Enter values greater than zero in all three fields.',es:'Introduce valores mayores que cero en los tres campos.'},
     warn:{en:function(u){return 'This dose needs '+u+' units — more than a U-100 syringe (100 units / 1 mL) can hold in a single draw. Lower the dose, use a more concentrated reconstitution, or split it across draws.';},es:function(u){return 'Esta dosis necesita '+u+' unidades — más de lo que una jeringa U-100 (100 unidades / 1 mL) admite en una sola extracción. Baja la dosis, usa una reconstitución más concentrada o divídela en varias extracciones.';}},
     chromoDefault:{en:'<b>Three peaks resolved. One disclosed.</b> Tap a peak to inspect it, or reveal the two the headline number left out.',es:'<b>Tres picos resueltos. Uno declarado.</b> Toca un pico para inspeccionarlo, o revela los dos que el número destacado omitió.'},
@@ -1515,6 +1552,19 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     risk:{low:{en:'Low risk',es:'Riesgo bajo'},some:{en:'Some risk',es:'Algo de riesgo'},high:{en:'High risk',es:'Riesgo alto'},severe:{en:'Severe risk',es:'Riesgo grave'}}
   };
   var ES={
+    'Fonts and every other asset are served from this site itself. Loading a page does not cause your browser to contact any outside company — no font CDN, no external scripts — so no third party learns you were here. That remains true whether or not you subscribe to the newsletter; the only time any data leaves this site is if you type an address into the subscribe box and press the button.':'Las tipografías y todos los demás recursos se sirven desde este mismo sitio. Cargar una página no hace que tu navegador contacte a ninguna empresa externa — sin CDN de fuentes, sin scripts externos — por lo que ningún tercero se entera de que estuviste aquí. Esto sigue siendo cierto te suscribas o no al boletín; el único momento en que algún dato sale de este sitio es si escribes una dirección en la casilla de suscripción y pulsas el botón.',
+    'If you subscribe to the newsletter.':'Si te suscribes al boletín.',
+    'Your email address is sent to this site\'s own server and then stored by the email provider that delivers the digest. It is used for nothing except sending that digest. It is never sold, rented, shared, or used to build a profile, and every email carries a one-click unsubscribe that removes you permanently. No other field is collected — not your name, not your location, not what you read here.':'Tu dirección de correo se envía al servidor de este mismo sitio y luego la almacena el proveedor de correo que entrega el resumen. No se usa para nada más que enviar ese resumen. Nunca se vende, alquila ni comparte, ni se usa para crear un perfil, y cada correo incluye una baja con un solo clic que te elimina de forma permanente. No se recoge ningún otro dato — ni tu nombre, ni tu ubicación, ni lo que leíste aquí.',
+    'Why this list is treated carefully.':'Por qué esta lista se trata con cuidado.',
+    'A list of people interested in research peptides is more sensitive than an ordinary mailing list. It is kept as small as it can be: one field, no tracking pixels in the emails, no open or click logging, and no linkage between your address and anything you did on this site.':'Una lista de personas interesadas en péptidos de investigación es más sensible que una lista de correo corriente. Se mantiene lo más reducida posible: un solo campo, sin píxeles de rastreo en los correos, sin registro de aperturas ni clics, y sin vínculo entre tu dirección y nada de lo que hiciste en este sitio.',
+    'Last updated: August 2026.':'Última actualización: agosto de 2026.',
+    'Get the tracker digest':'Recibe el resumen del seguimiento',
+    'An email when something in the regulatory tracker actually changes — a committee vote, an FDA action, an enforcement pattern worth knowing. No fixed schedule, because manufactured urgency is how the rest of this industry talks to you.':'Un correo cuando algo del seguimiento regulatorio cambia de verdad — una votación de un comité, una acción de la FDA, un patrón de aplicación que conviene conocer. Sin calendario fijo, porque la urgencia fabricada es la forma en que el resto de esta industria te habla.',
+    'Company':'Empresa',
+    'Email address':'Dirección de correo',
+    'Subscribe':'Suscribirse',
+    'Your address is stored only to send this digest, is never sold or shared, and every email carries a one-click unsubscribe. Nothing else about you is collected. Reading the site still contacts no outside company — see the':'Tu dirección se guarda solo para enviar este resumen, nunca se vende ni se comparte, y cada correo lleva un enlace de baja con un solo clic. No se recoge nada más sobre ti. Leer el sitio sigue sin contactar a ninguna empresa externa — consulta el',
+    'privacy notice':'aviso de privacidad',
     'Compound pages are built from primary literature located through PubMed and ClinicalTrials.gov, plus the relevant regulatory record — Federal Register notices, FDA guidance and advisory-committee materials, and published enforcement actions.':'Las páginas de compuestos se construyen a partir de literatura primaria localizada mediante PubMed y ClinicalTrials.gov, más el registro regulatorio pertinente — avisos del Federal Register, guías de la FDA y materiales de comités asesores, y acciones de aplicación publicadas.',
     'The regulatory tracker':'El seguimiento regulatorio',
     'No vendor money, no affiliate links, no purchase recommendations — the financial position is stated in full on the':'Sin dinero de vendedores, sin enlaces de afiliados, sin recomendaciones de compra — la posición económica se detalla por completo en la',
@@ -1872,7 +1922,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'Intellectual property.':'Propiedad intelectual.','Original content may not be republished wholesale as your own without permission. Linking is welcome.':'El contenido original no puede republicarse en su totalidad como propio sin permiso. Enlazar es bienvenido.',
     '← Back to home':'← Volver al inicio'
   };
-  var SKIP='.reflist,#langBtn,#revealBtn,#chromoText,#err,#warn,.mol-readout,#coa-verdict,#coa-count,#coa-pct,#flag-verdict,#flag-count,#flag-risk,#o-units,#o-vol,#o-conc,#o-perunit,#o-doses,#o-days,#tracker-lanes,#tracker-reviewed';
+  var SKIP='.reflist,#subMsg,#langBtn,#revealBtn,#chromoText,#err,#warn,.mol-readout,#coa-verdict,#coa-count,#coa-pct,#flag-verdict,#flag-count,#flag-risk,#o-units,#o-vol,#o-conc,#o-perunit,#o-doses,#o-days,#tracker-lanes,#tracker-reviewed';
   function buildNodes(){
     var arr=[],wk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,null),n;
     while(n=wk.nextNode()){
@@ -1956,6 +2006,28 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     renderTracker();
   }
   document.addEventListener('click',function(e){var b=e.target.closest('#langBtn');if(b){e.preventDefault();applyLang(I18N.lang==='es'?'en':'es');}});
+
+  /* ---- newsletter subscribe (posts to our own domain; see worker/subscribe.js) ---- */
+  (function(){
+    var f=document.getElementById('subForm'); if(!f)return;
+    var btn=document.getElementById('subBtn'), msg=document.getElementById('subMsg'),
+        input=document.getElementById('subEmail');
+    function say(kind,key){ msg.className='msg on '+kind; msg.textContent=L(DYN.sub[key]); }
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var email=(input.value||'').trim();
+      if(!email||email.indexOf('@')<1){ say('bad','invalid'); input.focus(); return; }
+      btn.disabled=true; say('ok','sending');
+      fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:email,company:f.company.value})})
+        .then(function(r){ return r.json().catch(function(){return {ok:r.ok};}); })
+        .then(function(d){
+          if(d&&d.ok){ say('ok','done'); f.reset(); }
+          else { say('bad','failed'); btn.disabled=false; }
+        })
+        .catch(function(){ say('bad','failed'); btn.disabled=false; });
+    });
+  })();
 
   /* ---- interactive chromatogram ---- */
   var plate=document.getElementById('chromoPlate');

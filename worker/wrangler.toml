@@ -1,0 +1,18 @@
+name = "in-the-vial-subscribe"
+main = "subscribe.js"
+compatibility_date = "2026-08-05"
+
+# Buttondown shown as the default. Any provider works — only this URL and the
+# Authorization header format in subscribe.js need to change.
+[vars]
+PROVIDER_ENDPOINT = "https://api.buttondown.email/v1/subscribers"
+
+# Optional. Without it the endpoint still works, just without rate limiting.
+# wrangler kv namespace create RATE
+# [[kv_namespaces]]
+# binding = "RATE"
+# id = "<paste-id-here>"
+
+[[routes]]
+pattern = "in-the-vial.com/api/subscribe"
+zone_name = "in-the-vial.com"
