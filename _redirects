@@ -1,4 +1,9 @@
-# Cloudflare Pages routing for the single-page app.
+# Routing for the single-page app.
+#
+# Served by the Cloudflare **Worker** `in-the-vial` using static assets — NOT
+# Cloudflare Pages (there is no Pages project on the account). Workers static
+# assets read this same _redirects format and do support 200 proxying, which is
+# what the rewrites below rely on. Verified against Cloudflare's docs 2026-08-06.
 #
 # Every page route is listed EXPLICITLY. A catch-all "/* /index.html 200" was
 # deliberately not used, for two reasons:

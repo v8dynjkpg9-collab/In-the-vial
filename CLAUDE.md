@@ -161,7 +161,23 @@ silently re-sent the *previous* issue to the whole list and reported `ok: true`.
 
 ## Deploy
 
-`main` → connected static host (Cloudflare Pages) → auto-publishes on push. Build command is empty; output directory is `/`. Nothing to compile.
+`main` → Cloudflare **Worker** `in-the-vial` (static assets, Git integration) → auto-publishes
+on push, **~40 seconds**. Nothing to compile.
+
+**It is not Cloudflare Pages.** `wrangler pages project list` returns nothing; an older note
+said Pages and it was wrong. This matters in two ways: `_redirects` is read by Workers static
+assets (200 proxying included) so routing works, but there are **no automatic per-branch
+preview URLs** the way Pages gives them. A branch push builds nothing you can visit unless
+preview URLs are enabled for the Worker. Verifying a change live means merging to `main`;
+rollback is `git revert` plus another ~40s, or a version rollback in the dashboard.
+
+The site Worker has **no config in this repo** — its build settings live in the Cloudflare
+dashboard. Only `worker/wrangler.toml` (the subscribe Worker) is version-controlled.
+
+The assets directory is the repo root with nothing excluded, so every tracked file is public:
+`CLAUDE.md`, `worker/subscribe.js`, `newsletter/*.md` drafts, `.claude/`. The repo is public so
+nothing secret leaks, but unsent drafts are readable and crawlable. An `.assetsignore` would
+fix it. Gitignored `*.backup-*` files are **not** served — deployed content is git contents.
 
 Local preview (needed so `fetch('tracker.json')` works):
 ```bash
