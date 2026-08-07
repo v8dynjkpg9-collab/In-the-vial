@@ -11,10 +11,27 @@ edit never quietly orphans its translation.
 Usage:  python3 check_i18n.py [path/to/index.html]
 Exit code 0 = full coverage, 1 = untranslated strings found, 2 = parse error.
 """
-import sys, re, html
+import sys, re, html, pathlib
 from html.parser import HTMLParser
 
 DEFAULT = "in-the-vial/index.html"
+ALLOWLIST = pathlib.Path(__file__).resolve().parent / "intentionally-english.txt"
+
+
+def load_allowlist():
+    """Strings that are deliberately English — brand, units, assay names.
+
+    Kept in a file rather than inline so each decision carries its reasoning,
+    and so the list is reviewable on its own.
+    """
+    if not ALLOWLIST.exists():
+        return set()
+    out = set()
+    for line in ALLOWLIST.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#"):
+            out.add(line)
+    return out
 VOID = {"area","base","br","col","embed","hr","img","input","link",
         "meta","param","source","track","wbr"}
 
@@ -23,20 +40,64 @@ def load(path):
         return f.read()
 
 def extract_es_keys(src):
-    """Pull the keys of the `var ES={...}` object literal."""
+    """Pull the keys of the `var ES={...}` object literal.
+
+    This scans the literal rather than regex-matching "'...' followed by :".
+    That pattern desynchronises on a key which itself begins with a colon —
+    it matches the ",\\n    " between two entries as the key and swallows the
+    real one, which then reports as an untranslated orphan that is in fact
+    translated. Inline <em>/<strong> tags split sentences, so fragments
+    starting with punctuation are normal here, not exotic.
+
+    Keys are string literals in value position after `{` or `,` at depth 0.
+    """
     start = src.find("var ES={")
     if start == -1:
         raise ValueError("could not find `var ES={` in the file")
-    # ES is the last translation object before `var SKIP=`
+    i = src.index("{", start)
     end = src.find("var SKIP", start)
-    block = src[start:end if end != -1 else len(src)]
-    # keys are single-quoted strings immediately followed by a colon
-    key_re = re.compile(r"'((?:[^'\\]|\\.)*)'\s*:")
-    keys = set()
-    for m in key_re.finditer(block):
-        raw = m.group(1)
-        # unescape \' and \\ the way JS would read the literal
-        keys.add(raw.replace("\\'", "'").replace('\\"', '"').replace("\\\\", "\\"))
+    block = src[i:end if end != -1 else len(src)]
+
+    keys = []
+    depth = 0
+    expect_key = False
+    pos = 0
+    n = len(block)
+    while pos < n:
+        ch = block[pos]
+        if ch == "/" and pos + 1 < n and block[pos + 1] == "*":     # /* comment */
+            close = block.find("*/", pos + 2)
+            pos = n if close == -1 else close + 2
+            continue
+        if ch == "/" and pos + 1 < n and block[pos + 1] == "/":     # // comment
+            nl = block.find("\n", pos)
+            pos = n if nl == -1 else nl + 1
+            continue
+        if ch in "'\"":
+            quote, buf, pos = ch, [], pos + 1
+            while pos < n and block[pos] != quote:
+                if block[pos] == "\\" and pos + 1 < n:              # \' \" \\ \n
+                    nxt = block[pos + 1]
+                    buf.append({"n": "\n", "t": "\t", "r": "\r"}.get(nxt, nxt))
+                    pos += 2
+                    continue
+                buf.append(block[pos])
+                pos += 1
+            pos += 1                                                # closing quote
+            if expect_key and depth == 1:
+                keys.append("".join(buf))
+                expect_key = False
+            continue
+        if ch == "{":
+            depth += 1
+            expect_key = depth == 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                break
+        elif ch == "," and depth == 1:
+            expect_key = True
+        pos += 1
     return keys
 
 def extract_skip(src):
@@ -114,7 +175,8 @@ def main():
     path = sys.argv[1] if len(sys.argv) > 1 else DEFAULT
     try:
         src = load(path)
-        keys = extract_es_keys(src)
+        key_list = extract_es_keys(src)
+        keys = set(key_list)
         skip_ids, skip_classes = extract_skip(src)
     except Exception as e:
         print(f"error: {e}", file=sys.stderr)
@@ -124,7 +186,8 @@ def main():
     w = Walker(skip_ids, skip_classes)
     w.feed(src[body_start:] if body_start != -1 else src)
 
-    missing = []
+    allowed = load_allowlist()
+    missing, intentional = [], []
     seen = set()
     for s in w.strings:
         if s in seen:
@@ -134,22 +197,55 @@ def main():
             continue
         if len(s) < 2:
             continue
-        if s not in keys:
-            missing.append(s)
+        if s in keys:
+            continue
+        (intentional if s in allowed else missing).append(s)
+
+    # An allowlist entry for a string that is no longer on the page is dead
+    # weight, and worse: if that text comes back in a different context it is
+    # excused without anyone deciding to excuse it.
+    stale = sorted(allowed - seen)
+
+    # A duplicated key is silent: the object literal keeps the last one, so two
+    # copies behave identically right up until someone edits one of them and
+    # cannot work out why the change had no effect.
+    dupes = {}
+    for k in key_list:
+        dupes[k] = dupes.get(k, 0) + 1
+    dupes = {k: c for k, c in dupes.items() if c > 1}
 
     total = len(seen)
     print(f"ES dictionary keys:      {len(keys)}")
     print(f"visible text nodes:      {total}")
-    print(f"untranslated (fallback): {len(missing)}\n")
+    print(f"intentionally English:   {len(intentional)}")
+    print(f"untranslated (fallback): {len(missing)}")
+    print(f"duplicate ES keys:       {len(dupes)}\n")
+
     if missing:
         print("These visible strings have no ES entry and stay English when "
               "the site is switched to Spanish:\n")
         for s in missing:
             disp = s if len(s) <= 100 else s[:97] + "..."
             print(f"  • {disp}")
-        print(f"\nAdd each to the `ES` object in {path} to close the gap.")
+        print(f"\nAdd each to the `ES` object in {path}, or — if it should stay "
+              f"English — to\n{ALLOWLIST.name} with the reason.")
+    if stale:
+        print("\nThese allowlist entries are no longer on the page. Remove them, "
+              "or they will\nsilently excuse the same text if it reappears "
+              "somewhere it should be translated:\n")
+        for s in stale:
+            print(f"  • {s}")
+    if dupes:
+        print("\nThese ES keys appear more than once. The literal silently keeps "
+              "the last, so\nediting an earlier copy changes nothing:\n")
+        for k, c in sorted(dupes.items()):
+            disp = k if len(k) <= 80 else k[:77] + "..."
+            print(f"  • x{c}  {disp}")
+    if missing or stale or dupes:
         return 1
-    print("Full coverage — every visible string has an ES translation.")
+
+    print("Full coverage — every visible string is translated or "
+          "deliberately English.")
     return 0
 
 if __name__ == "__main__":

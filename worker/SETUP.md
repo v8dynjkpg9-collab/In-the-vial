@@ -19,7 +19,7 @@
 
 ## Verified in production (2026-08-06)
 Valid signup stores + returns 200 · invalid/empty/malformed → 400 ·
-honeypot → fake 200 and NOT stored · foreign origin → 403 · GET → 405 ·
+honeypot → fake 200 and NOT stored · foreign origin → 403 · GET → 404 ·
 preflight → 204 · real form submission on the live site reached KV.
 
 ## Verified end-to-end (2026-08-06)

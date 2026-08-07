@@ -77,24 +77,17 @@ else
 fi
 
 # ---------------------------------------------------------------------- i18n --
-# Gate on DELTA, not the absolute count: there is a known backlog of short
-# technical strings (TAMC / TYMC, GC-MS …). A change must add zero new ones.
+# Coverage is complete, so this gates on the exit code rather than on a delta
+# against a baseline. The old baseline existed only because the checker counted
+# 22 deliberately-English strings — brand, SI units, assay names — as orphans,
+# which pinned the number at 29 forever. Those now live in
+# intentionally-english.txt with their reasons, and the count means something.
 section "Translation coverage"
-baseline_file=.claude/i18n-baseline.txt
-baseline=$(cat "$baseline_file" 2>/dev/null || echo 0)
-current=$(python3 .claude/skills/i18n-check/check_i18n.py index.html 2>&1 \
-          | grep -oE 'untranslated \(fallback\): [0-9]+' | grep -oE '[0-9]+$')
-
-if [ -z "$current" ]; then
-  bad "could not read a count out of check_i18n.py"
-elif [ "$current" -gt "$baseline" ]; then
-  bad "untranslated strings rose $baseline -> $current. Every English string needs"
-  printf '        a Spanish counterpart; run check_i18n.py to see which are new.\n'
-elif [ "$current" -lt "$baseline" ]; then
-  ok "untranslated fell $baseline -> $current"
-  note "lower the baseline:  echo $current > $baseline_file"
+if out=$(python3 .claude/skills/i18n-check/check_i18n.py index.html 2>&1); then
+  ok "$(printf '%s' "$out" | grep -E 'intentionally English|untranslated' | tr '\n' ' ' | tr -s ' ')"
 else
-  ok "untranslated holding at $baseline (known backlog, no new orphans)"
+  printf '%s\n' "$out" | sed -n '/^These\|^  •\|^  x/p' | head -20 | sed 's/^/        /'
+  bad "untranslated strings, a stale allowlist entry, or a duplicate ES key"
 fi
 
 # ------------------------------------------------------------ design system --
