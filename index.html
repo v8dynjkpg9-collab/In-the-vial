@@ -7,6 +7,12 @@
 <meta name="description" content="Independent, evidence-graded buyer literacy for research peptides. Read a certificate of analysis, calculate a dose, grade the science, and track the regulations. No products, no vendor links.">
 <meta name="theme-color" content="#F4F1E8">
 <link rel="canonical" href="https://in-the-vial.com/">
+  <!-- Canonical and the two hreflang alternates are rewritten by the router on every
+       navigation and on every language toggle. The values here are the home route in
+       English, which is what a crawler sees before script runs. -->
+  <link rel="alternate" hreflang="en" href="https://in-the-vial.com/">
+  <link rel="alternate" hreflang="es" href="https://in-the-vial.com/?lang=es">
+  <link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/">
   <meta property="og:url" content="https://in-the-vial.com/">
   <meta property="og:site_name" content="In The Vial">
   <meta property="og:locale" content="en_US">
@@ -703,7 +709,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 
 <nav class="nav">
   <div class="row">
-    <a class="brand" href="#home" data-view="home" aria-label="In The Vial — home">
+    <a class="brand" href="/" data-view="home" aria-label="In The Vial — home">
       <svg viewBox="0 0 24 34" aria-hidden="true">
         <rect class="cap" x="7" y="2" width="10" height="5" rx="1"/>
         <path class="ridge" d="M9.2,2.8 L9.2,6.2 M11.5,2.8 L11.5,6.2 M13.8,2.8 L13.8,6.2"/>
@@ -714,11 +720,11 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     </a>
     <div class="navwrap">
       <div class="navlinks" id="navlinks">
-        <a href="#home" data-view="home" data-nav="home" data-i18n="nav.home">Home</a>
-        <a href="#science" data-view="science" data-nav="science" data-i18n="nav.science">Science</a>
-        <a href="#toolkit" data-view="toolkit" data-nav="toolkit" data-i18n="nav.toolkit">Toolkit</a>
-        <a href="#tracker" data-view="tracker" data-nav="tracker" data-i18n="nav.tracker">Tracker</a>
-        <a href="#about" data-view="about" data-nav="about" data-i18n="nav.about">About</a><a href="#method" data-view="method" data-nav="method" data-i18n="nav.method">Method</a>
+        <a href="/" data-view="home" data-nav="home" data-i18n="nav.home">Home</a>
+        <a href="/science" data-view="science" data-nav="science" data-i18n="nav.science">Science</a>
+        <a href="/toolkit" data-view="toolkit" data-nav="toolkit" data-i18n="nav.toolkit">Toolkit</a>
+        <a href="/tracker" data-view="tracker" data-nav="tracker" data-i18n="nav.tracker">Tracker</a>
+        <a href="/about" data-view="about" data-nav="about" data-i18n="nav.about">About</a><a href="/methodology" data-view="method" data-nav="method" data-i18n="nav.method">Method</a>
       </div>
       <button class="langbtn" id="langBtn" type="button" aria-label="Switch language / Cambiar idioma"><b>EN</b> · ES</button>
       <button class="navtoggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks"><span class="bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
@@ -786,7 +792,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
           </svg>
         </div>
         <div class="chromo-readout"><span class="rk">Reading</span><span id="chromoText"><b>Three peaks resolved. One disclosed.</b> Tap a peak to inspect it, or reveal the two the headline number left out.</span></div>
-        <div class="plate-cap"><b>How to read it:</b> purity is the area under the main peak — but the trace shows everything else in the vial too. <a href="#toolkit" data-view="toolkit">Open the toolkit →</a></div>
+        <div class="plate-cap"><b>How to read it:</b> purity is the area under the main peak — but the trace shows everything else in the vial too. <a href="/toolkit" data-view="toolkit">Open the toolkit →</a></div>
       </div>
 
       <p class="pin">No products. No vendor links. No affiliate pitches. The independence is the point.</p>
@@ -799,10 +805,10 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <h2 class="h">Four instruments. One job: replace trust with verification.</h2>
       <p class="lead-muted">Each answers a different question you should be able to answer before you ever rely on a vial.</p>
       <div class="bays">
-        <a class="bay" href="#toolkit" data-view="toolkit"><span class="fn">Interactive</span><h3>The buyer-literacy toolkit</h3><p>A live reconstitution &amp; dose calculator, an interactive COA checker, a vendor red-flag scorecard, and a guide to what each lab test can and can't tell you.</p><span class="go">Open the toolkit →</span></a>
-        <a class="bay" href="#science" data-view="science"><span class="fn">Library</span><h3>The science library</h3><p>Plain-language compound pages graded on a four-tier evidence scale, separating what's been proven in humans from what's only shown in mice — or only claimed.</p><span class="go">Browse compounds →</span></a>
-        <a class="bay" href="#tracker" data-view="tracker"><span class="fn">Tracker</span><h3>The regulatory tracker</h3><p>What's actually changing in the law — compounding, GLP-1 enforcement, cosmetics rules — with a plain note on what each shift means for you.</p><span class="go">Check the tracker →</span></a>
-        <a class="bay" href="#about" data-view="about"><span class="fn">Stance</span><h3>About &amp; independence policy</h3><p>Who runs this, how compounds are graded, and the explicit promise that keeps it honest: no vendor money, ever, and no links telling you where to buy.</p><span class="go">Read the policy →</span></a>
+        <a class="bay" href="/toolkit" data-view="toolkit"><span class="fn">Interactive</span><h3>The buyer-literacy toolkit</h3><p>A live reconstitution &amp; dose calculator, an interactive COA checker, a vendor red-flag scorecard, and a guide to what each lab test can and can't tell you.</p><span class="go">Open the toolkit →</span></a>
+        <a class="bay" href="/science" data-view="science"><span class="fn">Library</span><h3>The science library</h3><p>Plain-language compound pages graded on a four-tier evidence scale, separating what's been proven in humans from what's only shown in mice — or only claimed.</p><span class="go">Browse compounds →</span></a>
+        <a class="bay" href="/tracker" data-view="tracker"><span class="fn">Tracker</span><h3>The regulatory tracker</h3><p>What's actually changing in the law — compounding, GLP-1 enforcement, cosmetics rules — with a plain note on what each shift means for you.</p><span class="go">Check the tracker →</span></a>
+        <a class="bay" href="/about" data-view="about"><span class="fn">Stance</span><h3>About &amp; independence policy</h3><p>Who runs this, how compounds are graded, and the explicit promise that keeps it honest: no vendor money, ever, and no links telling you where to buy.</p><span class="go">Read the policy →</span></a>
       </div>
     </section>
 
@@ -890,11 +896,11 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <h2 class="h">The library</h2>
       <p class="lead-muted">Each card shows a schematic of the peptide's residue chain. Open a page for the full workup.</p>
       <div class="compounds">
-        <a class="ccard" href="#bpc157" data-view="bpc157"><span class="chip-tier tc"><span class="dot"></span>TIER C</span><div class="chainmini" data-chain="bpc-mini"></div><h3>BPC-157</h3><p>A gastric-protein fragment with striking results in rodent healing models — and almost no rigorous human data behind the "heals everything" marketing.</p><span class="go">Read the page →</span></a>
-        <a class="ccard" href="#ghkcu" data-view="ghkcu"><span class="chip-tier tb"><span class="dot"></span>TIER B · TOPICAL</span><div class="chainmini" data-chain="ghk-mini"></div><h3>GHK-Cu</h3><p>A copper-peptide complex with genuinely decent topical/cosmetic evidence — and far weaker support for the injectable, systemic claims.</p><span class="go">Read the page →</span></a>
-        <a class="ccard" href="#sema" data-view="sema"><span class="chip-tier ta"><span class="dot"></span>TIER A</span><div class="chainmini" data-chain="sema-mini"></div><h3>Semaglutide</h3><p>The honest counterexample: large trials, FDA approval, real efficacy. Featured to show this site is pro-evidence, not anti-peptide.</p><span class="go">Read the page →</span></a>
-        <a class="ccard" href="#reta" data-view="reta"><span class="chip-tier tb"><span class="dot"></span>TIER B</span><div class="chainmini" data-chain="reta-mini"></div><h3>Retatrutide</h3><p>A triple-receptor agonist with the largest weight loss yet recorded in a trial — and no approval, no approved source, and unfinished phase 3.</p><span class="go">Read the page →</span></a>
-        <a class="ccard" href="#ipa" data-view="ipa"><span class="chip-tier tc"><span class="dot"></span>TIER C</span><div class="chainmini" data-chain="ipa-mini"></div><h3>Ipamorelin</h3><p>A pentapeptide that really does raise growth hormone — attached to body-composition claims that human trials never tested.</p><span class="go">Read the page →</span></a>
+        <a class="ccard" href="/bpc-157" data-view="bpc157"><span class="chip-tier tc"><span class="dot"></span>TIER C</span><div class="chainmini" data-chain="bpc-mini"></div><h3>BPC-157</h3><p>A gastric-protein fragment with striking results in rodent healing models — and almost no rigorous human data behind the "heals everything" marketing.</p><span class="go">Read the page →</span></a>
+        <a class="ccard" href="/ghk-cu" data-view="ghkcu"><span class="chip-tier tb"><span class="dot"></span>TIER B · TOPICAL</span><div class="chainmini" data-chain="ghk-mini"></div><h3>GHK-Cu</h3><p>A copper-peptide complex with genuinely decent topical/cosmetic evidence — and far weaker support for the injectable, systemic claims.</p><span class="go">Read the page →</span></a>
+        <a class="ccard" href="/semaglutide" data-view="sema"><span class="chip-tier ta"><span class="dot"></span>TIER A</span><div class="chainmini" data-chain="sema-mini"></div><h3>Semaglutide</h3><p>The honest counterexample: large trials, FDA approval, real efficacy. Featured to show this site is pro-evidence, not anti-peptide.</p><span class="go">Read the page →</span></a>
+        <a class="ccard" href="/retatrutide" data-view="reta"><span class="chip-tier tb"><span class="dot"></span>TIER B</span><div class="chainmini" data-chain="reta-mini"></div><h3>Retatrutide</h3><p>A triple-receptor agonist with the largest weight loss yet recorded in a trial — and no approval, no approved source, and unfinished phase 3.</p><span class="go">Read the page →</span></a>
+        <a class="ccard" href="/ipamorelin" data-view="ipa"><span class="chip-tier tc"><span class="dot"></span>TIER C</span><div class="chainmini" data-chain="ipa-mini"></div><h3>Ipamorelin</h3><p>A pentapeptide that really does raise growth hormone — attached to body-composition claims that human trials never tested.</p><span class="go">Read the page →</span></a>
         <div class="ccard soon"><span class="fn">More coming</span><h3 style="font-size:22px;margin-top:14px">TB-500, CJC-1295, Epitalon…</h3><p>Each will follow the same template: mechanism, evidence tier, human-vs-animal data, risks, regulatory status, and claims vs. proof.</p></div>
       </div>
     </section>
@@ -904,7 +910,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 <!-- ============ BPC-157 ============ -->
 <div class="view" id="view-bpc157">
   <main class="wrap reading cpage">
-    <a class="backlink" href="#science" data-view="science">← Science library</a>
+    <a class="backlink" href="/science" data-view="science">← Science library</a>
     <div class="chead"><h1>BPC-157</h1><span class="chip-tier tc"><span class="dot"></span>TIER C · PRECLINICAL ONLY</span></div>
     <p class="cdek">A 15-amino-acid peptide derived from a protein found in gastric juice. Remarkable in animal healing studies; essentially untested in rigorous human trials, despite marketing that implies otherwise.</p>
     <div class="plate mol-plate">
@@ -976,7 +982,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <h3 class="sh">Risks &amp; open unknowns</h3>
       <ul><li><strong>Long-term safety is unknown</strong> in humans. Absence of reported harm in short anecdotal use is not evidence of safety.</li><li><strong>The angiogenesis question cuts both ways</strong> — a compound that grows new blood vessels raises a reasonable, unresolved question about processes you would not want fed.</li><li><strong>Grey-market quality is its own hazard</strong> — no approved source means variable purity, potency, and contamination, confounding both safety and what a "dose" delivers.</li></ul>
       <h3 class="sh">Regulatory status</h3>
-      <p>Not approved by the FDA for any use, and the subject of shifting compounding policy — see the <a href="#tracker" data-view="tracker">regulatory tracker</a> for the current position, including the 2026 advisory-committee review.</p>
+      <p>Not approved by the FDA for any use, and the subject of shifting compounding policy — see the <a href="/tracker" data-view="tracker">regulatory tracker</a> for the current position, including the 2026 advisory-committee review.</p>
       <h3 class="sh">Marketing claims vs. what the data supports</h3>
       <div class="ledger-wrap"><table class="ledger"><thead><tr><th>Common claim</th><th>What the evidence actually shows</th><th>Verdict</th></tr></thead><tbody>
         <tr><td>"Heals tendons and injuries fast"</td><td>Strong in rodents; no rigorous human efficacy data.</td><td class="vd vpart">Unproven in humans</td></tr>
@@ -1003,7 +1009,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 <!-- ============ GHK-CU ============ -->
 <div class="view" id="view-ghkcu">
   <main class="wrap reading cpage">
-    <a class="backlink" href="#science" data-view="science">← Science library</a>
+    <a class="backlink" href="/science" data-view="science">← Science library</a>
     <div class="chead"><h1>GHK-Cu</h1><span class="chip-tier tb"><span class="dot"></span>TIER B TOPICAL · TIER C INJECTABLE</span></div>
     <p class="cdek">Copper tripeptide-1 — a naturally occurring peptide-copper complex. One of the better-supported peptides in skincare, and one of the more overreached when sold as an injectable.</p>
     <div class="plate mol-plate">
@@ -1025,7 +1031,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <h3 class="sh">Risks &amp; open unknowns</h3>
       <ul><li><strong>Topical use</strong> is generally well tolerated; mild irritation is the usual risk.</li><li><strong>Copper load matters</strong> — essential in trace amounts, toxic in excess; the margin for repeated systemic dosing isn't well characterized.</li><li><strong>Formulation is finicky</strong> — pH-sensitive, can discolor, interacts with some actives and preservatives.</li></ul>
       <h3 class="sh">Regulatory status</h3>
-      <p>As a cosmetic ingredient, copper tripeptide-1 is used legally in topicals under cosmetic rules rather than drug approval, and has generally been treated more favorably than peptides like BPC-157 — see the <a href="#tracker" data-view="tracker">tracker</a>. The key legal line is <em>claims</em>: cosmetic appearance claims are fine; therapeutic claims convert it to an unapproved drug.</p>
+      <p>As a cosmetic ingredient, copper tripeptide-1 is used legally in topicals under cosmetic rules rather than drug approval, and has generally been treated more favorably than peptides like BPC-157 — see the <a href="/tracker" data-view="tracker">tracker</a>. The key legal line is <em>claims</em>: cosmetic appearance claims are fine; therapeutic claims convert it to an unapproved drug.</p>
       <h3 class="sh">Marketing claims vs. what the data supports</h3>
       <div class="ledger-wrap"><table class="ledger"><thead><tr><th>Common claim</th><th>What the evidence actually shows</th><th>Verdict</th></tr></thead><tbody>
         <tr><td>"Improves appearance of fine lines &amp; firmness" (topical)</td><td>Reasonable human and cosmetic-use support.</td><td class="vd vyes">Best-supported</td></tr>
@@ -1052,7 +1058,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 <!-- ============ SEMAGLUTIDE ============ -->
 <div class="view" id="view-sema">
   <main class="wrap reading cpage">
-    <a class="backlink" href="#science" data-view="science">← Science library</a>
+    <a class="backlink" href="/science" data-view="science">← Science library</a>
     <div class="chead"><h1>Semaglutide</h1><span class="chip-tier ta"><span class="dot"></span>TIER A · APPROVED, ROBUST RCTs</span></div>
     <p class="cdek">A GLP-1 receptor agonist with large randomized trials and FDA approval. Featured on purpose: it shows what real evidence looks like — and that this site is pro-evidence, not anti-peptide.</p>
     <div class="plate mol-plate">
@@ -1072,7 +1078,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <h3 class="sh">Risks &amp; known side effects</h3>
       <ul><li><strong>Gastrointestinal effects</strong> — nausea, vomiting, diarrhea — are common, especially during dose escalation.</li><li><strong>Less common but serious:</strong> pancreatitis, gallbladder problems.</li><li><strong>A boxed warning</strong> reflects rodent thyroid C-cell tumors; contraindicated with personal/family history of medullary thyroid carcinoma or MEN-2.</li><li>These are knowable precisely <em>because</em> it was studied properly — "well-evidenced" means risks understood, not risk-free.</li></ul>
       <h3 class="sh">Regulatory status &amp; the grey-market caveat</h3>
-      <p>FDA approved. During recent shortages, compounded versions proliferated; with shortages resolved, the rules on compounding copies tightened — see the <a href="#tracker" data-view="tracker">tracker</a>. The literacy point: a compounded or grey-market version carries the <em>same</em> sourcing, purity, dosing, and contamination risks as any research-chemical product. The evidence behind the molecule does not vouch for the vial in front of you.</p>
+      <p>FDA approved. During recent shortages, compounded versions proliferated; with shortages resolved, the rules on compounding copies tightened — see the <a href="/tracker" data-view="tracker">tracker</a>. The literacy point: a compounded or grey-market version carries the <em>same</em> sourcing, purity, dosing, and contamination risks as any research-chemical product. The evidence behind the molecule does not vouch for the vial in front of you.</p>
       <h3 class="sh">Claims vs. what the data supports</h3>
       <div class="ledger-wrap"><table class="ledger"><thead><tr><th>Claim</th><th>What the evidence actually shows</th><th>Verdict</th></tr></thead><tbody>
         <tr><td>"Produces significant weight loss"</td><td>Supported by large randomized weight-management trials.</td><td class="vd vyes">Well supported</td></tr>
@@ -1118,7 +1124,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <button type="submit" id="subBtn">Subscribe</button>
       </form>
       <p class="msg" id="subMsg" role="status" aria-live="polite"></p>
-      <p class="note">Your address is stored only to send this digest, is never sold or shared, and every email carries a one-click unsubscribe. Nothing else about you is collected. Reading the site still contacts no outside company — see the <a href="#legal" data-view="legal">privacy notice</a>.</p>
+      <p class="note">Your address is stored only to send this digest, is never sold or shared, and every email carries a one-click unsubscribe. Nothing else about you is collected. Reading the site still contacts no outside company — see the <a href="/legal" data-view="legal">privacy notice</a>.</p>
     </div>
 
   </main>
@@ -1182,7 +1188,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <p><strong>No external peer review.</strong> Nothing here is reviewed by an independent expert before publication. Treat it as a well-sourced starting point for your own reading, not as a settled reference.</p>
       <h3 class="sh">Independence and affiliation</h3>
       <p>This is a personal, independent project. It is <strong>not affiliated with, endorsed by, funded by, or representative of</strong> the University of South Florida, AdventHealth, or any employer, school, laboratory or vendor. Nothing here is written on behalf of any organisation, and no organisation reviews it.</p>
-      <p>No vendor money, no affiliate links, no purchase recommendations — the financial position is stated in full on the <a href="#about" data-view="about">independence policy</a>.</p>
+      <p>No vendor money, no affiliate links, no purchase recommendations — the financial position is stated in full on the <a href="/about" data-view="about">independence policy</a>.</p>
       <h3 class="sh">What gets searched</h3>
       <p>Compound pages are built from primary literature located through PubMed and ClinicalTrials.gov, plus the relevant regulatory record — Federal Register notices, FDA guidance and advisory-committee materials, and published enforcement actions.</p>
       <p>Every cited DOI is checked against the DOI registry to confirm it resolves to the exact title, journal and year listed. A reference that cannot be resolved does not get published.</p>
@@ -1201,7 +1207,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <li><strong>Single author, no peer review.</strong> Errors are likelier than in a reviewed publication.</li>
         <li><strong>Literature searches are point-in-time.</strong> Each compound page states the month its evidence was last searched. A page without a recent date should be trusted less — including these.</li>
         <li><strong>Citation counts are uneven by design.</strong> A short reference list often reflects a thin literature rather than a shallow search. Where that is true, the page says so.</li>
-        <li><strong>Regulatory content moves faster than the site.</strong> <a href="#tracker" data-view="tracker">The regulatory tracker</a> carries its own review date; nothing here is legal advice.</li>
+        <li><strong>Regulatory content moves faster than the site.</strong> <a href="/tracker" data-view="tracker">The regulatory tracker</a> carries its own review date; nothing here is legal advice.</li>
         <li><strong>Conflicts of interest in the sources themselves</strong> are flagged where identified — for example, where the most-cited reviews of a compound are authored by someone selling it.</li>
       </ul>
       <h3 class="sh">Corrections</h3>
@@ -1215,7 +1221,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 <!-- ============ RETATRUTIDE ============ -->
 <div class="view" id="view-reta">
   <main class="wrap reading cpage">
-    <a class="backlink" href="#science" data-view="science">← Science library</a>
+    <a class="backlink" href="/science" data-view="science">← Science library</a>
     <div class="chead"><h1>Retatrutide</h1><span class="chip-tier tb"><span class="dot"></span>TIER B · REAL TRIALS, NOT APPROVED</span></div>
     <p class="cdek">An investigational triple-receptor agonist that produced the largest weight loss yet reported for a drug of its class. It is also, for now, an unapproved compound with no legitimate consumer source.</p>
     <div class="plate mol-plate">
@@ -1239,7 +1245,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <h3 class="sh">Risks &amp; open unknowns</h3>
       <ul><li><strong>Gastrointestinal effects are common</strong> — nausea, vomiting and diarrhoea were the most frequent adverse events, and were dose-related.</li><li><strong>Heart rate increased</strong> modestly in trials; the long-term cardiovascular meaning of that is not yet settled.</li><li><strong>Long-term safety is genuinely unknown.</strong> Phase 3 exists precisely because phase 2 cannot answer it.</li><li><strong>Muscle loss is a real concern</strong> with rapid weight reduction and is not fully characterised here.</li><li><strong>No approved source exists.</strong> Anything sold to a consumer today is unapproved and of unverified identity, purity and concentration.</li></ul>
       <h3 class="sh">Regulatory status</h3>
-      <p>Not approved by the FDA or any comparable regulator for any indication. It is an investigational drug in active trials, which means the only lawful human administration is inside one of those trials. Selling it for human use is the introduction of an unapproved new drug into commerce — see the <a href="#tracker" data-view="tracker">regulatory tracker</a> for how enforcement in this space is moving.</p>
+      <p>Not approved by the FDA or any comparable regulator for any indication. It is an investigational drug in active trials, which means the only lawful human administration is inside one of those trials. Selling it for human use is the introduction of an unapproved new drug into commerce — see the <a href="/tracker" data-view="tracker">regulatory tracker</a> for how enforcement in this space is moving.</p>
       <h3 class="sh">Marketing claims vs. what the data supports</h3>
       <div class="ledger-wrap"><table class="ledger"><thead><tr><th>Common claim</th><th>What the evidence actually shows</th><th>Verdict</th></tr></thead><tbody>
         <tr><td>"The most effective weight-loss compound available"</td><td>Trial results are genuinely the strongest published in its class.</td><td class="vd vok">Supported in trials</td></tr>
@@ -1263,7 +1269,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 <!-- ============ IPAMORELIN ============ -->
 <div class="view" id="view-ipa">
   <main class="wrap reading cpage">
-    <a class="backlink" href="#science" data-view="science">← Science library</a>
+    <a class="backlink" href="/science" data-view="science">← Science library</a>
     <div class="chead"><h1>Ipamorelin</h1><span class="chip-tier tc"><span class="dot"></span>TIER C · LIMITED HUMAN DATA</span></div>
     <p class="cdek">A five-residue growth-hormone secretagogue. The pharmacology is real and reasonably clean; the body-composition and anti-ageing claims built on top of it were never the thing that got tested.</p>
     <div class="plate mol-plate">
@@ -1283,9 +1289,9 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <h3 class="sh">Studied in humans vs. animals</h3>
       <ul><li><strong>Humans (limited):</strong> early-phase work establishing that it raises growth hormone, plus a discontinued clinical programme in post-operative ileus.</li><li><strong>Animals (extensive):</strong> growth-hormone release, bone and body-composition models.</li><li><strong>Not studied in humans:</strong> the marketed uses — muscle gain, fat loss, recovery, sleep quality and anti-ageing — in healthy adults, over any meaningful duration.</li></ul>
       <h3 class="sh">Risks &amp; open unknowns</h3>
-      <ul><li><strong>Long-term safety is unknown.</strong> No trial has followed healthy people using it for extended periods.</li><li><strong>Growth hormone has real downside potential</strong> at sustained elevation, including insulin resistance, fluid retention and joint pain.</li><li><strong>The cancer question is unresolved.</strong> Growth hormone and IGF-1 signalling influence cell proliferation, and no study has been large or long enough to characterise that risk here.</li><li><strong>Non-standard residues complicate verification.</strong> Ordinary purity testing may not distinguish the correct D-configuration residues from cheaper L-forms, so identity testing matters more than usual — see the <a href="#toolkit" data-view="toolkit">buyer toolkit</a>.</li></ul>
+      <ul><li><strong>Long-term safety is unknown.</strong> No trial has followed healthy people using it for extended periods.</li><li><strong>Growth hormone has real downside potential</strong> at sustained elevation, including insulin resistance, fluid retention and joint pain.</li><li><strong>The cancer question is unresolved.</strong> Growth hormone and IGF-1 signalling influence cell proliferation, and no study has been large or long enough to characterise that risk here.</li><li><strong>Non-standard residues complicate verification.</strong> Ordinary purity testing may not distinguish the correct D-configuration residues from cheaper L-forms, so identity testing matters more than usual — see the <a href="/toolkit" data-view="toolkit">buyer toolkit</a>.</li></ul>
       <h3 class="sh">Regulatory status</h3>
-      <p>Not approved by the FDA or any comparable regulator, and not an approved compounding ingredient. It sits in the same unapproved category as most compounds catalogued here — see the <a href="#tracker" data-view="tracker">regulatory tracker</a>. It is also a banned substance in competitive sport under anti-doping rules.</p>
+      <p>Not approved by the FDA or any comparable regulator, and not an approved compounding ingredient. It sits in the same unapproved category as most compounds catalogued here — see the <a href="/tracker" data-view="tracker">regulatory tracker</a>. It is also a banned substance in competitive sport under anti-doping rules.</p>
       <h3 class="sh">Marketing claims vs. what the data supports</h3>
       <div class="ledger-wrap"><table class="ledger"><thead><tr><th>Common claim</th><th>What the evidence actually shows</th><th>Verdict</th></tr></thead><tbody>
         <tr><td>"Raises growth hormone naturally"</td><td>It does raise growth hormone. "Naturally" is marketing language for an injected synthetic peptide.</td><td class="vd vpart">Half true</td></tr>
@@ -1427,7 +1433,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       <p><strong>Your responsibility.</strong> You are responsible for complying with the laws that apply to you.</p>
       <p><strong>Intellectual property.</strong> Original content may not be republished wholesale as your own without permission. Linking is welcome.</p>
     </div></section>
-    <a class="backlink" href="#home" data-view="home">← Back to home</a>
+    <a class="backlink" href="/" data-view="home">← Back to home</a>
   </main>
 </div>
 
@@ -1438,7 +1444,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <div class="fbrand"><svg viewBox="0 0 24 34" aria-hidden="true"><rect class="cap" x="7" y="2" width="10" height="5" rx="1"/><path class="ridge" d="M9.2,2.8 L9.2,6.2 M11.5,2.8 L11.5,6.2 M13.8,2.8 L13.8,6.2"/><path class="glass" d="M8.5,7 L8.5,10 L6,12.5 L6,27 C6,31 18,31 18,27 L18,12.5 L15.5,10 L15.5,7 Z"/><path class="fluid" d="M6.4,19 C8,18 10,20 12,20 C14,20 16,18 17.6,19 L17.6,27 C17.6,30.2 6.4,30.2 6.4,27 Z"/></svg>In The Vial</div>
         <div class="ftag">Independent buyer literacy and harm reduction for research peptides.</div>
       </div>
-      <div class="flinks"><span class="lbl">Pages</span><a href="#science" data-view="science">Science library</a><a href="#toolkit" data-view="toolkit">Buyer toolkit</a><a href="#tracker" data-view="tracker">Regulatory tracker</a><a href="#about" data-view="about">About &amp; independence</a><a href="#method" data-view="method">Methodology &amp; corrections</a><a href="#legal" data-view="legal">Disclaimer &amp; privacy</a></div>
+      <div class="flinks"><span class="lbl">Pages</span><a href="/science" data-view="science">Science library</a><a href="/toolkit" data-view="toolkit">Buyer toolkit</a><a href="/tracker" data-view="tracker">Regulatory tracker</a><a href="/about" data-view="about">About &amp; independence</a><a href="/methodology" data-view="method">Methodology &amp; corrections</a><a href="/legal" data-view="legal">Disclaimer &amp; privacy</a></div>
     </div>
     <p class="disc"><strong>Educational and harm-reduction resource only.</strong> Nothing here is medical, legal, or dosing advice, and nothing is sold, recommended, or linked. Many research compounds are not approved for human use and may be illegal to sell or use for human consumption. Verify the laws that apply to you and consult a licensed professional before any health decision.</p>
   </div>
@@ -1460,30 +1466,184 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     setTimeout(function(){[].forEach.call(document.querySelectorAll('.view.on .block'),function(b){b.classList.add('in');});},20);
     return id;
   }
-  function hashView(){
-    var h=(location.hash||'').replace('#','');
-    return document.getElementById('view-'+h)?h:'home';
+  /* ---- page routes ---------------------------------------------------------
+     Every view is a real URL rather than a hash. Two constraints fixed the shape
+     of these slugs, and both fail silently if ignored:
+
+     1. Slugs are FLAT — "/bpc-157", never "/science/bpc-157". Fonts load from
+        url(fonts/…) and the tracker from fetch('tracker.json'), both relative.
+        A single-segment path leaves the document base at "/", so those keep
+        resolving. A nested path would send them to /science/fonts/… and 404 the
+        typography and the tracker together.
+     2. Language rides as "?lang=es", not an "/es/" prefix, for the same reason —
+        a query string does not move the base, a path segment does.
+
+     Each route carries its own title and description in BOTH languages. Until
+     now the Spanish half of the site lived only in localStorage, so no crawler
+     ever saw it and no Spanish URL could be shared. */
+  var ORIGIN='https://in-the-vial.com';
+  var ROUTES=[
+    {slug:'/',view:'home',
+     en:{title:'In The Vial — Buyer literacy for research peptides',
+         desc:'Independent, evidence-graded buyer literacy for research peptides. Read a certificate of analysis, calculate a dose, grade the science, and track the regulations. No products, no vendor links.'},
+     es:{title:'In The Vial — Alfabetización del comprador de péptidos de investigación',
+         desc:'Alfabetización independiente y graduada por evidencia para péptidos de investigación. Lee un certificado de análisis, calcula una dosis, califica la ciencia y sigue la regulación. Sin productos, sin enlaces a vendedores.'}},
+    {slug:'/science',view:'science',
+     en:{title:'Science library — every compound graded by evidence · In The Vial',
+         desc:'Most research peptides are sold as if the science were settled. It usually is not. Every compound carries an evidence tier from A to D, so you can see what a claim actually rests on.'},
+     es:{title:'Biblioteca científica — cada compuesto calificado por evidencia · In The Vial',
+         desc:'La mayoría de los péptidos de investigación se venden como si la ciencia estuviera resuelta. Casi nunca lo está. Cada compuesto lleva un nivel de evidencia de A a D.'}},
+    {slug:'/bpc-157',view:'bpc157',
+     en:{title:'BPC-157 — Tier C, preclinical only · In The Vial',
+         desc:'A 15-amino-acid peptide: remarkable in animal healing studies, essentially untested in rigorous human trials, and marketed as though the opposite were true.'},
+     es:{title:'BPC-157 — Nivel C, solo preclínico · In The Vial',
+         desc:'Un péptido de 15 aminoácidos: notable en estudios de curación en animales, esencialmente no probado en ensayos humanos rigurosos, y comercializado como si fuera lo contrario.'}},
+    {slug:'/ghk-cu',view:'ghkcu',
+     en:{title:'GHK-Cu — Tier B topical, Tier C injectable · In The Vial',
+         desc:'Copper tripeptide-1: one of the better-supported peptides in skincare, and one of the more overreached when sold as an injectable.'},
+     es:{title:'GHK-Cu — Nivel B tópico, Nivel C inyectable · In The Vial',
+         desc:'Cobre tripéptido-1: uno de los péptidos mejor respaldados en el cuidado de la piel, y uno de los más exagerados cuando se vende como inyectable.'}},
+    {slug:'/semaglutide',view:'sema',
+     en:{title:'Semaglutide — Tier A, approved with robust RCTs · In The Vial',
+         desc:'A GLP-1 receptor agonist with large randomized trials and FDA approval. Featured on purpose: it shows what real evidence looks like when a compound has it.'},
+     es:{title:'Semaglutida — Nivel A, aprobada con ECA sólidos · In The Vial',
+         desc:'Un agonista del receptor GLP-1 con ensayos aleatorizados grandes y aprobación de la FDA. Incluida a propósito: muestra cómo se ve la evidencia real cuando existe.'}},
+    {slug:'/retatrutide',view:'reta',
+     en:{title:'Retatrutide — Tier B, real trials but not approved · In The Vial',
+         desc:'An investigational triple-receptor agonist that produced the largest weight loss yet reported for its class — and, for now, an unapproved compound with no legitimate consumer source.'},
+     es:{title:'Retatrutida — Nivel B, ensayos reales pero sin aprobación · In The Vial',
+         desc:'Un agonista triple en investigación que produjo la mayor pérdida de peso reportada en su clase — y, por ahora, un compuesto no aprobado sin fuente legítima para el consumidor.'}},
+    {slug:'/ipamorelin',view:'ipa',
+     en:{title:'Ipamorelin — Tier C, limited human data · In The Vial',
+         desc:'A five-residue growth-hormone secretagogue. The pharmacology is real and reasonably clean; the body-composition claims built on top of it were never the thing that got tested.'},
+     es:{title:'Ipamorelina — Nivel C, datos humanos limitados · In The Vial',
+         desc:'Un secretagogo de hormona de crecimiento de cinco residuos. La farmacología es real y bastante limpia; las afirmaciones sobre composición corporal nunca fueron lo que se probó.'}},
+    {slug:'/toolkit',view:'toolkit',
+     en:{title:'Buyer toolkit — COA checker, dose calculator, red flags · In The Vial',
+         desc:'A vendor’s number on a label is a claim, not a fact. Four tools to read the chemistry, verify the paperwork, and spot the structures built to mislead you.'},
+     es:{title:'Herramientas del comprador — verificador de COA, calculadora de dosis, señales de alerta · In The Vial',
+         desc:'El número de un vendedor en una etiqueta es una afirmación, no un hecho. Cuatro herramientas para leer la química, verificar el papeleo y detectar las estructuras hechas para engañarte.'}},
+    {slug:'/tracker',view:'tracker',
+     en:{title:'Regulatory tracker — what is changing and what it means · In The Vial',
+         desc:'Peptide rules are moving fast and unevenly. The shifts that matter, in plain language, each stamped with when it was last checked — because a tracker without dates is just an opinion.'},
+     es:{title:'Rastreador regulatorio — qué está cambiando y qué significa · In The Vial',
+         desc:'Las normas sobre péptidos cambian rápido y de forma desigual. Los cambios que importan, en lenguaje claro, cada uno con la fecha de su última revisión.'}},
+    {slug:'/about',view:'about',
+     en:{title:'About & independence — nothing here is for sale · In The Vial',
+         desc:'Most peptide information online is downstream of someone trying to sell you peptides. This is not. The entire point is to be the resource with no stake in your purchase.'},
+     es:{title:'Acerca de e independencia — aquí no se vende nada · In The Vial',
+         desc:'Casi toda la información sobre péptidos en línea proviene de alguien que intenta venderte péptidos. Esta no. El objetivo es ser el recurso sin interés en tu compra.'}},
+    {slug:'/methodology',view:'method',
+     en:{title:'Methodology & corrections — how this site decides what it claims · In The Vial',
+         desc:'Who writes the site, what gets searched, how evidence tiers are assigned, where the limits are, and how to get something corrected.'},
+     es:{title:'Metodología y correcciones — cómo decide este sitio lo que afirma · In The Vial',
+         desc:'Quién escribe el sitio, qué se busca, cómo se asignan los niveles de evidencia, dónde están los límites y cómo pedir una corrección.'}},
+    {slug:'/legal',view:'legal',
+     en:{title:'Disclaimer, privacy & terms · In The Vial',
+         desc:'Plain-language disclaimer and privacy policy. Educational and harm-reduction only — not medical, legal, or dosing advice. Loading a page contacts no outside company.'},
+     es:{title:'Aviso legal, privacidad y términos · In The Vial',
+         desc:'Aviso legal y política de privacidad en lenguaje claro. Solo educación y reducción de daños — no es asesoramiento médico, legal ni de dosificación.'}}
+  ];
+  var byView={},bySlug={};
+  ROUTES.forEach(function(r){byView[r.view]=r;bySlug[r.slug]=r;});
+  var CURRENT=byView.home;
+  /* The router owns the language until i18n boots (applyLang runs last and calls
+     syncRouteLang). Reading I18N.lang here would throw — it is declared further
+     down this same scope and is still undefined at router-boot time. */
+  var LANG=(function(){
+    var m=location.search.match(/[?&]lang=(en|es)/);
+    if(m)return m[1];
+    try{return localStorage.getItem('itv_lang')==='es'?'es':'en';}catch(e){return 'en';}
+  })();
+  function routeFor(id){return byView[id]||byView.home;}
+  function urlFor(r,lang){return r.slug+(lang==='es'?'?lang=es':'');}
+  function absFor(r,lang){return ORIGIN+urlFor(r,lang);}
+  /* Resolve the current URL to a route. Path wins, then a legacy #view hash —
+     issue 001 of the newsletter shipped "/#tracker" and "/#method" links, and
+     those must keep landing on the right page for as long as the email exists. */
+  function currentRoute(){
+    var p=location.protocol==='file:'?'/':(location.pathname.replace(/\/+$/,'')||'/');
+    if(p!=='/'&&bySlug[p])return bySlug[p];
+    var h=(location.hash||'').replace(/^#/,'');
+    if(h&&byView[h])return byView[h];
+    return bySlug[p]||byView.home;
   }
-  /* User-initiated navigation: switch the view AND add a history entry, so the
-     browser back button works and any section can be linked to directly. */
-  function showView(id){
-    var real=setView(id);
+  function setMeta(sel,attr,val){var el=document.querySelector(sel);if(el)el.setAttribute(attr,val);}
+  function applyRouteMeta(r,lang){
+    var copy=r[lang]||r.en;
+    document.title=copy.title;
+    setMeta('meta[name="description"]','content',copy.desc);
+    setMeta('meta[property="og:title"]','content',copy.title);
+    setMeta('meta[property="og:description"]','content',copy.desc);
+    setMeta('meta[property="og:url"]','content',absFor(r,lang));
+    setMeta('meta[property="og:locale"]','content',lang==='es'?'es_ES':'en_US');
+    setMeta('meta[property="og:locale:alternate"]','content',lang==='es'?'en_US':'es_ES');
+    setMeta('link[rel="canonical"]','href',absFor(r,lang));
+    setMeta('link[hreflang="en"]','href',absFor(r,'en'));
+    setMeta('link[hreflang="es"]','href',absFor(r,'es'));
+    setMeta('link[hreflang="x-default"]','href',absFor(r,'en'));
+  }
+  /* A legacy #view hash is now carried by the path, so drop it from the URL.
+     Any other hash is someone's in-page anchor and is left alone. */
+  function keepHash(){
+    var h=(location.hash||'').replace(/^#/,'');
+    return (h&&byView[h])?'':location.hash;
+  }
+  function writeUrl(r,lang,mode){
+    if(location.protocol==='file:')return; // no server, no real paths
     try{
-      if(!history.state||history.state.view!==real)history.pushState({view:real},'','#'+real);
-    }catch(e){/* pushState can be blocked on file:// — view still switches */}
+      var st={view:r.view,lang:lang},url=urlFor(r,lang)+keepHash();
+      if(mode==='replace')history.replaceState(st,'',url);else history.pushState(st,'',url);
+    }catch(e){/* blocked in some sandboxes — the view still switched */}
+  }
+  /* Named renderRoute, not render: the residue-chain module further down this
+     same IIFE declares its own render(svg,cfg,…). Two function declarations in
+     one scope silently collapse into whichever is declared last. */
+  function renderRoute(r){CURRENT=r;setView(r.view);applyRouteMeta(r,LANG);}
+  /* User-initiated navigation: switch the view AND add a history entry, so back
+     and forward work and every page can be linked to directly. */
+  function showView(id){
+    var r=routeFor(id),st=history.state;
+    var same=st&&st.view===r.view&&st.lang===LANG;
+    renderRoute(r);
+    writeUrl(r,LANG,same?'replace':'push');
+  }
+  /* Called by applyLang once i18n takes over the language. */
+  function syncRouteLang(lang){
+    if(lang===LANG)return;
+    LANG=lang;
+    applyRouteMeta(CURRENT,lang);
+    writeUrl(CURRENT,lang,'replace');
   }
   document.body.addEventListener('click',function(e){
+    // hrefs are real URLs now, so let the browser handle open-in-new-tab itself
+    if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
     var t=e.target.closest('[data-view]');
     if(t){e.preventDefault();showView(t.getAttribute('data-view'));closeMenu();}
   });
-  // back / forward, and manually edited hashes
-  window.addEventListener('popstate',function(){setView(hashView());closeMenu();});
-  window.addEventListener('hashchange',function(){setView(hashView());});
-  // initial load: honour a deep link and record it as the first history entry
+  // back / forward — the URL may have moved language as well as page
+  window.addEventListener('popstate',function(){
+    var r=currentRoute(),l=(location.search.match(/[?&]lang=(en|es)/)||[])[1];
+    renderRoute(r);
+    if(l&&l!==LANG)applyLang(l);
+    closeMenu();
+  });
+  // a manually edited #view hash still navigates
+  window.addEventListener('hashchange',function(){
+    var h=(location.hash||'').replace(/^#/,'');
+    if(h&&byView[h]){var r=byView[h];renderRoute(r);writeUrl(r,LANG,'replace');}
+  });
+  // initial load: honour a deep link, and upgrade a legacy /#view URL to /view
   (function(){
-    var start=hashView();
-    setView(start);
-    try{history.replaceState({view:start},'','#'+start);}catch(e){}
+    if(location.protocol==='file:'){
+      // opened straight off disk: "/toolkit" would point at the filesystem root
+      [].forEach.call(document.querySelectorAll('[data-view]'),function(a){
+        if(a.getAttribute('href'))a.setAttribute('href','#'+a.getAttribute('data-view'));
+      });
+    }
+    var start=currentRoute();
+    renderRoute(start);
+    writeUrl(start,LANG,'replace');
   })();
 
   /* ---- mobile nav menu ---- */
@@ -1946,6 +2106,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       }else it.node.nodeValue=it.orig;
     });
     refreshDynamic();
+    syncRouteLang(lang); // keep ?lang=, canonical, hreflang and og: in step
     try{localStorage.setItem('itv_lang',lang);}catch(e){}
   }
   /* ---- data-driven regulatory tracker (see tracker.json) ---- */
@@ -2254,9 +2415,10 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
   })();
 
   loadTracker();
-  /* ---- apply saved language ---- */
-  var saved='en'; try{saved=localStorage.getItem('itv_lang')||'en';}catch(e){}
-  applyLang(saved==='es'?'es':'en');
+  /* ---- apply the language the router settled on ----
+     LANG already prefers ?lang= over the saved value, so a shared Spanish URL
+     opens in Spanish even on a browser whose localStorage says English. */
+  applyLang(LANG==='es'?'es':'en');
 })();
 </script>
 </body>

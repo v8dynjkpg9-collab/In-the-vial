@@ -1,0 +1,48 @@
+# Routing for the single-page app.
+#
+# Served by the Cloudflare **Worker** `in-the-vial` using static assets — NOT
+# Cloudflare Pages (there is no Pages project on the account). Workers static
+# assets read this same _redirects format and do support 200 proxying, which is
+# what the rewrites below rely on. Verified against Cloudflare's docs 2026-08-06.
+#
+# Every page route is listed EXPLICITLY. A catch-all "/* /index.html 200" was
+# deliberately not used, for two reasons:
+#   1. It risks shadowing the real files this site serves — tracker.json, the
+#      self-hosted fonts, robots.txt, sitemap.xml — if asset precedence ever
+#      changes underneath us.
+#   2. It turns every typo and every dead inbound link into a soft-200 homepage.
+#      An honest 404 is better for readers and better for search.
+# Adding a page means adding its line here AND to ROUTES in index.html and to
+# sitemap.xml. Miss this file and the route works in-app but 404s on refresh.
+#
+# /api/* is not listed: it is served by the in-the-vial-subscribe Worker, whose
+# route runs ahead of Pages. Do not add a rule for it.
+
+/science        /index.html   200
+/bpc-157        /index.html   200
+/ghk-cu         /index.html   200
+/semaglutide    /index.html   200
+/retatrutide    /index.html   200
+/ipamorelin     /index.html   200
+/toolkit        /index.html   200
+/tracker        /index.html   200
+/about          /index.html   200
+/methodology    /index.html   200
+/legal          /index.html   200
+
+# Trailing slashes are redirected, never rewritten. Serving index.html at
+# "/toolkit/" would move the document base to /toolkit/, and the relative
+# url(fonts/…) and fetch('tracker.json') paths would resolve to /toolkit/fonts/…
+# — unstyled type and a silently stale tracker, with nothing in the console.
+
+/science/       /science      301
+/bpc-157/       /bpc-157      301
+/ghk-cu/        /ghk-cu       301
+/semaglutide/   /semaglutide  301
+/retatrutide/   /retatrutide  301
+/ipamorelin/    /ipamorelin   301
+/toolkit/       /toolkit      301
+/tracker/       /tracker      301
+/about/         /about        301
+/methodology/   /methodology  301
+/legal/         /legal        301

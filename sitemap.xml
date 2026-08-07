@@ -1,9 +1,237 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<!-- Each page exists in English and Spanish. The Spanish version is the same
+     document with ?lang=es, so every URL declares both as hreflang alternates
+     and each language's own URL as its canonical. Keep in step with ROUTES in
+     index.html and with _redirects. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
     <loc>https://in-the-vial.com/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/"/>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://in-the-vial.com/?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/science</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/science"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/science?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/science"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/science?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/science"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/science?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/science"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/toolkit</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/toolkit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/toolkit?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/toolkit"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/toolkit?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/toolkit"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/toolkit?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/toolkit"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/tracker</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/tracker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/tracker?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/tracker"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/tracker?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/tracker"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/tracker?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/tracker"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/bpc-157</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/bpc-157"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/bpc-157?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/bpc-157"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/bpc-157?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/bpc-157"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/bpc-157?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/bpc-157"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/ghk-cu</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/ghk-cu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/ghk-cu?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/ghk-cu"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/ghk-cu?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/ghk-cu"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/ghk-cu?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/ghk-cu"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/semaglutide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/semaglutide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/semaglutide?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/semaglutide"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/semaglutide?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/semaglutide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/semaglutide?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/semaglutide"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/retatrutide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/retatrutide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/retatrutide?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/retatrutide"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/retatrutide?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/retatrutide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/retatrutide?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/retatrutide"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/ipamorelin</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/ipamorelin"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/ipamorelin?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/ipamorelin"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/ipamorelin?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/ipamorelin"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/ipamorelin?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/ipamorelin"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/about?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/about"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/about?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/about?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/about"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/methodology</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/methodology"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/methodology?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/methodology"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/methodology?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/methodology"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/methodology?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/methodology"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://in-the-vial.com/legal</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/legal?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/legal"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/legal?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/legal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/legal?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/legal"/>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
 </urlset>

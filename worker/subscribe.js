@@ -588,6 +588,41 @@ async function handleBroadcast(request, env, origin) {
     return json({ ok: false, error: "invalid_language" }, 400, origin);
   }
 
+  // The `issue` parameter only namespaces the `sent:` markers — it does NOT
+  // select content. NEWSLETTERS is compiled into this bundle, so without this
+  // guard two mistakes pass silently, both reporting ok:true:
+  //
+  //   issue ahead of the bundle  -> the PREVIOUS issue is re-sent to everyone,
+  //                                 under fresh markers the guard can't catch.
+  //   issue behind the bundle    -> everyone is already marked; sends nothing.
+  //
+  // Refuse rather than guess. This is the only failure that reaches inboxes.
+  const deployedIssue = String(NEWSLETTERS.en?.issue || "").trim();
+  if (!deployedIssue) {
+    return json({ ok: false, error: "no_content_deployed" }, 503, origin);
+  }
+  if (issue !== deployedIssue) {
+    return json({
+      ok: false,
+      error: "issue_mismatch",
+      requested: issue,
+      deployed: deployedIssue,
+      hint: "The bundled newsletter is issue " + deployedIssue + ". Rebuild and "
+          + "redeploy (python3 newsletter/build.py && npx wrangler deploy), or "
+          + "pass the deployed issue number.",
+    }, 409, origin);
+  }
+  // Both languages must be the same issue, or half the list gets the wrong one.
+  const esIssue = String(NEWSLETTERS.es?.issue || "").trim();
+  if (esIssue && esIssue !== deployedIssue) {
+    return json({
+      ok: false,
+      error: "language_issue_mismatch",
+      en: deployedIssue,
+      es: esIssue,
+    }, 409, origin);
+  }
+
   const summary = {
     issue,
     dryRun: !confirm,
