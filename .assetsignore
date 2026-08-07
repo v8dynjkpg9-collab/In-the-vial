@@ -1,0 +1,29 @@
+# Files in this repo that are NOT part of the published site.
+#
+# The assets directory is the repo root, so without this every tracked file was
+# served: CLAUDE.md, the Worker sources, and unsent newsletter drafts marked
+# "DRAFT — private preview pending" were all publicly readable and crawlable.
+# Nothing secret leaked — the repo is public and secrets are Worker bindings —
+# but none of it belongs on the site.
+#
+# Do NOT add _redirects or _headers here. They are read by the asset layer as
+# configuration and are never served as files; excluding them from the upload
+# would silently turn the routing off.
+
+# Worker source and its build inputs
+src/
+scripts/
+wrangler.jsonc
+
+# The subscribe Worker lives in the same repo but deploys separately
+worker/
+
+# Newsletter drafts, including unsent issues
+newsletter/
+
+# Project tooling and working notes
+.claude/
+.wrangler/
+CLAUDE.md
+.gitignore
+.assetsignore
