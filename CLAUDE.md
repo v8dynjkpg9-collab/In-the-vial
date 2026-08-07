@@ -10,8 +10,13 @@ Independent, evidence-graded, non-commercial: **nothing is sold, no vendor is li
 | `index.html` | The entire site — markup, CSS, and JS inline. ~210 KB. |
 | `tracker.json` | Regulatory tracker content (5 lanes / 9 entries), bilingual `en`/`es` per field. |
 | `fonts/` | Self-hosted woff2 (Instrument Serif, IBM Plex Sans/Mono), Latin + Latin-Ext. |
-| `_redirects` | Cloudflare Pages route table — one line per page route. |
+| `_redirects` | Asset-layer route table — one line per page route. |
 | `sitemap.xml` | Every route in both languages, with hreflang alternates. |
+| `wrangler.jsonc` | The **site** Worker's config. `worker/wrangler.toml` is the subscribe Worker — different deployment. |
+| `src/index.js` | Site Worker: rewrites `<head>` per route so link previews are right. |
+| `src/routes.js` | **Generated** from `ROUTES` in `index.html`. Never hand-edit. |
+| `scripts/build-routes.py` | The generator for the above. |
+| `.assetsignore` | Keeps non-site files out of the published assets. |
 
 Single-page app: each section is a `.view` div toggled by JS. No build step, no dependencies, no backend.
 
@@ -38,7 +43,20 @@ Check `document.documentElement.scrollWidth` vs `clientWidth` — they must matc
 
   **Slugs must stay flat — one segment, no nesting.** Fonts load from `url(fonts/…)` and the tracker from `fetch('tracker.json')`, both *relative*. A single-segment path leaves the document base at `/` so those still resolve; `/science/bpc-157` would send them to `/science/fonts/…` and silently 404 the typography and the tracker together. Same reason language is `?lang=es` and not `/es/` — a query string doesn't move the base. This is also why `_redirects` maps trailing slashes with a 301 instead of rewriting them.
 
-- **A route lives in three places: `ROUTES` in `index.html`, `_redirects`, and `sitemap.xml`.** Miss `_redirects` and the page works in-app but 404s on refresh or on a shared link — the failure only shows up on a cold load, never while clicking around.
+- **A route lives in four places**, plus a generated fifth: `ROUTES` in `index.html`,
+  `_redirects`, `sitemap.xml`, and `assets.run_worker_first` in `wrangler.jsonc` — then
+  `python3 scripts/build-routes.py` to regenerate `src/routes.js`. Every one of these is
+  checked by `verify.sh`, because each failure is invisible in the place you'd look:
+  miss `_redirects` and it 404s only on a cold load; miss `run_worker_first` and it renders
+  perfectly but link previews show the homepage; let `routes.js` drift and the `<head>`
+  describes a different page than the body.
+
+- **`<head>` is rewritten twice, on purpose.** The Worker (`src/index.js`) rewrites `title`,
+  `description`, `og:*`, `canonical` and `hreflang` server-side with `HTMLRewriter`; the
+  router in `index.html` does the same client-side on navigation. The server pass exists
+  because social scrapers don't run JS — without it every shared link previewed as the
+  homepage. The client pass exists because in-app navigation never hits the server. They read
+  the same table, which is why `routes.js` is generated rather than written.
 
 - **Legacy `#view` hashes still resolve** and are upgraded to the real path on load. Newsletter issue 001 shipped `/#tracker` and `/#method` links; they must keep working for as long as that email exists.
 

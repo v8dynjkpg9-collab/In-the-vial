@@ -1,0 +1,42 @@
+{
+  // Config for the SITE Worker (in-the-vial.com). The subscribe Worker is a
+  // separate deployment with its own config in worker/wrangler.toml — these two
+  // must never be confused, and the names must not be edited: a changed name
+  // does not rename a Worker, it creates a second one and leaves the live site
+  // running the old code.
+  "name": "in-the-vial",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-06",
+
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+
+    // Page routes go to the Worker so it can rewrite <head> per route. Every
+    // other path — fonts, tracker.json, sitemap.xml, unknown paths — is served
+    // by the asset layer directly, including the _redirects rules.
+    //
+    // _redirects still carries a `200` rewrite for each of these as a fallback:
+    // if this list is ever wrong, the page is served with the homepage's <head>
+    // rather than 404ing. Degraded, not broken.
+    "run_worker_first": [
+      "/",
+      "/science",
+      "/bpc-157",
+      "/ghk-cu",
+      "/semaglutide",
+      "/retatrutide",
+      "/ipamorelin",
+      "/toolkit",
+      "/tracker",
+      "/about",
+      "/methodology",
+      "/legal"
+    ]
+  }
+
+  // No "routes" key on purpose. in-the-vial.com is attached to this Worker in
+  // the Cloudflare dashboard as a Custom Domain, which is managed separately
+  // from routes. Adding a routes block here would start managing them from the
+  // repo and could detach the live domain.
+}

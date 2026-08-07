@@ -33,6 +33,15 @@ else
   bad "a route is not registered in all three places"
 fi
 
+# The Worker rewrites <head> from src/routes.js; the browser reads ROUTES from
+# index.html. Drift means a page's head describes a different page than its body.
+if out=$(python3 scripts/build-routes.py --check 2>&1); then
+  ok "src/routes.js matches ROUTES in index.html"
+else
+  printf '%s\n' "$out" | sed 's/^/        /'
+  bad "src/routes.js is stale — run: python3 scripts/build-routes.py"
+fi
+
 # ------------------------------------------------------------------ tracker --
 section "Tracker schema"
 if out=$(python3 .claude/skills/tracker/validate_tracker.py tracker.json 2>&1); then

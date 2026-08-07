@@ -8,6 +8,7 @@ the check that catches it.
 
 Usage: python3 .claude/skills/verify/check_routes.py
 """
+import json
 import pathlib
 import re
 import sys
@@ -110,6 +111,35 @@ for src in rewrites:
 if "/api/*" in rewrites or "/*" in rewrites:
     fail("_redirects contains a catch-all or an /api/* rule — /api/* belongs to "
          "the Worker, and a catch-all can shadow tracker.json and the fonts")
+
+# ---- wrangler.jsonc: run_worker_first ---------------------------------------
+# A route missing here still renders — _redirects serves it — but the Worker
+# never sees it, so its <head> silently describes the homepage instead. That is
+# invisible in a browser and only shows up in a link preview.
+WRANGLER = ROOT / "wrangler.jsonc"
+if WRANGLER.exists():
+    raw = "\n".join(
+        "" if line.strip().startswith("//") else line
+        for line in WRANGLER.read_text(encoding="utf-8").splitlines()
+    )
+    try:
+        cfg = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        fail("wrangler.jsonc does not parse: %s" % exc)
+        cfg = {}
+    first = (cfg.get("assets") or {}).get("run_worker_first")
+    if not isinstance(first, list):
+        fail("wrangler.jsonc assets.run_worker_first should list the page routes")
+    else:
+        for r in routes:
+            if r["slug"] not in first:
+                fail("%s is not in assets.run_worker_first — it would render with "
+                     "the homepage's <title> and og: tags" % r["slug"])
+        for entry in first:
+            if entry not in slugs:
+                fail("run_worker_first lists %s, which is not a route" % entry)
+else:
+    notes.append("no wrangler.jsonc — the site Worker config is not in the repo")
 
 # ---- sitemap.xml ------------------------------------------------------------
 locs = set(re.findall(r"<loc>([^<]+)</loc>", SITEMAP.read_text(encoding="utf-8")))
