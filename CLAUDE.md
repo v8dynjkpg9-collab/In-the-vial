@@ -10,6 +10,8 @@ Independent, evidence-graded, non-commercial: **nothing is sold, no vendor is li
 | `index.html` | The entire site — markup, CSS, and JS inline. ~210 KB. |
 | `tracker.json` | Regulatory tracker content (5 lanes / 9 entries), bilingual `en`/`es` per field. |
 | `fonts/` | Self-hosted woff2 (Instrument Serif, IBM Plex Sans/Mono), Latin + Latin-Ext. |
+| `_redirects` | Cloudflare Pages route table — one line per page route. |
+| `sitemap.xml` | Every route in both languages, with hreflang alternates. |
 
 Single-page app: each section is a `.view` div toggled by JS. No build step, no dependencies, no backend.
 
@@ -32,7 +34,17 @@ Check `document.documentElement.scrollWidth` vs `clientWidth` — they must matc
 
 ## Architecture notes
 
-- **Navigation** pushes real history entries (`pushState`), so back/forward and deep links like `#toolkit` work. Keep `href` attributes on nav elements — they're what makes the site keyboard-accessible and screen-reader-navigable; the delegated `preventDefault()` stops the jump.
+- **Every view is a real page route** (`/toolkit`, `/bpc-157`), defined by the `ROUTES` table in `index.html`. Each route carries its own title and description in both languages and rewrites `<title>`, `description`, `canonical`, `og:*` and the three `hreflang` links on navigation. Keep `href` attributes on nav elements — they make the site keyboard-accessible and screen-reader-navigable, and now also make modifier-click open a real new tab; the delegated `preventDefault()` stops the jump for plain clicks only.
+
+  **Slugs must stay flat — one segment, no nesting.** Fonts load from `url(fonts/…)` and the tracker from `fetch('tracker.json')`, both *relative*. A single-segment path leaves the document base at `/` so those still resolve; `/science/bpc-157` would send them to `/science/fonts/…` and silently 404 the typography and the tracker together. Same reason language is `?lang=es` and not `/es/` — a query string doesn't move the base. This is also why `_redirects` maps trailing slashes with a 301 instead of rewriting them.
+
+- **A route lives in three places: `ROUTES` in `index.html`, `_redirects`, and `sitemap.xml`.** Miss `_redirects` and the page works in-app but 404s on refresh or on a shared link — the failure only shows up on a cold load, never while clicking around.
+
+- **Legacy `#view` hashes still resolve** and are upgraded to the real path on load. Newsletter issue 001 shipped `/#tracker` and `/#method` links; they must keep working for as long as that email exists.
+
+- **`_redirects` lists routes explicitly rather than `/* /index.html 200`.** A catch-all risks shadowing `tracker.json`, the fonts, `robots.txt` and `sitemap.xml`, and turns every dead link into a soft-200 homepage instead of an honest 404. Don't add a rule for `/api/*` — that's the Worker's, and its route runs ahead of Pages.
+
+- **Declare functions with unique names inside the main IIFE.** The whole script is one function scope, so two `function render(){}` declarations silently collapse into whichever is declared last — the router's `render` was eaten by the residue-chain renderer's, and the only symptom was the home view showing at every URL. It is the `.tc` collision again, in JavaScript. The router's is now `renderRoute`.
 - **Nav collapses to a hamburger below 760px**; the menu closes on navigation, outside tap, Escape, and viewport resize.
 - **`renderTracker()` uses `innerHTML`** because tracker entries contain intentional `<strong>` tags. Only ever put first-party content in `tracker.json`. *(An older review note claiming the site has no `innerHTML` predates this and is no longer accurate.)*
 - **`#tracker-lanes` is in the i18n `SKIP` list** — the render owns its own language, driven by `refreshDynamic()` on toggle.
@@ -62,12 +74,30 @@ Delegate *judgement*, and apply the results yourself.
 **Checks are scripts, not agents.** Anything deterministic is a script, because a script's output
 can be audited and an agent reporting "I ran the check" cannot be told apart from one that didn't.
 
+**One command runs all of them.** Use this before any deploy:
+
 ```bash
+bash .claude/verify.sh
+```
+
+It gates on: JS syntax · route registration (`ROUTES` / `_redirects` / `sitemap.xml`) ·
+tracker schema · inline-tracker drift · newsletter freshness · i18n **delta**. Design-scale
+is advisory and never fails the run. Exits non-zero if anything is genuinely broken.
+
+i18n is gated on delta, not absolute count — there is a known backlog of short technical
+strings. The baseline lives in `.claude/i18n-baseline.txt`; when you translate some, lower it.
+
+The individual checks still run standalone when you want one in isolation:
+
+```bash
+python3 .claude/skills/verify/check_routes.py                   # routes in all three files
 python3 .claude/skills/i18n-check/check_i18n.py index.html      # untranslated strings
 python3 .claude/skills/tracker/validate_tracker.py tracker.json # tracker schema
 python3 .claude/skills/design-scale/audit_scale.py index.html   # design-system sprawl
 bash .claude/hooks/js-syntax-check.sh index.html                # JS syntax (also a PostToolUse hook)
 ```
+
+`verify.sh` does not check how anything *looks*. Still check 390 / 768 / 1280px yourself.
 
 **Two agents exist, for the two things no script can judge:**
 
@@ -85,8 +115,11 @@ only write lock.
 2. Run `evidence-auditor` on the draft **before** wiring it in. Fabricated trial results are the
    most damaging failure available on this site and the least visible.
 3. Apply its BLOCKING findings, then wire in all six places and add the ES keys (~45 per compound).
-4. Run the scripts. Gate on *delta*: a change must add **zero** new orphans.
-5. Run `design-critic` at 390 / 768 / 1280px.
+4. Register the route in all three places — `ROUTES` (with an EN *and* ES title and description),
+   `_redirects` (rewrite + trailing-slash 301), and `sitemap.xml` (both language URLs).
+5. Run the scripts. Gate on *delta*: a change must add **zero** new orphans.
+6. Run `design-critic` at 390 / 768 / 1280px.
+7. Load the new route cold (not by clicking to it) to prove `_redirects` was updated.
 
 ### Known gaps
 
@@ -100,6 +133,32 @@ only write lock.
   `Animals (extensive):`). Values are currently identical so behaviour is unaffected, but the
   object literal silently takes the last one — if two ever diverge it fails invisibly.
 
+## Newsletter
+
+`worker/newsletter-content.js` is **generated** — rebuild it, never hand-edit it:
+
+```bash
+python3 newsletter/build.py
+```
+
+It compiles `newsletter/*.md` (frontmatter `issue`, `date`, `subject`, `preheader` + body)
+into the Worker bundle, ignoring `*.before-edit-*` backups. It refuses to build an issue
+with no `{{unsubscribe_url}}`, or one whose EN and ES issue numbers disagree. `--check`
+exits non-zero when the compiled file is stale; `verify.sh` runs that.
+
+Publishing an issue is three steps, and only the third sends mail:
+
+```bash
+python3 newsletter/build.py && bash .claude/verify.sh
+cd worker && npx wrangler deploy
+# then the broadcast: dry run, then {"confirm":true,"limit":1}, then the list
+```
+
+**The `issue` parameter namespaces the `sent:` markers — it does not select content.**
+Content is whatever is compiled into the deployed bundle. The broadcast now rejects a
+mismatch with `409 issue_mismatch`; before that guard, an issue number ahead of the bundle
+silently re-sent the *previous* issue to the whole list and reported `ok: true`.
+
 ## Deploy
 
 `main` → connected static host (Cloudflare Pages) → auto-publishes on push. Build command is empty; output directory is `/`. Nothing to compile.
@@ -108,3 +167,7 @@ Local preview (needed so `fetch('tracker.json')` works):
 ```bash
 python3 -m http.server 8142
 ```
+
+`http.server` does **not** apply `_redirects`, so it 404s every page route — it can only serve
+`/`, and you navigate from there. That is fine for content work, but it cannot prove a route
+loads cold. To test routing, use a server that reads `_redirects`, or check the live deploy.
