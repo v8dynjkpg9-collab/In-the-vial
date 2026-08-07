@@ -16,19 +16,26 @@
 # sitemap.xml. Miss this file and the route works in-app but 404s on refresh.
 #
 # /api/* is not listed: it is served by the in-the-vial-subscribe Worker, whose
-# route runs ahead of Pages. Do not add a rule for it.
+# route runs ahead of the site Worker. Do not add a rule for it.
+#
+# The rewrite target is "/" and NOT "/index.html". Workers static assets
+# canonicalises /index.html with a 307 to /, and a proxy rule inherits that
+# redirect — so `/toolkit /index.html 200` shipped as `/toolkit -> 307 -> /`,
+# quietly sending every deep link to the homepage. Proxy to "/" instead.
+# Verified with `npx wrangler dev --assets=.`, which runs this same rule engine
+# locally; plain python3 -m http.server cannot see any of this.
 
-/science        /index.html   200
-/bpc-157        /index.html   200
-/ghk-cu         /index.html   200
-/semaglutide    /index.html   200
-/retatrutide    /index.html   200
-/ipamorelin     /index.html   200
-/toolkit        /index.html   200
-/tracker        /index.html   200
-/about          /index.html   200
-/methodology    /index.html   200
-/legal          /index.html   200
+/science        /             200
+/bpc-157        /             200
+/ghk-cu         /             200
+/semaglutide    /             200
+/retatrutide    /             200
+/ipamorelin     /             200
+/toolkit        /             200
+/tracker        /             200
+/about          /             200
+/methodology    /             200
+/legal          /             200
 
 # Trailing slashes are redirected, never rewritten. Serving index.html at
 # "/toolkit/" would move the document base to /toolkit/, and the relative

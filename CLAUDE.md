@@ -184,6 +184,17 @@ Local preview (needed so `fetch('tracker.json')` works):
 python3 -m http.server 8142
 ```
 
-`http.server` does **not** apply `_redirects`, so it 404s every page route — it can only serve
-`/`, and you navigate from there. That is fine for content work, but it cannot prove a route
-loads cold. To test routing, use a server that reads `_redirects`, or check the live deploy.
+`http.server` does **not** apply `_redirects`, so it 404s every page route. Fine for content
+work; useless for routing.
+
+**To test routing, run the real asset runtime locally:**
+
+```bash
+npx wrangler dev --assets=. --port 8791
+```
+
+It parses `_redirects` exactly as production does and prints how many rules it accepted. This
+is the only local way to catch routing bugs — one shipped to production because it was tested
+against a hand-written mimic instead: `/toolkit /index.html 200` looked right and became
+`307 -> /`, because Workers static assets canonicalises `/index.html` to `/` and a proxy rule
+inherits that redirect. Every deep link silently landed on the homepage. **Proxy to `/`.**

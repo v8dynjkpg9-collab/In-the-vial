@@ -90,9 +90,15 @@ for raw in REDIRECTS.read_text(encoding="utf-8").splitlines():
 for r in routes:
     if r["slug"] == "/":
         continue  # index.html is served at / directly; no rule needed
-    if rewrites.get(r["slug"]) != "/index.html":
-        fail("%s has no `%s /index.html 200` line in _redirects "
-             "— it will 404 on refresh" % (r["slug"], r["slug"]))
+    # Target must be "/" — proxying to "/index.html" inherits the asset
+    # server's 307 canonicalisation and sends every deep link to the homepage.
+    target = rewrites.get(r["slug"])
+    if target == "/index.html":
+        fail("%s proxies to /index.html, which 307s to / — use `%s / 200`"
+             % (r["slug"], r["slug"]))
+    elif target != "/":
+        fail("%s has no `%s / 200` line in _redirects — it will 404 on refresh"
+             % (r["slug"], r["slug"]))
     if permanent.get(r["slug"] + "/") != r["slug"]:
         fail("%s/ has no 301 to %s in _redirects — a trailing slash would move "
              "the document base and break relative asset paths"

@@ -4,3 +4,6 @@
 # Timestamped local backups created during editing — never part of the site
 *.backup-*
 *.before-edit-*
+
+# Local wrangler state — never part of the site (assets dir is the repo root)
+.wrangler/
