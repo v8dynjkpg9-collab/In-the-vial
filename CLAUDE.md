@@ -25,6 +25,13 @@ Single-page app: each section is a `.view` div toggled by JS. No build step, no 
 **1. Every English string needs a Spanish counterpart.**
 Translations live in the `ES` map inside `<script>`, keyed to the *exact* English text. Editing an English string silently orphans its Spanish entry and that snippet falls back to English. When you change user-visible English, update its `ES` key in the same task. Dynamic strings live in `DYN`, not `ES`.
 
+Coverage is currently **complete** — `check_i18n.py` reports 0 untranslated and gates on that,
+so any new orphan fails the build rather than joining a backlog. A string that should *stay*
+English (brand, SI units, assay names like `HPLC` or `USP <71>`) goes in
+`.claude/skills/i18n-check/intentionally-english.txt` **with its reason**, not into `ES`. The
+checker also fails on a stale allowlist entry, so that file cannot quietly start excusing text
+it was never meant to cover.
+
 **2. Do not reintroduce third-party requests.**
 Fonts are self-hosted deliberately. The privacy policy now promises *"Loading a page does not cause your browser to contact any outside company."* Adding a Google Fonts link, a CDN script, or an analytics tag makes that statement false. If analytics is ever added, the privacy section must be updated first.
 
@@ -141,15 +148,23 @@ only write lock.
 
 ### Known gaps
 
-- **Untranslated attributes.** The i18n TreeWalker is `SHOW_TEXT` only, so the 11 `aria-label`
-  attributes stay English in Spanish mode — a screen-reader user switching to ES still hears
-  English. Not yet fixed.
+- ~~Untranslated attributes.~~ **Fixed.** `applyAria()` translates `aria-label` in a pass of
+  its own, because the TreeWalker is `SHOW_TEXT` and never sees attributes. The menu button
+  is special-cased: it rewrites its own label as it opens and closes, so its label is derived
+  from `aria-expanded` rather than from a cached original. `langBtn` stays
+  `"Switch language / Cambiar idioma"` in both languages on purpose.
 - **Mobile asserts on hidden views are meaningless.** `.view{display:none}`, so a hidden view
   contributes nothing to `scrollWidth`. Navigate to the view first, then assert — and check in
   **both** languages, since Spanish strings run longer and overflow is often a translation bug.
-- **Five duplicate `ES` keys** (`TIER A`, `TIER C`, `Regulatory status`, `Open the toolkit →`,
-  `Animals (extensive):`). Values are currently identical so behaviour is unaffected, but the
-  object literal silently takes the last one — if two ever diverge it fails invisibly.
+- ~~Five duplicate `ES` keys.~~ **Fixed** — there were six (the note missed
+  `The regulatory tracker`). All had identical values, so removing the earlier copy of each
+  changed no behaviour. `check_i18n.py` now fails on any duplicate, so they cannot return.
+
+- **`check_i18n.py` used to under-report.** Its key extraction matched `'…'` followed by `:`,
+  which desynchronises on a key that itself begins with a colon — and inline `<em>`/`<strong>`
+  tags produce exactly those fragments. It matched the `,\n` between entries as a key and
+  reported the real one as untranslated. It now scans the literal properly. If you add a key
+  and the checker still calls it missing, suspect the checker, not the key.
 
 ## Newsletter
 

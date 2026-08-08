@@ -1648,13 +1648,13 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 
   /* ---- mobile nav menu ---- */
   var navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navlinks');
-  function closeMenu(){if(navLinks)navLinks.classList.remove('open');if(navToggle){navToggle.setAttribute('aria-expanded','false');navToggle.setAttribute('aria-label','Open menu');}}
+  function closeMenu(){if(navLinks)navLinks.classList.remove('open');if(navToggle){navToggle.setAttribute('aria-expanded','false');navToggle.setAttribute('aria-label',L(DYN.menu.open));}}
   if(navToggle&&navLinks){
     navToggle.addEventListener('click',function(e){
       e.preventDefault();e.stopPropagation();
       var open=navLinks.classList.toggle('open');
       navToggle.setAttribute('aria-expanded',open?'true':'false');
-      navToggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+      navToggle.setAttribute('aria-label',open?L(DYN.menu.close):L(DYN.menu.open));
     });
     document.addEventListener('click',function(e){
       if(navLinks.classList.contains('open')&&!e.target.closest('#navlinks')&&!e.target.closest('#navToggle'))closeMenu();
@@ -1679,6 +1679,10 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
   function L(o){return (o&&o[I18N.lang])||(o&&o.en)||'';}
   var AA_ES={Alanine:'Alanina',Arginine:'Arginina',Asparagine:'Asparagina',Aspartate:'Aspartato',Cysteine:'Cisteína',Glutamate:'Glutamato',Glutamine:'Glutamina',Glycine:'Glicina',Histidine:'Histidina',Isoleucine:'Isoleucina',Leucine:'Leucina',Lysine:'Lisina',Methionine:'Metionina',Phenylalanine:'Fenilalanina',Proline:'Prolina',Serine:'Serina',Threonine:'Treonina',Tryptophan:'Triptófano',Tyrosine:'Tirosina',Valine:'Valina'};
   var DYN={
+    menu:{
+      open:{en:'Open menu',es:'Abrir menú'},
+      close:{en:'Close menu',es:'Cerrar menú'}
+    },
     sub:{
       sending:{en:'Sending…',es:'Enviando…'},
       done:{en:'Subscribed. You will only hear from this list when the tracker changes.',es:'Suscrito. Solo recibirás correos de esta lista cuando el seguimiento cambie.'},
@@ -1712,6 +1716,31 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     risk:{low:{en:'Low risk',es:'Riesgo bajo'},some:{en:'Some risk',es:'Algo de riesgo'},high:{en:'High risk',es:'Riesgo alto'},severe:{en:'Severe risk',es:'Riesgo grave'}}
   };
   var ES={
+    /* Keys must be pre-trimmed — applyLang looks up ES[text.trim()], so a
+       leading space means the entry silently never matches. The one starting
+       with a colon is a real text node: an inline <em> splits the sentence,
+       and each fragment needs its own key.
+       Semaglutide differs in Spanish; BPC-157 and the other alphanumeric
+       research codes do not, and are listed in intentionally-english.txt. */
+    'Reading':'Lectura',
+    'Semaglutide':'Semaglutida',
+    'not listed':'no figura',
+    'Anyone who wants to be':'Cualquiera que quiera ser',
+    'Sterility':'Esterilidad',
+    '99% pure':'99% puro',
+    /* aria-label values. These are attributes, not text nodes, so the
+       TreeWalker never sees them — applyLang translates them in a separate
+       pass. Until it did, a screen-reader user on the Spanish site heard
+       every figure described in English. */
+    'In The Vial — home':'In The Vial — inicio',
+    'Case file summary':'Resumen del expediente',
+    'Schematic: a certificate of analysis beside the vial it claims to describe.':'Esquema: un certificado de análisis junto al vial que afirma describir.',
+    'Chromatogram with one declared peak and two undisclosed impurity peaks. Tap a peak to inspect it.':'Cromatograma con un pico declarado y dos picos de impurezas no divulgados. Toca un pico para inspeccionarlo.',
+    'Schematic 15-residue chain for BPC-157':'Esquema de la cadena de 15 residuos del BPC-157',
+    'Schematic tripeptide chain glycine-histidine-lysine bound to a copper ion':'Esquema de la cadena tripeptídica glicina-histidina-lisina unida a un ion de cobre',
+    'Schematic of an engineered GLP-1 analog with an attached fatty-acid chain':'Esquema de un análogo de GLP-1 modificado con una cadena de ácido graso adjunta',
+    'Schematic of the N-terminal fragment of retatrutide with an attached fatty-acid chain':'Esquema del fragmento N-terminal de la retatrutida con una cadena de ácido graso adjunta',
+    'Schematic five-residue chain for ipamorelin, including non-standard residues':'Esquema de la cadena de cinco residuos de la ipamorelina, incluidos residuos no estándar',
     'Fonts and every other asset are served from this site itself. Loading a page does not cause your browser to contact any outside company — no font CDN, no external scripts — so no third party learns you were here. That remains true whether or not you subscribe to the newsletter; the only time any data leaves this site is if you type an address into the subscribe box and press the button.':'Las tipografías y todos los demás recursos se sirven desde este mismo sitio. Cargar una página no hace que tu navegador contacte a ninguna empresa externa — sin CDN de fuentes, sin scripts externos — por lo que ningún tercero se entera de que estuviste aquí. Esto sigue siendo cierto te suscribas o no al boletín; el único momento en que algún dato sale de este sitio es si escribes una dirección en la casilla de suscripción y pulsas el botón.',
     'If you subscribe to the newsletter.':'Si te suscribes al boletín.',
     'Your email address is sent to this site\'s own server and then stored by the email provider that delivers the digest. It is used for nothing except sending that digest. It is never sold, rented, shared, or used to build a profile, and every email carries a one-click unsubscribe that removes you permanently. No other field is collected — not your name, not your location, not what you read here.':'Tu dirección de correo se envía al servidor de este mismo sitio y luego la almacena el proveedor de correo que entrega el resumen. No se usa para nada más que enviar ese resumen. Nunca se vende, alquila ni comparte, ni se usa para crear un perfil, y cada correo incluye una baja con un solo clic que te elimina de forma permanente. No se recoge ningún otro dato — ni tu nombre, ni tu ubicación, ni lo que leíste aquí.',
@@ -1726,7 +1755,6 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'Your address is stored only to send this digest, is never sold or shared, and every email carries a one-click unsubscribe. Nothing else about you is collected. Reading the site still contacts no outside company — see the':'Tu dirección se guarda solo para enviar este resumen, nunca se vende ni se comparte, y cada correo lleva un enlace de baja con un solo clic. No se recoge nada más sobre ti. Leer el sitio sigue sin contactar a ninguna empresa externa — consulta el',
     'privacy notice':'aviso de privacidad',
     'Compound pages are built from primary literature located through PubMed and ClinicalTrials.gov, plus the relevant regulatory record — Federal Register notices, FDA guidance and advisory-committee materials, and published enforcement actions.':'Las páginas de compuestos se construyen a partir de literatura primaria localizada mediante PubMed y ClinicalTrials.gov, más el registro regulatorio pertinente — avisos del Federal Register, guías de la FDA y materiales de comités asesores, y acciones de aplicación publicadas.',
-    'The regulatory tracker':'El seguimiento regulatorio',
     'No vendor money, no affiliate links, no purchase recommendations — the financial position is stated in full on the':'Sin dinero de vendedores, sin enlaces de afiliados, sin recomendaciones de compra — la posición económica se detalla por completo en la',
     'Methodology & corrections':'Metodología y correcciones',
     /* --- methodology page --- */
@@ -1870,7 +1898,6 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'That ipamorelin increases growth hormone is well established. That increasing growth hormone this way produces more muscle, less fat, better sleep or slower ageing in healthy adults is a separate claim — and it is the claim that has not been demonstrated in controlled human trials. A measurable change in a blood marker is not the same as a benefit you would notice or want.':'Que la ipamorelina aumenta la hormona del crecimiento está bien establecido. Que aumentar la hormona del crecimiento de este modo produzca más músculo, menos grasa, mejor sueño o un envejecimiento más lento en adultos sanos es una afirmación distinta — y es la afirmación que no se ha demostrado en ensayos humanos controlados. Un cambio medible en un marcador sanguíneo no es lo mismo que un beneficio que notarías o querrías.',
     'Humans (limited):':'Humanos (limitado):',
     'early-phase work establishing that it raises growth hormone, plus a discontinued clinical programme in post-operative ileus.':' trabajo de fase inicial que establece que eleva la hormona del crecimiento, más un programa clínico descontinuado en íleo postoperatorio.',
-    'Animals (extensive):':'Animales (extenso):',
     'growth-hormone release, bone and body-composition models.':' liberación de hormona del crecimiento, modelos óseos y de composición corporal.',
     'Not studied in humans:':'No estudiado en humanos:',
     'the marketed uses — muscle gain, fat loss, recovery, sleep quality and anti-ageing — in healthy adults, over any meaningful duration.':' los usos comercializados — ganancia muscular, pérdida de grasa, recuperación, calidad del sueño y antienvejecimiento — en adultos sanos, durante cualquier duración significativa.',
@@ -1910,8 +1937,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'Fig. 1 — HPLC trace · UV 214nm':'Fig. 1 — traza HPLC · UV 214nm',
     'Vendor claim on the label':'Afirmación del proveedor en la etiqueta','99.4% pure':'99,4 % puro',
     'DECLARED · 99.4%':'DECLARADO · 99,4 %','IMPURITY A':'IMPUREZA A','IMPURITY B':'IMPUREZA B',
-    'How to read it:':'Cómo leerlo:','purity is the area under the main peak — but the trace shows everything else in the vial too.':'la pureza es el área bajo el pico principal — pero la traza también muestra todo lo demás en el vial.','Open the toolkit →':'Abre las herramientas →',
-    'No products. No vendor links. No affiliate pitches. The independence is the point.':'Sin productos. Sin enlaces a vendedores. Sin promociones de afiliados. La independencia es el objetivo.',
+    'How to read it:':'Cómo leerlo:','purity is the area under the main peak — but the trace shows everything else in the vial too.':'la pureza es el área bajo el pico principal — pero la traza también muestra todo lo demás en el vial.','No products. No vendor links. No affiliate pitches. The independence is the point.':'Sin productos. Sin enlaces a vendedores. Sin promociones de afiliados. La independencia es el objetivo.',
     'Start here':'Empieza aquí','Four instruments. One job: replace trust with verification.':'Cuatro instrumentos. Un objetivo: reemplazar la confianza por la verificación.','Each answers a different question you should be able to answer before you ever rely on a vial.':'Cada uno responde a una pregunta distinta que deberías poder responder antes de confiar en un vial.',
     'Interactive':'Interactivo','Library':'Biblioteca','Stance':'Postura',
     'The buyer-literacy toolkit':'El kit de alfabetización del comprador','A live reconstitution & dose calculator, an interactive COA checker, a vendor red-flag scorecard, and a guide to what each lab test can and can\'t tell you.':'Una calculadora de reconstitución y dosis en vivo, un verificador interactivo de COA, una tarjeta de señales de alerta del vendedor y una guía de lo que cada prueba de laboratorio puede y no puede decirte.','Open the toolkit →':'Abre las herramientas →',
@@ -1930,7 +1956,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'The one line worth repeating':'La frase que vale la pena repetir','A high purity number is not a safety certificate. Purity, identity, and contamination are measured on entirely different instruments — and "99% pure" can still mean unsafe to inject. The toolkit\'s test guide shows exactly why.':'Un número de pureza alto no es un certificado de seguridad. La pureza, la identidad y la contaminación se miden con instrumentos completamente distintos — y "99 % puro" aún puede significar inseguro para inyectar. La guía de pruebas de las herramientas muestra exactamente por qué.',
     'How to read the grades':'Cómo leer las calificaciones','The four-tier evidence scale':'La escala de evidencia de cuatro niveles','The tier reflects the':'El nivel refleja la','strength of evidence in humans':'fuerza de la evidencia en humanos',', not how interesting the molecule is. Plenty of Tier C compounds are fascinating — the tier just tells you not to mistake a mouse study for a settled fact.':', no lo interesante que sea la molécula. Muchos compuestos de Nivel C son fascinantes — el nivel solo te dice que no confundas un estudio en ratones con un hecho establecido.',
     'Strongest human evidence':'Evidencia humana más fuerte','Weakest':'Más débil',
-    'TIER A':'NIVEL A','TIER B':'NIVEL B','TIER C':'NIVEL C','TIER D':'NIVEL D',
+    'TIER B':'NIVEL B','TIER D':'NIVEL D',
     'Approved drug, robust human RCTs.':'Fármaco aprobado, ensayos clínicos aleatorizados sólidos en humanos.','Large randomized trials, regulatory approval, well-characterized benefits and risks.':'Grandes ensayos aleatorizados, aprobación regulatoria, beneficios y riesgos bien caracterizados.',
     'Some human data, limited or lower quality.':'Algunos datos en humanos, limitados o de menor calidad.','Real human studies exist but are small, short, or mixed. Promising, not proven.':'Existen estudios reales en humanos, pero son pequeños, cortos o mixtos. Prometedor, no probado.',
     'Preclinical only.':'Solo preclínico.','Animal or in-vitro studies, no rigorous human trials. Where the majority of marketed research peptides actually sit.':'Estudios en animales o in vitro, sin ensayos rigurosos en humanos. Donde en realidad se sitúa la mayoría de los péptidos de investigación comercializados.',
@@ -1947,7 +1973,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     'A 15-amino-acid peptide derived from a protein found in gastric juice. Remarkable in animal healing studies; essentially untested in rigorous human trials, despite marketing that implies otherwise.':'Un péptido de 15 aminoácidos derivado de una proteína del jugo gástrico. Notable en estudios de cicatrización en animales; esencialmente sin probar en ensayos rigurosos en humanos, a pesar del marketing que sugiere lo contrario.',
     'Copper tripeptide-1 — a naturally occurring peptide-copper complex. One of the better-supported peptides in skincare, and one of the more overreached when sold as an injectable.':'Tripéptido-1 de cobre — un complejo péptido-cobre de origen natural. Uno de los péptidos mejor respaldados en el cuidado de la piel, y uno de los más exagerados cuando se vende como inyectable.',
     'A GLP-1 receptor agonist with large randomized trials and FDA approval. Featured on purpose: it shows what real evidence looks like — and that this site is pro-evidence, not anti-peptide.':'Un agonista del receptor de GLP-1 con grandes ensayos aleatorizados y aprobación de la FDA. Incluido a propósito: muestra cómo se ve la evidencia real — y que este sitio está a favor de la evidencia, no en contra de los péptidos.',
-    'Class':'Clase','Evidence tier':'Nivel de evidencia','Human trial data':'Datos de ensayos en humanos','Regulatory status':'Estado regulatorio','Human data':'Datos en humanos',
+    'Class':'Clase','Evidence tier':'Nivel de evidencia','Human trial data':'Datos de ensayos en humanos','Human data':'Datos en humanos',
     'Synthetic peptide fragment':'Fragmento de péptido sintético','C — animal / in-vitro':'C — animal / in vitro','Minimal to none':'Mínimos o nulos','Not FDA approved':'No aprobado por la FDA',
     'Copper-peptide complex (GHK + Cu²⁺)':'Complejo cobre-péptido (GHK + Cu²⁺)','B topical / C injectable':'B tópico / C inyectable','Topical: moderate · Systemic: weak':'Tópico: moderado · Sistémico: débil','Legal cosmetic ingredient':'Ingrediente cosmético legal',
     'GLP-1 receptor agonist':'Agonista del receptor de GLP-1','A — large human RCTs':'A — grandes ECA en humanos','Extensive, high quality':'Extensos, de alta calidad','FDA approved':'Aprobado por la FDA',
@@ -2094,6 +2120,28 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
     }
     return arr;
   }
+  /* aria-label is an attribute, so the SHOW_TEXT TreeWalker above never reaches
+     it. Without this pass a screen-reader user who switched to Spanish still
+     heard every figure, the dossier and the home link described in English. */
+  function buildAria(){
+    return [].map.call(document.querySelectorAll('[aria-label]'),function(el){
+      return {el:el,orig:el.getAttribute('aria-label')};
+    });
+  }
+  function applyAria(lang){
+    if(!I18N.aria)I18N.aria=buildAria();
+    I18N.aria.forEach(function(it){
+      // The menu button rewrites its own label as it opens and closes, so its
+      // cached "orig" goes stale. Derive it from the state instead.
+      if(it.el.id==='navToggle'){
+        var open=it.el.getAttribute('aria-expanded')==='true';
+        it.el.setAttribute('aria-label',open?L(DYN.menu.close):L(DYN.menu.open));
+        return;
+      }
+      var tr=lang==='es'&&ES[it.orig];
+      it.el.setAttribute('aria-label',tr||it.orig);
+    });
+  }
   function applyLang(lang){
     I18N.lang=lang;
     document.documentElement.setAttribute('lang',lang);
@@ -2105,6 +2153,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         else it.node.nodeValue=it.orig;
       }else it.node.nodeValue=it.orig;
     });
+    applyAria(lang);
     refreshDynamic();
     syncRouteLang(lang); // keep ?lang=, canonical, hreflang and og: in step
     try{localStorage.setItem('itv_lang',lang);}catch(e){}

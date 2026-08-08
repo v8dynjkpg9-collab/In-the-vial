@@ -1,0 +1,51 @@
+# Strings that are deliberately English in Spanish mode.
+#
+# Without this list the checker reported 29 "untranslated" strings forever, of
+# which only seven were real. A number that never moves gets ignored, and a
+# genuine new orphan hides in the noise. Everything here is a considered
+# decision; anything NOT here is a bug.
+#
+# One string per line, matched exactly against the trimmed text node.
+# The checker fails if a line here no longer appears on the page, so a stale
+# entry cannot quietly start hiding a real gap.
+
+# --- Brand and identifiers -------------------------------------------------
+# The site's name and its case-file number are proper nouns.
+In The Vial
+№ ITV-001
+Alexander Ayala
+corrections@in-the-vial.com
+
+# --- Compound designations -------------------------------------------------
+# Alphanumeric research codes are identical in both languages. Compound names
+# that DO differ (Semaglutida, Retatrutida, Ipamorelina) are translated.
+BPC-157
+TB-500, CJC-1295, Epitalon…
+
+# --- The mock certificate of analysis --------------------------------------
+# Plate II reproduces a real vendor COA, and real COAs arrive in English. The
+# document's own field labels stay as a reader would actually receive them.
+# The site's annotations ON that document are translated, because those are the
+# site speaking rather than the specimen.
+CERTIFICATE OF ANALYSIS
+PURITY
+IDENTITY
+ENDOTOXIN
+SPECIMEN
+HPLC · UV 214nm
+
+# --- Analytical methods and pharmacopoeia ----------------------------------
+# Assay names are international; a Spanish lab report says HPLC and ICP-MS too.
+# Translating them would make the test guide harder to use, not easier.
+HPLC
+LC-MS/MS
+LAL / rFC
+ICP-MS
+GC-MS
+TAMC / TYMC
+USP <71>
+
+# --- SI units --------------------------------------------------------------
+mg
+mL
+mcg
