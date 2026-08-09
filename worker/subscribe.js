@@ -608,8 +608,10 @@ async function handleBroadcast(request, env, origin) {
       requested: issue,
       deployed: deployedIssue,
       hint: "The bundled newsletter is issue " + deployedIssue + ". Rebuild and "
-          + "redeploy (python3 newsletter/build.py && npx wrangler deploy), or "
-          + "pass the deployed issue number.",
+          + "redeploy (python3 newsletter/build.py, then from worker/: "
+          + "npx wrangler deploy --config wrangler.toml), or pass the deployed "
+          + "issue number. The --config flag is required: without it wrangler "
+          + "resolves the site Worker and this code never updates.",
     }, 409, origin);
   }
   // Both languages must be the same issue, or half the list gets the wrong one.
