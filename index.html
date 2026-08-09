@@ -790,16 +790,16 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
               <rect class="pk-hit" x="322" y="14" width="60" height="164"/>
             </g>
             <g class="pk-grp pk-imp" data-peak="impA" data-title="Impurity A" data-note="An undisclosed secondary peak. The headline purity number never mentioned it — but the instrument resolved it clearly.">
-              <line class="stem" x1="560" y1="96" x2="560" y2="14"/>
-              <text class="cap" x="560" y="11" text-anchor="middle">IMPURITY A</text>
+              <line class="stem" x1="560" y1="96" x2="560" y2="30"/>
+              <text class="cap" x="560" y="27" text-anchor="middle">IMPURITY A</text>
               <circle class="pk-dot" cx="560" cy="100" r="5" fill="var(--rust)"/>
-              <rect class="pk-hit" x="536" y="14" width="48" height="164"/>
+              <rect class="pk-hit" x="536" y="30" width="48" height="148"/>
             </g>
             <g class="pk-grp pk-imp" data-peak="impB" data-title="Impurity B" data-note="A second undisclosed impurity. Two peaks the purity figure quietly rolled past — this is what a single number hides.">
-              <line class="stem" x1="672" y1="118" x2="672" y2="30"/>
-              <text class="cap" x="672" y="27" text-anchor="middle">IMPURITY B</text>
+              <line class="stem" x1="672" y1="118" x2="672" y2="14"/>
+              <text class="cap" x="672" y="11" text-anchor="middle">IMPURITY B</text>
               <circle class="pk-dot" cx="672" cy="122" r="5" fill="var(--rust)"/>
-              <rect class="pk-hit" x="650" y="30" width="44" height="148"/>
+              <rect class="pk-hit" x="650" y="14" width="44" height="164"/>
             </g>
           </svg>
         </div>
@@ -2277,6 +2277,40 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
       btn.setAttribute('disabled','');btn.textContent=L(DYN.revealed);
       out.innerHTML=L(DYN.chromoReveal);
     });
+
+    /* The chromatogram is preserveAspectRatio="none" so the trace fills any
+       width while the height stays pinned at 210px. That is right for the
+       trace — the x axis is time — but it squashes the <text> labels with it:
+       at 390px the horizontal scale is 0.29 while the vertical stays 1.0, so
+       the captions rendered at 29% of their natural width.
+
+       Counter-scale each caption about its own x, which is also its
+       text-anchor="middle" centre, so glyphs render true at every width and
+       the label does not move. Positions, .active styling and the .pk-hit tap
+       targets are all untouched. Without JS the captions stay squashed —
+       exactly today's behaviour, so this degrades to the status quo. */
+    var chromoSvg=plate.querySelector('.chromo-svg');
+    if(chromoSvg){
+      var caps=[].slice.call(chromoSvg.querySelectorAll('text.cap'));
+      var fitCaps=function(){
+        var w=chromoSvg.getBoundingClientRect().width;
+        if(!w)return;                       // hidden view — nothing to measure
+        var inv=(1000/w).toFixed(4);        // 1 / horizontal scale
+        caps.forEach(function(t){
+          var x=t.getAttribute('x');
+          t.setAttribute('transform',
+            'translate('+x+' 0) scale('+inv+' 1) translate(-'+x+' 0)');
+        });
+      };
+      fitCaps();
+      // Observe the HTML container, NOT the <svg>. ResizeObserver on an SVG
+      // graphics element fires once and then stops in Chrome — the captions
+      // stayed scaled for the width the page first loaded at, which looks
+      // correct until you resize. Watching the block-level parent also catches
+      // the view becoming visible on a deep link, which resize alone misses.
+      if(window.ResizeObserver)new ResizeObserver(fitCaps).observe(plate);
+      window.addEventListener('resize',fitCaps);
+    }
   }
 
   /* ---- toolkit tabs ---- */
