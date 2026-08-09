@@ -20,7 +20,19 @@
   <meta property="og:type" content="website">
 <meta property="og:title" content="In The Vial — Buyer literacy for research peptides">
 <meta property="og:description" content="The label is a claim. Learn to read the proof. Independent, evidence-graded, non-commercial.">
-<meta name="twitter:card" content="summary">
+<!-- Link-preview card. The only raster image on the site, and it is never
+     requested by a reader — only by scrapers — so it costs nothing on load.
+     Authored from the site's own tokens and dossier markup, not generated:
+     rebuild with `bash scripts/og/build.sh`. The URL must be absolute; a
+     relative one is silently ignored by every scraper. -->
+<meta property="og:image" content="https://in-the-vial.com/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="Case file card reading “The label is a claim. Learn to read the proof.” beside a sealed vial stamped UNVERIFIED.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://in-the-vial.com/og-image.png">
+<meta name="twitter:image:alt" content="Case file card reading “The label is a claim. Learn to read the proof.” beside a sealed vial stamped UNVERIFIED.">
 <link rel="icon" href="data:image/svg+xml,<svg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0,0,24,34'><rect%20x='7'%20y='2'%20width='10'%20height='5'%20rx='1'%20fill='%23CBC5B2'%20stroke='%2323201A'%20stroke-width='1.2'/><path%20d='M8.5,7L8.5,10L6,12.5L6,27C6,31,18,31,18,27L18,12.5L15.5,10L15.5,7Z'%20fill='%23FCFBF7'%20stroke='%2323201A'%20stroke-width='1.6'/><path%20d='M6.4,19C8,18,10,20,12,20C14,20,16,18,17.6,19L17.6,27C17.6,30.2,6.4,30.2,6.4,27Z'%20fill='%232C6E8F'/></svg>">
 <!-- Fonts are self-hosted: the site makes no third-party requests, so visitors
      are never exposed to an outside server just by loading the page. -->

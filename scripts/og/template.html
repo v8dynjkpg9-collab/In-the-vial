@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>og-image template — rendered by scripts/og/build.sh</title>
+<style>
+/* Fonts are loaded by absolute file:// path so headless Chrome resolves them
+   from the repo without the builder having to live inside it. */
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;
+  src:url('../../fonts/instrument-serif-400-latin.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;
+  src:url('../../fonts/ibm-plex-mono-400-latin.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;
+  src:url('../../fonts/ibm-plex-mono-600-latin.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Sans';font-style:normal;font-weight:100 700;
+  src:url('../../fonts/ibm-plex-sans-var-latin.woff2') format('woff2');}
+
+:root{
+  --ink:#23201A; --ink-2:#4A4436; --ink-3:#736B58; --ink-4:#9A927F;
+  --paper:#F4F1E8; --paper-2:#FCFBF7; --paper-3:#EBE7DA;
+  --line:#DBD6C6; --line-2:#E7E2D4; --line-strong:#CBC5B2;
+  --rust:#9E4227; --rust-deep:#7A3019; --rust-wash:#F0E3DA;
+  --mono:'IBM Plex Mono',monospace; --serif:'Instrument Serif',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px}
+body{background:var(--paper);font-family:var(--sans);color:var(--ink);
+  display:flex;align-items:center;overflow:hidden;position:relative}
+
+/* the faint grain the site uses, so this reads as the same surface */
+body::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(900px 500px at 78% 18%, rgba(255,255,255,.55), transparent 70%);}
+
+.sheet{display:flex;width:100%;height:100%;align-items:center;
+  padding:0 74px;gap:64px;position:relative;z-index:1}
+
+/* ---- left: the claim ---- */
+.left{flex:1;min-width:0}
+.rule{display:flex;align-items:center;gap:14px;margin-bottom:30px}
+.rule .dot{width:7px;height:7px;border-radius:50%;background:var(--rust)}
+.rule .lbl{font-family:var(--mono);font-size:12.5px;letter-spacing:.19em;
+  text-transform:uppercase;color:var(--ink-3)}
+.rule .bar{flex:1;height:1px;background:var(--line-strong)}
+
+h1{font-family:var(--serif);font-weight:400;font-size:74px;line-height:.99;
+  letter-spacing:-.012em;margin-bottom:26px}
+h1 .em{color:var(--rust);font-style:italic}
+
+.deck{font-size:20px;line-height:1.5;color:var(--ink-2);max-width:37ch;
+  margin-bottom:34px}
+
+.foot{display:flex;align-items:baseline;gap:12px;
+  font-family:var(--mono);font-size:13.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3)}
+.foot .site{color:var(--ink);font-weight:600}
+.foot .sep{color:var(--line-strong)}
+
+/* ---- right: the dossier, the site's signature object ---- */
+.dossier{position:relative;width:352px;flex:none;
+  border:1px solid var(--line-strong);background:var(--paper-2);
+  border-radius:3px;box-shadow:0 26px 52px -30px rgba(35,32,26,.5)}
+.dossier-hd{display:flex;justify-content:space-between;align-items:center;
+  padding:13px 17px;border-bottom:1px solid var(--line);background:var(--paper-3);
+  font-family:var(--mono);font-size:11px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-3)}
+.dossier-hd .no{color:var(--rust-deep);font-weight:600}
+.dossier-body{padding:26px 17px 17px}
+.vial{display:flex;justify-content:center;margin-bottom:20px}
+.glass{fill:none;stroke:var(--ink);stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.dfield{display:flex;justify-content:space-between;gap:12px;padding:10px 0;
+  border-top:1px solid var(--line-2)}
+.dfield .k{font-family:var(--mono);font-size:10px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink-4);padding-top:3px;white-space:nowrap}
+.dfield .v{font-size:14px;color:var(--ink);font-weight:500;text-align:right}
+
+.stamp{position:absolute;top:74px;right:-14px;transform:rotate(-9deg);
+  border:2px solid var(--rust);color:var(--rust-deep);background:rgba(240,227,218,.72);
+  font-family:var(--mono);font-weight:600;font-size:15px;letter-spacing:.12em;
+  text-transform:uppercase;padding:7px 13px;border-radius:2px}
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <div class="left">
+      <div class="rule">
+        <span class="dot"></span>
+        <span class="lbl">In The Vial</span>
+        <span class="bar"></span>
+      </div>
+      <h1>The label is a claim.<br><span class="em">Learn to read the proof.</span></h1>
+      <p class="deck">Independent, evidence-graded buyer literacy for research peptides.
+        Nothing sold, no vendor linked, no dose recommended.</p>
+      <div class="foot">
+        <span class="site">in-the-vial.com</span>
+        <span class="sep">·</span>
+        <span>Evidence tiers A–D</span>
+      </div>
+    </div>
+
+    <aside class="dossier">
+      <div class="dossier-hd"><span>Case File</span><span class="no">№ ITV-001</span></div>
+      <div class="dossier-body">
+        <div class="vial">
+          <svg width="86" height="122" viewBox="0 0 24 34" aria-hidden="true">
+            <rect x="7" y="2" width="10" height="5" rx="1" fill="#CBC5B2" stroke="#23201A" stroke-width="1.2"/>
+            <path class="glass" d="M8.5,7L8.5,10L6,12.5L6,27C6,31,18,31,18,27L18,12.5L15.5,10L15.5,7Z" fill="#FCFBF7"/>
+            <path d="M6.4,19C8,18,10,20,12,20C14,20,16,18,17.6,19L17.6,27C17.6,30.2,6.4,30.2,6.4,27Z" fill="#2C6E8F"/>
+          </svg>
+        </div>
+        <div class="dfield"><span class="k">Subject</span><span class="v">Research peptides</span></div>
+        <div class="dfield"><span class="k">Classification</span><span class="v">Buyer literacy</span></div>
+        <div class="dfield"><span class="k">Status</span><span class="v">Independent</span></div>
+        <div class="dfield"><span class="k">Opened</span><span class="v">2026</span></div>
+      </div>
+      <span class="stamp">Unverified</span>
+    </aside>
+  </div>
+</body>
+</html>
