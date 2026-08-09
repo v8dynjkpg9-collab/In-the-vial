@@ -32,7 +32,15 @@ English (brand, SI units, assay names like `HPLC` or `USP <71>`) goes in
 checker also fails on a stale allowlist entry, so that file cannot quietly start excusing text
 it was never meant to cover.
 
-**2. Do not reintroduce third-party requests.**
+**2. Do not reintroduce third-party requests — now enforced, not just promised.**
+`_headers` ships a CSP with `default-src 'self'`, so a font CDN, a remote script or an
+off-site `fetch` is **blocked by the browser** and fails loudly in the console. Verified by
+probing: an external fetch and a Google Fonts stylesheet are both refused, while
+`fetch('tracker.json')` still returns 200. `script-src` keeps `'unsafe-inline'` because the
+site is one inline script and a stale SHA-256 hash would kill all JS rather than degrade it —
+this CSP is a privacy control, not an XSS defence. Revisit that line the day the site accepts
+user content.
+
 Fonts are self-hosted deliberately. The privacy policy now promises *"Loading a page does not cause your browser to contact any outside company."* Adding a Google Fonts link, a CDN script, or an analytics tag makes that statement false. If analytics is ever added, the privacy section must be updated first.
 
 **3. The tracker data exists in two places.**

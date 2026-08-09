@@ -1,0 +1,49 @@
+# Security and privacy headers, read by Cloudflare Workers static assets.
+#
+# The point of the CSP here is to ENFORCE the promise the privacy page already
+# makes: "Loading a page does not cause your browser to contact any outside
+# company." Until now that was a claim. default-src 'self' makes it a rule the
+# browser applies — and one that fails loudly the moment anyone adds a font CDN,
+# an analytics tag or a remote script, instead of the promise quietly becoming
+# false. On a site about the difference between a claim and proof, that gap was
+# the wrong one to leave open.
+#
+# Honest limitation: script-src keeps 'unsafe-inline'. The whole site is one
+# inline <script>, so the alternative is a SHA-256 hash regenerated on every
+# edit to index.html — and a stale hash does not degrade the page, it kills all
+# JavaScript on it. That is a bad trade for a single-author site with no
+# user-generated content, no third-party scripts, and only first-party data
+# reaching innerHTML. This CSP is a privacy control, not an XSS defence. If the
+# site ever accepts user content, revisit that line first.
+
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; upgrade-insecure-requests
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), xr-spatial-tracking=()
+  X-Frame-Options: DENY
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Strict-Transport-Security: max-age=15552000
+
+# Notes on the choices above, so nobody has to re-derive them:
+#
+# Referrer-Policy: no-referrer — stronger than the usual
+#   strict-origin-when-cross-origin, and it costs nothing here. The only
+#   outbound links are DOIs, and no publisher needs to know a reader came from a
+#   page about grey-market peptides. That is a real privacy exposure for
+#   visitors to this particular site, not a theoretical one.
+#
+# img-src allows data: because the favicon is an inline SVG data URI. Without
+#   it the tab icon silently disappears.
+#
+# connect-src 'self' is what keeps fetch('tracker.json') working; anything
+#   pointing off-site would now fail visibly in the console.
+#
+# Strict-Transport-Security is the one sticky header here — browsers remember
+#   it for the max-age. 180 days, no includeSubDomains and no preload, so a
+#   future subdomain is not locked in and the decision stays reversible.
+#
+# Cross-Origin-Resource-Policy: same-origin stops other sites hotlinking the
+#   fonts and og-image.png. It does NOT block social scrapers, which fetch
+#   og-image.png directly rather than embedding it cross-origin.

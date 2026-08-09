@@ -90,6 +90,40 @@ else
   bad "untranslated strings, a stale allowlist entry, or a duplicate ES key"
 fi
 
+# -------------------------------------------------------------- credentials --
+# The repo is public. This was a habit before it was a check.
+section "Secrets"
+if out=$(python3 .claude/skills/verify/check_secrets.py 2>&1); then
+  ok "$(printf '%s' "$out" | tail -1)"
+else
+  printf '%s\n' "$out" | sed 's/^/        /'
+  bad "something credential-shaped is tracked in a PUBLIC repo"
+fi
+
+# ---------------------------------------------------------- headers / CSP --
+# The privacy page promises the browser contacts no outside company. The CSP is
+# what makes that enforceable rather than aspirational, so its absence is a
+# broken promise, not a missing nicety.
+section "Security headers"
+if [ ! -f _headers ]; then
+  bad "_headers is missing — the privacy promise is unenforced"
+elif ! grep -q "default-src 'self'" _headers; then
+  bad "_headers has no \`default-src 'self'\` — third-party requests are not blocked"
+else
+  missing=""
+  for h in Content-Security-Policy X-Content-Type-Options Referrer-Policy \
+           Permissions-Policy X-Frame-Options; do
+    grep -qi "^ *$h:" _headers || missing="$missing $h"
+  done
+  if [ -n "$missing" ]; then
+    bad "_headers is missing:$missing"
+  else
+    ok "CSP present with default-src 'self', plus 4 supporting headers"
+  fi
+  grep -q "connect-src 'self'" _headers \
+    || note "no connect-src — fetch() could still reach off-site"
+fi
+
 # ------------------------------------------------------------ design system --
 # Advisory only. Sprawl is discipline, not a defect, and must never block a fix.
 section "Design scale (advisory)"
