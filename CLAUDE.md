@@ -17,6 +17,7 @@ Independent, evidence-graded, non-commercial: **nothing is sold, no vendor is li
 | `src/routes.js` | **Generated** from `ROUTES` in `index.html`. Never hand-edit. |
 | `scripts/build-routes.py` | The generator for the above. |
 | `.assetsignore` | Keeps non-site files out of the published assets. |
+| `HANDOFF.md` | Current project state for a reviewer with no context. **Rewrite it when behaviour changes.** |
 
 Single-page app: each section is a `.view` div toggled by JS. No build step, no dependencies, no backend.
 
