@@ -264,6 +264,24 @@ python3 -m http.server 8142
 `http.server` does **not** apply `_redirects`, so it 404s every page route. Fine for content
 work; useless for routing.
 
+### Verify a deploy with a cache-buster, or you will chase ghosts
+
+Cloudflare serves `cache-control: public, max-age=0, must-revalidate`, and a revalidation that
+matches the stored ETag re-serves the **stored response, headers included**. So an asset whose
+*content* did not change in a deploy can keep serving its old headers for a few minutes after
+the new ones go live.
+
+This produced three false alarms in one session: two routes reporting `307`, a page showing the
+previous `<title>`, and `tracker.json` appearing to have no CSP. All three were correct within
+a minute or resolved instantly with `?cb=$(date +%s)`.
+
+```bash
+curl -sI "https://in-the-vial.com/tracker.json?cb=$(date +%s)"
+```
+
+Before concluding a deploy is broken: re-request with a cache-buster, and check
+`cf-cache-status`. A `HIT` on the very thing you just changed is the tell.
+
 **To test routing, run the real asset runtime locally:**
 
 ```bash
