@@ -5,6 +5,12 @@
 > A bare `wrangler deploy` resolves the site Worker's `wrangler.jsonc` at the repo root
 > instead, even from this directory. Dry-run first; you must see `env.SUBS` and `env.EMAIL`
 > in the bindings. If it says `env.ASSETS`, it is the wrong Worker.
+>
+> **Secrets: always pass `--name`.**
+> `npx wrangler secret put ADMIN_TOKEN --name in-the-vial-subscribe`
+> `secret put` resolves config the same way and will happily write to the site Worker from
+> this directory — it prints *"Creating the secret for the Worker `in-the-vial`"* and reports
+> success while the real token stays unchanged and the API keeps returning 401.
 
 ## Subscribe endpoint
 - Worker `in-the-vial-subscribe`, route `in-the-vial.com/api/subscribe`

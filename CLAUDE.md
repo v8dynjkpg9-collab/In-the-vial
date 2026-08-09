@@ -227,6 +227,22 @@ If you see `env.ASSETS` instead, wrangler picked up the wrong config — stop.
 Secrets (`ADMIN_TOKEN`, `UNSUBSCRIBE_SECRET`) are stored separately and survive a deploy;
 they are not re-uploaded and not wiped.
 
+### Secrets: always pass `--name`, never rely on the directory
+
+```bash
+npx wrangler secret put ADMIN_TOKEN --name in-the-vial-subscribe
+npx wrangler secret list --name in-the-vial-subscribe
+```
+
+`wrangler secret put` resolves config the same way `deploy` does, so run from `worker/` it
+still targets the **site** Worker. It says which one in its output — *"Creating the secret for
+the Worker `in-the-vial`"* means it went to the wrong place. The failure is quiet: the command
+succeeds, the secret lands on a Worker that never reads it, and the endpoint keeps returning
+`401` with the old token still in force.
+
+`--name` skips config resolution altogether and is the only form that cannot be
+misdirected. Use it for every `secret` subcommand.
+
 The assets directory is the repo root with nothing excluded, so every tracked file is public:
 `CLAUDE.md`, `worker/subscribe.js`, `newsletter/*.md` drafts, `.claude/`. The repo is public so
 nothing secret leaks, but unsent drafts are readable and crawlable. An `.assetsignore` would
