@@ -204,8 +204,28 @@ preview URLs** the way Pages gives them. A branch push builds nothing you can vi
 preview URLs are enabled for the Worker. Verifying a change live means merging to `main`;
 rollback is `git revert` plus another ~40s, or a version rollback in the dashboard.
 
-The site Worker has **no config in this repo** — its build settings live in the Cloudflare
-dashboard. Only `worker/wrangler.toml` (the subscribe Worker) is version-controlled.
+### Deploying the subscribe Worker — always pass `--config`
+
+```bash
+cd worker && npx wrangler deploy --config wrangler.toml
+```
+
+**Never bare `npx wrangler deploy` from `worker/`.** Since the site Worker's `wrangler.jsonc`
+was added at the repo root, wrangler resolves *that* one even when run from `worker/` — it
+reports `env.ASSETS` as the only binding and would deploy the site Worker under the wrong
+intent, leaving the subscribe Worker untouched and the newsletter code stale with no error.
+
+**Dry-run first and read the bindings.** The subscribe Worker must show both:
+
+```
+env.SUBS (6c7174d740cc4cb99315a913dec80746)   KV Namespace
+env.EMAIL (senders: newsletter@in-the-vial.com)   Send Email
+```
+
+If you see `env.ASSETS` instead, wrangler picked up the wrong config — stop.
+
+Secrets (`ADMIN_TOKEN`, `UNSUBSCRIBE_SECRET`) are stored separately and survive a deploy;
+they are not re-uploaded and not wiped.
 
 The assets directory is the repo root with nothing excluded, so every tracked file is public:
 `CLAUDE.md`, `worker/subscribe.js`, `newsletter/*.md` drafts, `.claude/`. The repo is public so

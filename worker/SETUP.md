@@ -1,5 +1,11 @@
 # Newsletter & email — deployed state
 
+> **Deploy this Worker with an explicit config, always:**
+> `cd worker && npx wrangler deploy --config wrangler.toml`
+> A bare `wrangler deploy` resolves the site Worker's `wrangler.jsonc` at the repo root
+> instead, even from this directory. Dry-run first; you must see `env.SUBS` and `env.EMAIL`
+> in the bindings. If it says `env.ASSETS`, it is the wrong Worker.
+
 ## Subscribe endpoint
 - Worker `in-the-vial-subscribe`, route `in-the-vial.com/api/subscribe`
 - Subscribers stored in KV namespace `SUBS` (`6c7174d740cc4cb99315a913dec80746`)
