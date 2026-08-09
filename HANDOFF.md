@@ -6,8 +6,12 @@ This file exists so a reviewer with no prior context can pick the project up wit
 pasting a transcript. It describes the project **as it is now**, not a changelog — `git log`
 is the changelog, and the commit messages carry the reasoning.
 
-Publicly readable at
-`raw.githubusercontent.com/v8dynjkpg9-collab/In-the-vial/main/HANDOFF.md`.
+Publicly readable, no account needed:
+<https://github.com/v8dynjkpg9-collab/In-the-vial/blob/main/HANDOFF.md>
+
+*(Add `?plain=1` for the unrendered source, or swap the host for
+`raw.githubusercontent.com` and drop `/blob` if a tool needs plain text.)*
+
 It is in `.assetsignore`, so it is not served on the website.
 
 **Rewrite this file at the end of any session that changes how the project works.** Replace
