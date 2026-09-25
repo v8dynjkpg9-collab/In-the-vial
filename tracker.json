@@ -1,7 +1,7 @@
 {
   "lastReviewed": {
-    "en": "August 2026",
-    "es": "agosto de 2026"
+    "en": "September 2026",
+    "es": "septiembre de 2026"
   },
   "lanes": [
     {
@@ -89,25 +89,25 @@
         },
         {
           "title": {
-            "en": "Proposed permanent 503B exclusion",
-            "es": "Exclusión permanente propuesta de 503B"
+            "en": "Proposed 503B exclusion — comments closed",
+            "es": "Exclusión 503B propuesta — comentarios cerrados"
           },
           "status": "pending",
           "statusLabel": {
-            "en": "Comment period",
-            "es": "Periodo de comentarios"
+            "en": "Awaiting FDA",
+            "es": "A la espera de la FDA"
           },
           "body": {
-            "en": "An FDA proposal (April 30, 2026) would permanently remove semaglutide, tirzepatide and liraglutide from the 503B bulks list.",
-            "es": "Una propuesta de la FDA (30 de abril de 2026) eliminaría permanentemente la semaglutida, la tirzepatida y la liraglutida de la lista de sustancias a granel 503B."
+            "en": "FDA's notice of <strong>May 1, 2026</strong> (91 FR 23431) proposes <strong>not to include</strong> semaglutide, tirzepatide or liraglutide on the 503B Bulks List. They are not on that list, so this is a decision about admission, not removal. The comment period was extended once and closed <strong>July 30, 2026</strong>. No final determination has been announced.",
+            "es": "El aviso de la FDA del <strong>1 de mayo de 2026</strong> (91 FR 23431) propone <strong>no incluir</strong> la semaglutida, la tirzepatida ni la liraglutida en la Lista de Sustancias a Granel 503B. No figuran en esa lista, así que es una decisión sobre su admisión, no sobre su retirada. El periodo de comentarios se prorrogó una vez y cerró el <strong>30 de julio de 2026</strong>. No se ha anunciado una determinación final."
           },
           "means": {
-            "en": "<strong>What it means:</strong> the direction of travel is toward locking the door permanently for outsourcing facilities.",
-            "es": "<strong>Qué significa:</strong> la dirección del cambio es hacia cerrar la puerta de forma permanente para las instalaciones de externalización."
+            "en": "<strong>What it means:</strong> the direction of travel is toward keeping the door shut for outsourcing facilities — but FDA has not decided yet, and a proposal is not a rule.",
+            "es": "<strong>Qué significa:</strong> la dirección del cambio apunta a mantener la puerta cerrada para las instalaciones de externalización — pero la FDA aún no ha decidido, y una propuesta no es una norma."
           },
           "meta": {
-            "en": "Updated June 2026 · Source: Federal Register proposal",
-            "es": "Actualizado junio de 2026 · Fuente: propuesta del Federal Register"
+            "en": "Updated September 2026 · Source: 91 FR 23431 (May 1, 2026); comment period extended June 26, 2026, closed July 30, 2026",
+            "es": "Actualizado septiembre de 2026 · Fuente: 91 FR 23431 (1 de mayo de 2026); periodo de comentarios prorrogado el 26 de junio de 2026, cerrado el 30 de julio de 2026"
           }
         },
         {
@@ -231,22 +231,22 @@
             "en": "Corporate Transparency Act",
             "es": "Ley de Transparencia Corporativa"
           },
-          "status": "flux",
+          "status": "live",
           "statusLabel": {
-            "en": "In flux",
-            "es": "En cambio"
+            "en": "In effect",
+            "es": "En vigor"
           },
           "body": {
-            "en": "A March 2025 interim final rule exempts U.S.-formed entities and U.S. persons from federal beneficial-ownership reporting; the final rule is pending and the law's constitutionality was upheld on appeal. New York's LLC Transparency Act took effect January 1, 2026 for foreign LLCs.",
-            "es": "Una regla final provisional de marzo de 2025 exime a las entidades formadas en EE. UU. y a las personas estadounidenses del reporte federal de titularidad real; la regla final está pendiente y la constitucionalidad de la ley se confirmó en apelación. La Ley de Transparencia de LLC de Nueva York entró en vigor el 1 de enero de 2026 para las LLC extranjeras."
+            "en": "FinCEN's final rule took effect <strong>August 14, 2026</strong>, adopting the March 2025 interim rule with limited changes. Reporting companies stay exempt from reporting the beneficial ownership of U.S. persons, are now also exempt from submitting information about U.S. person company applicants, and U.S. persons are exempt from updating information tied to a FinCEN identifier. New York's LLC Transparency Act took effect January 1, 2026 for foreign LLCs.",
+            "es": "La regla final de FinCEN entró en vigor el <strong>14 de agosto de 2026</strong>, adoptando la regla provisional de marzo de 2025 con cambios limitados. Las empresas declarantes siguen exentas de reportar la titularidad real de personas estadounidenses, ahora también quedan exentas de informar sobre solicitantes estadounidenses, y las personas estadounidenses quedan exentas de actualizar la información vinculada a un identificador FinCEN. La Ley de Transparencia de LLC de Nueva York entró en vigor el 1 de enero de 2026 para las LLC extranjeras."
           },
           "means": {
             "en": "<strong>What it means:</strong> \"anonymous LLC\" claims are about a public registry, not immunity — courts and plaintiffs still reach owners through discovery. Privacy isn't protection.",
             "es": "<strong>Qué significa:</strong> las afirmaciones de \"LLC anónima\" se refieren a un registro público, no a inmunidad — los tribunales y los demandantes aún alcanzan a los propietarios mediante el descubrimiento de pruebas. La privacidad no es protección."
           },
           "meta": {
-            "en": "Updated June 2026 · Source: FinCEN rulemaking & court rulings",
-            "es": "Actualizado junio de 2026 · Fuente: reglamentación de FinCEN y fallos judiciales"
+            "en": "Updated September 2026 · Source: FinCEN final rule, effective August 14, 2026",
+            "es": "Actualizado septiembre de 2026 · Fuente: regla final de FinCEN, vigente el 14 de agosto de 2026"
           }
         }
       ]
