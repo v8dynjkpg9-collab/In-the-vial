@@ -1,6 +1,6 @@
 # Handoff — current state of In The Vial
 
-**Updated 2026-08-09 · HEAD `7c13560`**
+**Updated 2026-09-25 · HEAD `bec0c5b`**
 
 This file exists so a reviewer with no prior context can pick the project up without anyone
 pasting a transcript. It describes the project **as it is now**, not a changelog — `git log`
@@ -56,6 +56,11 @@ reasons behind them.
 - **Link previews have a card** — `og-image.png`, authored from the site's own type and
   dossier markup, not AI-generated.
 - Subscribers: **3** — one real reader, plus `+en` and `+es` aliases used for testing.
+- **Google Search Console: verified 2026-09-25** (URL-prefix property, HTML-tag method).
+  `sitemap.xml` submitted — **Success, 24 pages discovered**. Also submitted to **IndexNow**
+  (Bing/Yandex/Seznam/Naver) via `bash scripts/indexnow.sh`.
+- **Tracker corrected 2026-09-24.** Two entries had gone factually stale; `lastReviewed` is
+  now September 2026. Found by the monthly routine, verified against the Federal Register.
 
 ## Traps that will waste your time
 
@@ -77,7 +82,13 @@ Every one of these cost real time in the last session. They all fail **silently*
    reach one person, use `/api/newsletter/preview` (`{"to": …}`) or the `language` filter.
 6. **Route slugs must stay flat.** Fonts and `tracker.json` load by *relative* path; a nested
    slug moves the document base and 404s both.
-7. **Unique function names inside the main IIFE.** It is one scope — two `function render(){}`
+7. **`html_handling` strips `.html`.** `/foo.html` 307s to `/foo`. This killed Google's
+   HTML-file verification, and is the same mechanism as the `/index.html` -> `/` 307 above.
+   Third time it has bitten.
+8. **Two public files must never be deleted:** the `google-site-verification` meta tag in
+   `index.html` (removing it un-verifies Search Console) and
+   `71a90b9ae4786f1ecf95e3a4ba1a62e3.txt` (removing it breaks IndexNow). Neither is a secret.
+9. **Unique function names inside the main IIFE.** It is one scope — two `function render(){}`
    declarations silently collapse into the last one.
 
 ## Unresolved
@@ -99,13 +110,17 @@ Every one of these cost real time in the last session. They all fail **silently*
 
 ## Recommended next steps
 
-1. Check whether the real subscriber's copy landed in inbox or spam, and audit SPF/DKIM/DMARC
-   if it did not.
-2. Add per-claim review dates when the next compound goes in — the metadata is cheapest to
-   write at authoring time, and it is what makes staleness detectable.
-3. Add DOI link checking to the monthly review routine, not to `verify.sh` (network-bound).
-4. Enable non-production branch builds on the site Worker to get real preview URLs. Right now
-   the only way to see a change live is to merge.
+1. **~2026-10-02: Search Console -> Pages.** How many of the 24 are indexed, and why any are
+   excluded. First real signal the site exists.
+2. **Read the 1 Oct routine report that week.** September's sat unread for three weeks while
+   the site served a false regulatory claim.
+3. Check whether issue 001 reached the one real subscriber's inbox or spam.
+4. Per-claim provenance dates with the next compound; DOI link rot.
+5. Compound backlog: TB-500, CJC-1295, Epitalon, then the NAD+ section.
+
+*Deferred deliberately:* splitting `/toolkit` into four routes. Structurally correct for SEO,
+but the landscape is eight established vendor domains and a new site will not beat them on
+explanation quality. Revisit once indexing shows something.
 
 ## Automation already running
 
