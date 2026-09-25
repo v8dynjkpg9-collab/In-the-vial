@@ -48,11 +48,14 @@ live=$(curl -s -o /dev/null -w '%{http_code}' "https://$HOST/$KEY.txt")
 code=$(curl -s -o /tmp/indexnow.out -w '%{http_code}' -X POST "https://api.indexnow.org/indexnow" \
   -H "Content-Type: application/json; charset=utf-8" --data "$PAYLOAD")
 echo "submitted $COUNT urls -> HTTP $code"
-case "$code" in
-  200|202) echo "accepted (202 means queued, which is normal)";;
-  400) echo "bad request — check the payload";;
-  403) echo "key not valid: the key file must be live and match";;
-  422) echo "urls do not belong to the host, or key mismatch";;
-  429) echo "too many requests — submit less often";;
-esac
+# A 202 returns an empty body, so anything that tests the body for content must
+# not decide the exit status — this script reported failure on success once.
 [ -s /tmp/indexnow.out ] && head -c 300 /tmp/indexnow.out
+case "$code" in
+  200|202) echo "accepted (202 means queued, which is normal)"; exit 0;;
+  400) echo "bad request — check the payload" >&2; exit 1;;
+  403) echo "key not valid: the key file must be live and match" >&2; exit 1;;
+  422) echo "urls do not belong to the host, or key mismatch" >&2; exit 1;;
+  429) echo "too many requests — submit less often" >&2; exit 1;;
+  *)   echo "unexpected response" >&2; exit 1;;
+esac
