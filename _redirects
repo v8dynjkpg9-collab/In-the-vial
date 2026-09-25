@@ -35,6 +35,7 @@
 /tracker        /             200
 /about          /             200
 /methodology    /             200
+/corrections    /             200
 /legal          /             200
 
 # Trailing slashes are redirected, never rewritten. Serving index.html at
@@ -52,4 +53,5 @@
 /tracker/       /tracker      301
 /about/         /about        301
 /methodology/   /methodology  301
+/corrections/   /corrections  301
 /legal/         /legal        301

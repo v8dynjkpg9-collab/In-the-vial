@@ -1456,6 +1456,33 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
   </main>
 </div>
 
+<div class="view" id="view-corrections">
+  <header class="hero">
+    <div class="wrap" style="padding-top:44px;padding-bottom:44px">
+      <div class="filestrip"><span class="dot"></span>Corrections<span class="rule"></span>File 07</div>
+      <h1>What this site <em>got wrong.</em></h1>
+      <p class="lede">This site asks you to distrust claims that arrive without a record. It would be incoherent not to keep one of its own. Every substantive error found in a published claim is listed here, with what it said, what is actually true, and how long the wrong version was live.</p>
+    </div>
+  </header>
+  <main class="wrap reading">
+    <div class="prose">
+      <h3 class="sh">What counts as a correction</h3>
+      <p>A factual error in something the site asserted: a regulatory status, a date, a description of what an agency did, or a claim about evidence. Typos, styling and broken links are fixed without ceremony and are not listed.</p>
+      <p>The log begins <strong>24 September 2026</strong>, when the first substantive errors were found. Earlier changes exist in the public commit history but were not recorded in this format at the time, and are not reconstructed here rather than risk describing them inaccurately.</p>
+      <h3 class="sh">24 September 2026 — two regulatory tracker entries</h3>
+      <p>Both were found by a scheduled review on 1 September and verified against the Federal Register before correction. Both had been wrong on the live site for roughly six weeks.</p>
+      <p><strong>Corporate Transparency Act — said a final rule was still pending.</strong> The entry read that a March 2025 interim rule applied and that the final rule was pending. FinCEN published its final rule on 14 August 2026, effective the same day. The entry was corrected and its status moved from In flux to In effect. A trailing clause about the law being upheld on appeal was removed rather than carried forward, because it was not re-verified.</p>
+      <p><strong>503B exclusion — described an action the FDA is not taking.</strong> The entry said an FDA proposal would permanently remove semaglutide, tirzepatide and liraglutide from the 503B Bulks List. Those substances are not on that list. The FDA proposed not to include them, which is a decision about admission, not removal. The notice date was also wrong, 1 May 2026 rather than 30 April, and the status still read Comment period after comments closed on 30 July 2026.</p>
+      <p>The second error is the one worth dwelling on. Saying a regulator is removing something it never listed is exactly the kind of unearned claim this site exists to teach readers to catch. It was published here for six weeks.</p>
+      <h3 class="sh">How errors get found</h3>
+      <p>A scheduled review checks every tracker lane against primary sources each month and reports what changed. It cannot edit anything; a human verifies each finding and makes the change. That review found both errors above. It also means the review is only as useful as the reading of it, and the September report sat unread for three weeks while the site stayed wrong.</p>
+      <h3 class="sh">Report an error</h3>
+      <p>If something here is wrong, say so: <strong>corrections@in-the-vial.com</strong>. Corrections are made whether or not they are flattering, and they are logged here either way.</p>
+    </div>
+    <a class="backlink" href="/methodology" data-view="method">← Methodology</a>
+  </main>
+</div>
+
 <footer>
   <div class="wrap">
     <div class="fcols">
@@ -1463,7 +1490,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
         <div class="fbrand"><svg viewBox="0 0 24 34" aria-hidden="true"><rect class="cap" x="7" y="2" width="10" height="5" rx="1"/><path class="ridge" d="M9.2,2.8 L9.2,6.2 M11.5,2.8 L11.5,6.2 M13.8,2.8 L13.8,6.2"/><path class="glass" d="M8.5,7 L8.5,10 L6,12.5 L6,27 C6,31 18,31 18,27 L18,12.5 L15.5,10 L15.5,7 Z"/><path class="fluid" d="M6.4,19 C8,18 10,20 12,20 C14,20 16,18 17.6,19 L17.6,27 C17.6,30.2 6.4,30.2 6.4,27 Z"/></svg>In The Vial</div>
         <div class="ftag">Independent buyer literacy and harm reduction for research peptides.</div>
       </div>
-      <div class="flinks"><span class="lbl">Pages</span><a href="/science" data-view="science">Science library</a><a href="/toolkit" data-view="toolkit">Buyer toolkit</a><a href="/tracker" data-view="tracker">Regulatory tracker</a><a href="/about" data-view="about">About &amp; independence</a><a href="/methodology" data-view="method">Methodology &amp; corrections</a><a href="/legal" data-view="legal">Disclaimer &amp; privacy</a></div>
+      <div class="flinks"><span class="lbl">Pages</span><a href="/science" data-view="science">Science library</a><a href="/toolkit" data-view="toolkit">Buyer toolkit</a><a href="/tracker" data-view="tracker">Regulatory tracker</a><a href="/about" data-view="about">About &amp; independence</a><a href="/methodology" data-view="method">Methodology &amp; corrections</a><a href="/corrections" data-view="corrections">Corrections log</a><a href="/legal" data-view="legal">Disclaimer &amp; privacy</a></div>
     </div>
     <p class="disc"><strong>Educational and harm-reduction resource only.</strong> Nothing here is medical, legal, or dosing advice, and nothing is sold, recommended, or linked. Many research compounds are not approved for human use and may be illegal to sell or use for human consumption. Verify the laws that apply to you and consult a licensed professional before any health decision.</p>
   </div>
@@ -1473,7 +1500,7 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
 <script>
 (function(){
   var views=[].slice.call(document.querySelectorAll('.view'));
-  var navMap={home:'home',science:'science',bpc157:'science',ghkcu:'science',sema:'science',reta:'science',ipa:'science',toolkit:'toolkit',tracker:'tracker',about:'about',method:'method',legal:'about'};
+  var navMap={home:'home',science:'science',bpc157:'science',ghkcu:'science',sema:'science',reta:'science',ipa:'science',toolkit:'toolkit',tracker:'tracker',about:'about',method:'method',corrections:'method',legal:'about'};
   /* Switch the visible view. Pure display change — no history side effects. */
   function setView(id){
     if(!document.getElementById('view-'+id))id='home';
@@ -1557,6 +1584,11 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
          desc:'Who writes the site, what gets searched, how evidence tiers are assigned, where the limits are, and how to get something corrected.'},
      es:{title:'Metodología y correcciones — cómo decide este sitio lo que afirma · In The Vial',
          desc:'Quién escribe el sitio, qué se busca, cómo se asignan los niveles de evidencia, dónde están los límites y cómo pedir una corrección.'}},
+    {slug:'/corrections',view:'corrections',
+     en:{title:'Corrections — what this site got wrong · In The Vial',
+         desc:'Every substantive error found in a published claim: what it said, what is actually true, and how long the wrong version was live. A site that asks you to distrust unrecorded claims keeps a record of its own.'},
+     es:{title:'Correcciones — en qué se equivocó este sitio · In The Vial',
+         desc:'Cada error de fondo encontrado en una afirmación publicada: qué decía, qué es cierto y cuánto tiempo estuvo en línea la versión equivocada. Un sitio que te pide desconfiar de afirmaciones sin registro mantiene el suyo.'}},
     {slug:'/legal',view:'legal',
      en:{title:'Disclaimer, privacy & terms · In The Vial',
          desc:'Plain-language disclaimer and privacy policy. Educational and harm-reduction only — not medical, legal, or dosing advice. Loading a page contacts no outside company.'},
@@ -1741,6 +1773,30 @@ footer{border-top:1px solid var(--line-strong);padding:42px 0 40px;margin-top:40
        and each fragment needs its own key.
        Semaglutide differs in Spanish; BPC-157 and the other alphanumeric
        research codes do not, and are listed in intentionally-english.txt. */
+    /* Corrections log (File 07). */
+    'File 07':'Archivo 07',
+    'What this site':'En qué este sitio',
+    'got wrong.':'se equivocó.',
+    'This site asks you to distrust claims that arrive without a record. It would be incoherent not to keep one of its own. Every substantive error found in a published claim is listed here, with what it said, what is actually true, and how long the wrong version was live.':'Este sitio te pide desconfiar de las afirmaciones que llegan sin un registro. Sería incoherente no llevar uno propio. Aquí se lista cada error de fondo encontrado en una afirmación publicada, con lo que decía, lo que es cierto y cuánto tiempo estuvo en línea la versión equivocada.',
+    'What counts as a correction':'Qué cuenta como corrección',
+    'A factual error in something the site asserted: a regulatory status, a date, a description of what an agency did, or a claim about evidence. Typos, styling and broken links are fixed without ceremony and are not listed.':'Un error de hecho en algo que el sitio afirmó: un estado regulatorio, una fecha, la descripción de lo que hizo una agencia o una afirmación sobre la evidencia. Las erratas, el estilo y los enlaces rotos se arreglan sin ceremonia y no se listan.',
+    'The log begins':'El registro comienza el',
+    '24 September 2026':'24 de septiembre de 2026',
+    ', when the first substantive errors were found. Earlier changes exist in the public commit history but were not recorded in this format at the time, and are not reconstructed here rather than risk describing them inaccurately.':', cuando se encontraron los primeros errores de fondo. Hay cambios anteriores en el historial público de commits, pero no se registraron en este formato en su momento y no se reconstruyen aquí para no arriesgarse a describirlos de forma inexacta.',
+    '24 September 2026 — two regulatory tracker entries':'24 de septiembre de 2026 — dos entradas del rastreador regulatorio',
+    'Both were found by a scheduled review on 1 September and verified against the Federal Register before correction. Both had been wrong on the live site for roughly six weeks.':'Ambos fueron detectados por una revisión programada el 1 de septiembre y verificados contra el Federal Register antes de corregirlos. Ambos estuvieron equivocados en el sitio durante unas seis semanas.',
+    'Corporate Transparency Act — said a final rule was still pending.':'Ley de Transparencia Corporativa — decía que la regla final seguía pendiente.',
+    'The entry read that a March 2025 interim rule applied and that the final rule was pending. FinCEN published its final rule on 14 August 2026, effective the same day. The entry was corrected and its status moved from In flux to In effect. A trailing clause about the law being upheld on appeal was removed rather than carried forward, because it was not re-verified.':'La entrada decía que se aplicaba una regla provisional de marzo de 2025 y que la regla final estaba pendiente. FinCEN publicó su regla final el 14 de agosto de 2026, con vigencia ese mismo día. La entrada se corrigió y su estado pasó de En cambio a En vigor. Se eliminó una cláusula final sobre que la ley fue confirmada en apelación, en lugar de arrastrarla, porque no se volvió a verificar.',
+    '503B exclusion — described an action the FDA is not taking.':'Exclusión 503B — describía una acción que la FDA no está tomando.',
+    'The entry said an FDA proposal would permanently remove semaglutide, tirzepatide and liraglutide from the 503B Bulks List. Those substances are not on that list. The FDA proposed not to include them, which is a decision about admission, not removal. The notice date was also wrong, 1 May 2026 rather than 30 April, and the status still read Comment period after comments closed on 30 July 2026.':'La entrada decía que una propuesta de la FDA eliminaría permanentemente la semaglutida, la tirzepatida y la liraglutida de la Lista de Sustancias a Granel 503B. Esas sustancias no figuran en esa lista. La FDA propuso no incluirlas, que es una decisión sobre su admisión, no sobre su retirada. La fecha del aviso también era incorrecta, 1 de mayo de 2026 y no 30 de abril, y el estado seguía diciendo Periodo de comentarios después de que los comentarios cerraran el 30 de julio de 2026.',
+    'The second error is the one worth dwelling on. Saying a regulator is removing something it never listed is exactly the kind of unearned claim this site exists to teach readers to catch. It was published here for six weeks.':'El segundo error es el que merece detenerse. Decir que un regulador está retirando algo que nunca listó es exactamente el tipo de afirmación sin fundamento que este sitio existe para enseñar a detectar. Estuvo publicado aquí durante seis semanas.',
+    'How errors get found':'Cómo se encuentran los errores',
+    'A scheduled review checks every tracker lane against primary sources each month and reports what changed. It cannot edit anything; a human verifies each finding and makes the change. That review found both errors above. It also means the review is only as useful as the reading of it, and the September report sat unread for three weeks while the site stayed wrong.':'Una revisión programada comprueba cada carril del rastreador contra fuentes primarias cada mes e informa de lo que cambió. No puede editar nada; una persona verifica cada hallazgo y hace el cambio. Esa revisión encontró los dos errores anteriores. También significa que la revisión solo sirve en la medida en que se lea: el informe de septiembre estuvo tres semanas sin leer mientras el sitio seguía equivocado.',
+    'Report an error':'Informar de un error',
+    'If something here is wrong, say so:':'Si algo aquí está mal, dilo:',
+    '. Corrections are made whether or not they are flattering, and they are logged here either way.':'. Las correcciones se hacen sean favorables o no, y en cualquier caso se registran aquí.',
+    '← Methodology':'← Metodología',
+    'Corrections log':'Registro de correcciones',
     'Reading':'Lectura',
     'Semaglutide':'Semaglutida',
     'not listed':'no figura',

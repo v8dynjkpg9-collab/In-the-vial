@@ -140,6 +140,18 @@ export const ROUTES = [
     }
   },
   {
+    "slug": "/corrections",
+    "view": "corrections",
+    "en": {
+      "title": "Corrections — what this site got wrong · In The Vial",
+      "desc": "Every substantive error found in a published claim: what it said, what is actually true, and how long the wrong version was live. A site that asks you to distrust unrecorded claims keeps a record of its own."
+    },
+    "es": {
+      "title": "Correcciones — en qué se equivocó este sitio · In The Vial",
+      "desc": "Cada error de fondo encontrado en una afirmación publicada: qué decía, qué es cierto y cuánto tiempo estuvo en línea la versión equivocada. Un sitio que te pide desconfiar de afirmaciones sin registro mantiene el suyo."
+    }
+  },
+  {
     "slug": "/legal",
     "view": "legal",
     "en": {
