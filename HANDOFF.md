@@ -38,7 +38,7 @@ reasons behind them.
 | Routing | 12 real page routes via `_redirects`; `src/index.js` rewrites `<head>` per route. |
 | API | Separate Worker `in-the-vial-subscribe` on `in-the-vial.com/api/*`. **Deploys manually only.** |
 | Storage | KV namespace `SUBS`. No D1, no R2. |
-| Checks | `bash .claude/verify.sh` — 8 gates, exits non-zero. |
+| Checks | `bash .claude/verify.sh` — **9 gates**, exits non-zero. Includes secret scanning and CSP. |
 
 ## Current state
 
@@ -125,7 +125,7 @@ explanation quality. Revisit once indexing shows something.
 ## Automation already running
 
 A scheduled cloud agent, **In The Vial — monthly regulatory tracker review**, fires on the
-**1st of each month at 13:00 UTC**, first run **2026-09-01**. It checks the 5 tracker lanes
+**1st of each month at 13:00 UTC**. First run 2026-09-01 succeeded and found two stale entries, both since fixed; **next run 2026-10-01**. It checks the 5 tracker lanes
 against primary sources and reports what moved. It is **report-only, enforced structurally**:
 granted only `Read, Grep, Glob, WebSearch, WebFetch`, so it cannot commit, push, bump
 `lastReviewed`, or send anything.
