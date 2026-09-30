@@ -1,6 +1,6 @@
 # Handoff — current state of In The Vial
 
-**Updated 2026-09-25 · HEAD `bec0c5b`**
+**Updated 2026-09-29 · HEAD `51bb5b7`**
 
 This file exists so a reviewer with no prior context can pick the project up without anyone
 pasting a transcript. It describes the project **as it is now**, not a changelog — `git log`
@@ -35,15 +35,19 @@ reasons behind them.
 | Site | **One** `index.html` (~300 KB, markup + CSS + JS inline). No build step, no dependencies. |
 | Hosting | Cloudflare **Worker** `in-the-vial`, static assets + Git integration. **Not Pages** — `wrangler pages project list` is empty. |
 | Deploy | Push to `main` → auto-publishes in **~40 s**. No branch preview URLs exist. |
-| Routing | 12 real page routes via `_redirects`; `src/index.js` rewrites `<head>` per route. |
+| Routing | 13 real page routes via `_redirects`; `src/index.js` rewrites `<head>` per route. |
 | API | Separate Worker `in-the-vial-subscribe` on `in-the-vial.com/api/*`. **Deploys manually only.** |
 | Storage | KV namespace `SUBS`. No D1, no R2. |
 | Checks | `bash .claude/verify.sh` — **9 gates**, exits non-zero. Includes secret scanning and CSP. |
 
 ## Current state
 
-- **12 routes live**, all 200, each with its own title/description in both languages,
-  server-rendered so scrapers see them.
+- **13 routes live**, all 200, each with its own title/description in both languages,
+  server-rendered so scrapers see them. Newest: **`/corrections`** (2026-09-25).
+- **A corrections log exists** at `/corrections` — the site's own record of what it got wrong,
+  starting 2026-09-25 (not backfilled further; see Decisions). It currently lists the two
+  tracker errors below. Keep entries newest-first and always state how long the error was live
+  — that number is the part no vendor site would publish, and it's what gives the page weight.
 - **Spanish coverage is complete** — `check_i18n.py` reports 0 untranslated, 0 duplicate keys.
   22 strings are deliberately English (brand, SI units, assay names) and listed with reasons
   in `.claude/skills/i18n-check/intentionally-english.txt`.
@@ -57,10 +61,13 @@ reasons behind them.
   dossier markup, not AI-generated.
 - Subscribers: **3** — one real reader, plus `+en` and `+es` aliases used for testing.
 - **Google Search Console: verified 2026-09-25** (URL-prefix property, HTML-tag method).
-  `sitemap.xml` submitted — **Success, 24 pages discovered**. Also submitted to **IndexNow**
-  (Bing/Yandex/Seznam/Naver) via `bash scripts/indexnow.sh`.
+  `sitemap.xml` submitted — **Success, 24 pages discovered** as of verification (now 26 URLs
+  in the sitemap after `/corrections` was added; Pages count not yet rechecked since). Also
+  submitted to **IndexNow** (Bing/Yandex/Seznam/Naver) via `bash scripts/indexnow.sh` — rerun
+  after adding `/corrections` too.
 - **Tracker corrected 2026-09-24.** Two entries had gone factually stale; `lastReviewed` is
   now September 2026. Found by the monthly routine, verified against the Federal Register.
+  This is what `/corrections` now documents publicly.
 
 ## Traps that will waste your time
 
@@ -90,6 +97,16 @@ Every one of these cost real time in the last session. They all fail **silently*
    `71a90b9ae4786f1ecf95e3a4ba1a62e3.txt` (removing it breaks IndexNow). Neither is a secret.
 9. **Unique function names inside the main IIFE.** It is one scope — two `function render(){}`
    declarations silently collapse into the last one.
+10. **A new route needs registration in five places, not one.** `ROUTES` in `index.html` (with
+    EN+ES title/desc), `_redirects` (both the bare rewrite and the trailing-slash redirect),
+    `sitemap.xml` (both languages), `wrangler.jsonc`'s `run_worker_first` list, and then
+    regenerate `src/routes.js` via `python3 scripts/build-routes.py`. `verify.sh` catches a
+    missed one but only after the fact — check `python3 .claude/skills/verify/check_routes.py`
+    directly while adding a route for faster feedback.
+11. **The local `wrangler dev` server wedges intermittently** — `workerd` stays listening on
+    the port but stops answering requests (curl hangs or returns `000`), even across clean
+    restarts. When this happens, verify against the live deploy instead (push, wait ~40s,
+    curl the real URL) rather than losing time diagnosing the local server. Not yet root-caused.
 
 ## Unresolved
 
@@ -110,13 +127,23 @@ Every one of these cost real time in the last session. They all fail **silently*
 
 ## Recommended next steps
 
-1. **~2026-10-02: Search Console -> Pages.** How many of the 24 are indexed, and why any are
-   excluded. First real signal the site exists.
-2. **Read the 1 Oct routine report that week.** September's sat unread for three weeks while
-   the site served a false regulatory claim.
-3. Check whether issue 001 reached the one real subscriber's inbox or spam.
-4. Per-claim provenance dates with the next compound; DOI link rot.
-5. Compound backlog: TB-500, CJC-1295, Epitalon, then the NAD+ section.
+1. **Rerun IndexNow** (`bash scripts/indexnow.sh`) to submit `/corrections` — it was added
+   after the last submission and Google's Search Console sitemap already has 26 URLs, but
+   IndexNow was only run against the 24-URL version.
+2. **Check Search Console → Pages** (overdue — was due ~2026-10-02). How many of the 26 are
+   indexed, and why any are excluded. First real signal the site exists.
+3. **Read the 2026-10-01 routine report promptly.** September's sat unread for three weeks
+   while the site served a false regulatory claim — don't repeat that.
+4. Check whether issue 001 reached the one real subscriber's inbox or spam.
+5. Per-claim provenance dates with the next compound; DOI link rot.
+6. **Next compound to rate should aim honestly at Tier D if the evidence warrants it.** The
+   evidence scale's bottom tier has never been used on this site — worth checking whether
+   that's accurate or whether something in the backlog (or already published) deserves it.
+7. Compound backlog: TB-500, CJC-1295, Epitalon, then the NAD+ section.
+8. **Eyeball `/corrections?lang=es` in a real browser.** The Spanish translation for that page
+   was verified via `check_i18n.py` (0 untranslated) and the server-rendered `<title>`, but the
+   client-side body-text rendering was never visually confirmed in a browser this session
+   because the local dev server was wedged (see trap #11).
 
 *Deferred deliberately:* splitting `/toolkit` into four routes. Structurally correct for SEO,
 but the landscape is eight established vendor domains and a new site will not beat them on
@@ -124,11 +151,21 @@ explanation quality. Revisit once indexing shows something.
 
 ## Automation already running
 
-A scheduled cloud agent, **In The Vial — monthly regulatory tracker review**, fires on the
-**1st of each month at 13:00 UTC**. First run 2026-09-01 succeeded and found two stale entries, both since fixed; **next run 2026-10-01**. It checks the 5 tracker lanes
-against primary sources and reports what moved. It is **report-only, enforced structurally**:
-granted only `Read, Grep, Glob, WebSearch, WebFetch`, so it cannot commit, push, bump
-`lastReviewed`, or send anything.
+A scheduled cloud agent, **In The Vial — monthly regulatory tracker review**
+(`trig_01MDEQLNaLSXnuZcZrXgfAP7`, inspect via the `RemoteTrigger` tool), fires on the
+**1st of each month at 13:00 UTC**. First run 2026-09-01 succeeded and found the two stale
+entries corrected on 2026-09-24 and now documented at `/corrections`. Confirmed still enabled
+as of 2026-09-29, with `next_run_at: 2026-10-01T13:03:43Z` and no run since September 1st. It
+checks the 5 tracker lanes against primary sources and reports what moved. It is
+**report-only, enforced structurally**: granted only `Read, Grep, Glob, WebSearch, WebFetch`,
+so it cannot commit, push, bump `lastReviewed`, or send anything.
+
+**Read the report promptly when it fires.** September's sat unread for three weeks while the
+site continued serving a false regulatory claim — the automation only closes the loop if a
+human reads the output. `RemoteTrigger {action: "list_runs", trigger_id: "..."}` then
+`get_run_log` on the session retrieves it, but the final message truncates around ~15k chars
+and the claude.ai session page 403s to `WebFetch` — verify any long report's factual claims
+against primary sources directly rather than relying on retrieving the full text.
 
 ## Decisions taken, so they are not re-proposed
 
@@ -146,3 +183,8 @@ granted only `Read, Grep, Glob, WebSearch, WebFetch`, so it cannot commit, push,
   control, not an XSS defence. Revisit if the site ever accepts user input.
 - **Checks are scripts, never agents.** A script's output can be audited; an agent reporting
   "I ran the check" cannot be told apart from one that did not.
+- **The `/corrections` log starts 2026-09-25, not backfilled to the project's beginning.**
+  Earlier fixes exist in `git log` but weren't recorded in "what it said / what's true / how
+  long it was live" form at the time. Reconstructing that from commit messages risks describing
+  an old error inaccurately — on the one page whose entire premise is accuracy. Starting late
+  and honest beats starting complete and guessed.
