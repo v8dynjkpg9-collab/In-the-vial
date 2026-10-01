@@ -1,6 +1,6 @@
 # Handoff — current state of In The Vial
 
-**Updated 2026-09-29 · HEAD `51bb5b7`**
+**Updated 2026-10-01 · HEAD `be1f22d`**
 
 This file exists so a reviewer with no prior context can pick the project up without anyone
 pasting a transcript. It describes the project **as it is now**, not a changelog — `git log`
@@ -35,36 +35,57 @@ reasons behind them.
 | Site | **One** `index.html` (~300 KB, markup + CSS + JS inline). No build step, no dependencies. |
 | Hosting | Cloudflare **Worker** `in-the-vial`, static assets + Git integration. **Not Pages** — `wrangler pages project list` is empty. |
 | Deploy | Push to `main` → auto-publishes in **~40 s**. No branch preview URLs exist. |
-| Routing | 13 real page routes via `_redirects`; `src/index.js` rewrites `<head>` per route. |
+| Routing | 16 real page routes via `_redirects`; `src/index.js` rewrites `<head>` per route. |
 | API | Separate Worker `in-the-vial-subscribe` on `in-the-vial.com/api/*`. **Deploys manually only.** |
 | Storage | KV namespace `SUBS`. No D1, no R2. |
 | Checks | `bash .claude/verify.sh` — **9 gates**, exits non-zero. Includes secret scanning and CSP. |
 
 ## Current state
 
-- **13 routes live**, all 200, each with its own title/description in both languages,
-  server-rendered so scrapers see them. Newest: **`/corrections`** (2026-09-25).
+- **16 routes live**, all 200, each with its own title/description in both languages,
+  server-rendered so scrapers see them. Newest: **`/tb-500`, `/cjc-1295`, `/epitalon`**
+  (2026-10-01) — the three compounds the science library's "More coming" card had promised
+  since the beginning. Each follows the existing evidence-tier template with real
+  PubMed/ClinicalTrials.gov citations: TB-500 (Tier C — distinguishes the marketed fragment
+  from the full-length Tβ4 molecule the only human trials actually tested), CJC-1295
+  (Tier B — genuine human PK/safety RCTs exist, alongside a 2006 phase 2 trial halted after a
+  participant's death that the marketing omits), Epitalon (Tier C — real rodent lifespan data,
+  but nearly all primary literature traces to one research group publishing in its own
+  journal). The science library's only remaining backlog item is the planned "not peptides"
+  section (NAD+ and similar).
 - **A corrections log exists** at `/corrections` — the site's own record of what it got wrong,
   starting 2026-09-25 (not backfilled further; see Decisions). It currently lists the two
   tracker errors below. Keep entries newest-first and always state how long the error was live
   — that number is the part no vendor site would publish, and it's what gives the page weight.
-- **Spanish coverage is complete** — `check_i18n.py` reports 0 untranslated, 0 duplicate keys.
-  22 strings are deliberately English (brand, SI units, assay names) and listed with reasons
-  in `.claude/skills/i18n-check/intentionally-english.txt`.
-- **Newsletter issue 001 was sent for real on 2026-08-09** — 3/3 subscribers, 0 failures.
-  First send in the project's history. Idempotency verified in production: re-running now
-  reports `alreadySent: 3, wouldSend: 0`.
+- **Spanish coverage is complete** — `check_i18n.py` reports 835 ES keys, 0 untranslated,
+  0 duplicate keys. 26 strings are deliberately English (brand, SI units, assay names,
+  three-letter amino-acid codes, trial-registry IDs) and listed with reasons in
+  `.claude/skills/i18n-check/intentionally-english.txt`.
+- **Newsletter issue 001's real-world deliverability has now been checked, not just flagged
+  as unverified.** The actual subscriber it was sent to (a Yahoo address, found via
+  `wrangler kv key list` — the Gmail account used for internal testing only ever received the
+  `[PREVIEW]` copies) never received it: not in Inbox, not in Spam, despite Cloudflare's
+  `send_email` binding reporting success. SPF, DKIM and DMARC are all correctly configured for
+  `in-the-vial.com` (verified via `dig`), so this isn't the missing-authentication problem it
+  looked like — it's more likely sender-reputation/warm-up with a brand-new domain. **DMARC
+  aggregate reporting is now enabled** via Cloudflare's built-in DMARC Management (adds an
+  `rua=mailto:...@dmarc-reports.cloudflare.net` tag), so the next send's pass/fail rate at
+  each provider will actually be visible instead of silent.
 - **Security headers live** — CSP with `default-src 'self'`, HSTS, `Referrer-Policy:
   no-referrer`, Permissions-Policy, frame/CORP/COOP. Verified by probe: an external `fetch`
   and a Google Fonts stylesheet are both blocked; `fetch('tracker.json')` still returns 200.
 - **Link previews have a card** — `og-image.png`, authored from the site's own type and
   dossier markup, not AI-generated.
-- Subscribers: **3** — one real reader, plus `+en` and `+es` aliases used for testing.
+- Subscribers: **2 active** — the real Yahoo reader, and the plain Gmail address, which
+  subscribed *after* issue 001 went out (that's why it only ever saw previews). The `+en`/`+es`
+  Gmail aliases used for testing have since unsubscribed.
 - **Google Search Console: verified 2026-09-25** (URL-prefix property, HTML-tag method).
-  `sitemap.xml` submitted — **Success, 24 pages discovered** as of verification (now 26 URLs
-  in the sitemap after `/corrections` was added; Pages count not yet rechecked since). Also
-  submitted to **IndexNow** (Bing/Yandex/Seznam/Naver) via `bash scripts/indexnow.sh` — rerun
-  after adding `/corrections` too.
+  `sitemap.xml` submitted — **Success, 24 pages discovered** as of verification. Checked again
+  2026-09-30/10-01: Page Indexing and Performance still show **"Processing data, please check
+  again in a day or so"** — a genuine empty state (confirmed via screenshot, not a loading
+  glitch), not yet actionable. Also resubmitted to **IndexNow** (Bing/Yandex/Seznam/Naver) via
+  `bash scripts/indexnow.sh` on 2026-10-01 — **32 URLs accepted**, now covering `/corrections`,
+  `/tb-500`, `/cjc-1295` and `/epitalon` in both languages.
 - **Tracker corrected 2026-09-24.** Two entries had gone factually stale; `lastReviewed` is
   now September 2026. Found by the monthly routine, verified against the Federal Register.
   This is what `/corrections` now documents publicly.
@@ -107,43 +128,57 @@ Every one of these cost real time in the last session. They all fail **silently*
     the port but stops answering requests (curl hangs or returns `000`), even across clean
     restarts. When this happens, verify against the live deploy instead (push, wait ~40s,
     curl the real URL) rather than losing time diagnosing the local server. Not yet root-caused.
+    A plain `python3 -m http.server` can go stale the same way if an old instance is still
+    bound to the port from a previous session — it answers with 404s on files that exist and
+    whose `cwd` is correct. `lsof -i :PORT`, kill it, and start a fresh one on a new port
+    rather than trying to explain the 404.
+12. **`.chip-tier` and `.rtype` are `white-space:nowrap` by design** — a tier-chip subtitle or
+    citation-type badge that runs long doesn't wrap, it pushes the whole page wider than the
+    viewport at 375px. This is invisible in English and only shows up once the Spanish
+    translation is even longer — caught twice while adding TB-500/CJC-1295/Epitalon. Keep both
+    under roughly 35 characters in both languages, and actually load the page at 375px in
+    Spanish before calling a new compound page done — `document.documentElement.scrollWidth`
+    vs `clientWidth` catches it in one line.
 
 ## Unresolved
 
-- **Deliverability of the first send is unverified.** The one real subscriber's copy may have
-  landed in spam; first send from a new domain is when that gets decided. No SPF/DKIM/DMARC
-  audit has been done.
+- **Deliverability of the first send failed, and now we know it** — see Current state above.
+  The real subscriber never got issue 001, auth is clean, so this reads as domain-reputation/
+  warm-up rather than misconfiguration. DMARC aggregate reports are now on; the next real send
+  is the thing to watch to confirm or rule that out.
 - **Gmail's native Unsubscribe button (RFC 8058 `POST`) has never been exercised** by a real
   client. The endpoint accepts POST and rejects bad signatures; the button itself is untested.
 - **No per-claim provenance dates.** `tracker.json` has `lastReviewed` and 9 dated entries,
   but compound-page claims carry citations without machine-readable review dates, so nothing
-  can flag stale content. 12 DOI links are unchecked for rot.
+  can flag stale content. DOI links across all 8 compound pages are unchecked for rot.
 - **No link checking, no accessibility audit, no performance budget** in `verify.sh`.
 - **`worker/.claude/settings.json`** is untracked and shadows the project `.claude/` when
   working from `worker/`. Harmless, but surprising.
-- **Compound backlog**: TB-500, CJC-1295, Epitalon (already promised by the site's "More
-  coming" card), Tesamorelin, Tirzepatide, Melanotan II / PT-141. Plus a "Not peptides, sold
-  alongside" section for NAD+, agreed but not built.
+- **Compound backlog, first wave resolved** — TB-500, CJC-1295 and Epitalon shipped 2026-10-01
+  (see Current state), closing out what the site's "More coming" card had promised. Still
+  open: Tesamorelin, Tirzepatide, Melanotan II / PT-141, and a "Not peptides, sold alongside"
+  section for NAD+ — agreed but not built.
 
 ## Recommended next steps
 
-1. **Rerun IndexNow** (`bash scripts/indexnow.sh`) to submit `/corrections` — it was added
-   after the last submission and Google's Search Console sitemap already has 26 URLs, but
-   IndexNow was only run against the 24-URL version.
-2. **Check Search Console → Pages** (overdue — was due ~2026-10-02). How many of the 26 are
-   indexed, and why any are excluded. First real signal the site exists.
-3. **Read the 2026-10-01 routine report promptly.** September's sat unread for three weeks
-   while the site served a false regulatory claim — don't repeat that.
-4. Check whether issue 001 reached the one real subscriber's inbox or spam.
-5. Per-claim provenance dates with the next compound; DOI link rot.
-6. **Next compound to rate should aim honestly at Tier D if the evidence warrants it.** The
-   evidence scale's bottom tier has never been used on this site — worth checking whether
-   that's accurate or whether something in the backlog (or already published) deserves it.
-7. Compound backlog: TB-500, CJC-1295, Epitalon, then the NAD+ section.
-8. **Eyeball `/corrections?lang=es` in a real browser.** The Spanish translation for that page
-   was verified via `check_i18n.py` (0 untranslated) and the server-rendered `<title>`, but the
-   client-side body-text rendering was never visually confirmed in a browser this session
-   because the local dev server was wedged (see trap #11).
+1. **Check Search Console → Pages** (overdue — was due ~2026-10-02; still showing
+   "Processing data" as of 2026-10-01). How many of the 32 sitemap URLs are indexed, and why
+   any are excluded. First real signal the site exists.
+2. **Read the 2026-10-01 routine report promptly** when it fires at 13:00 UTC today.
+   September's sat unread for three weeks while the site served a false regulatory claim —
+   don't repeat that.
+3. **Watch the next real newsletter send for deliverability**, now that DMARC aggregate
+   reports are on. If the Yahoo subscriber still doesn't receive it with clean auth and visible
+   reports, that confirms reputation/warm-up rather than a config problem, and the fix is
+   consistent low-volume sending over time, not another DNS change.
+4. Per-claim provenance dates across all 8 compound pages; DOI link rot.
+5. Remaining compound backlog: Tesamorelin, Tirzepatide, Melanotan II / PT-141, then the NAD+
+   "not peptides" section.
+6. **Apply the Tier-D question to the remaining backlog, not just what's shipped.** TB-500,
+   CJC-1295 and Epitalon were all checked against Tier D this session and each had enough real
+   preclinical (or, for CJC-1295, human) data to land at C or B instead — the bottom tier
+   genuinely hasn't been earned yet by anything catalogued. Worth re-asking once Tesamorelin,
+   Tirzepatide and Melanotan II / PT-141 are drafted.
 
 *Deferred deliberately:* splitting `/toolkit` into four routes. Structurally correct for SEO,
 but the landscape is eight established vendor domains and a new site will not beat them on
@@ -188,3 +223,8 @@ against primary sources directly rather than relying on retrieving the full text
   long it was live" form at the time. Reconstructing that from commit messages risks describing
   an old error inaccurately — on the one page whose entire premise is accuracy. Starting late
   and honest beats starting complete and guessed.
+- **DMARC reporting goes through Cloudflare's own DMARC Management, not a hand-wired mailbox.**
+  Enabling it (Email → DMARC Management → Enable, in the dashboard) adds a
+  `rua=mailto:...@dmarc-reports.cloudflare.net` tag to the existing `_dmarc` TXT record and
+  gives a dashboard view of per-source pass/fail rates — no new Email Routing rule, no address
+  to monitor by hand. Don't re-propose routing raw aggregate-report XML to the owner's inbox.
