@@ -178,6 +178,61 @@
   </url>
 
   <url>
+    <loc>https://in-the-vial.com/tb-500</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/tb-500"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/tb-500?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/tb-500"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/tb-500?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/tb-500"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/tb-500?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/tb-500"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/cjc-1295</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/cjc-1295"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/cjc-1295?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/cjc-1295"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/cjc-1295?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/cjc-1295"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/cjc-1295?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/cjc-1295"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/epitalon</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/epitalon"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/epitalon?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/epitalon"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://in-the-vial.com/epitalon?lang=es</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/epitalon"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/epitalon?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://in-the-vial.com/epitalon"/>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://in-the-vial.com/about</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://in-the-vial.com/about"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://in-the-vial.com/about?lang=es"/>

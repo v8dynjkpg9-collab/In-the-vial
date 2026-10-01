@@ -92,6 +92,42 @@ export const ROUTES = [
     }
   },
   {
+    "slug": "/tb-500",
+    "view": "tb5",
+    "en": {
+      "title": "TB-500 — Tier C, preclinical only · In The Vial",
+      "desc": "A synthetic fragment of thymosin beta-4, sold on human wound-healing trial data that belongs to a different, full-length molecule entirely."
+    },
+    "es": {
+      "title": "TB-500 — Nivel C, solo preclínico · In The Vial",
+      "desc": "Un fragmento sintético de la timosina beta-4, vendido con datos de ensayos humanos que pertenecen a una molécula distinta y de mayor longitud."
+    }
+  },
+  {
+    "slug": "/cjc-1295",
+    "view": "cjc",
+    "en": {
+      "title": "CJC-1295 — Tier B, real human data, serious safety signal · In The Vial",
+      "desc": "A long-acting GHRH analog with genuine published human trials — and a halted 2006 trial, after a participant's death, that most sellers never mention."
+    },
+    "es": {
+      "title": "CJC-1295 — Nivel B, datos humanos reales, señal de seguridad grave · In The Vial",
+      "desc": "Un análogo de GHRH de acción prolongada con ensayos humanos publicados genuinos — y un ensayo de 2006 detenido tras la muerte de un participante, que casi ningún vendedor menciona."
+    }
+  },
+  {
+    "slug": "/epitalon",
+    "view": "epi",
+    "en": {
+      "title": "Epitalon — Tier C, animal data, single-lab evidence base · In The Vial",
+      "desc": "A four-amino-acid pineal peptide with genuine rodent lifespan data — from almost exclusively one research group, never independently replicated."
+    },
+    "es": {
+      "title": "Epitalon — Nivel C, datos en animales, base de evidencia de un solo laboratorio · In The Vial",
+      "desc": "Un péptido pineal de cuatro aminoácidos con datos genuinos de prolongación de vida en roedores — procedentes casi exclusivamente de un solo grupo de investigación, nunca replicados de forma independiente."
+    }
+  },
+  {
     "slug": "/toolkit",
     "view": "toolkit",
     "en": {

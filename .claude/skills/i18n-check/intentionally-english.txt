@@ -20,7 +20,9 @@ corrections@in-the-vial.com
 # Alphanumeric research codes are identical in both languages. Compound names
 # that DO differ (Semaglutida, Retatrutida, Ipamorelina) are translated.
 BPC-157
-TB-500, CJC-1295, Epitalon…
+TB-500
+CJC-1295
+Epitalon
 
 # --- The mock certificate of analysis --------------------------------------
 # Plate II reproduces a real vendor COA, and real COAs arrive in English. The
@@ -33,6 +35,11 @@ IDENTITY
 ENDOTOXIN
 SPECIMEN
 HPLC · UV 214nm
+
+# --- Three-letter amino-acid codes -----------------------------------------
+# International nomenclature; a Spanish-language paper writes Ala-Glu-Asp-Gly
+# the same way.
+Ala-Glu-Asp-Gly
 
 # --- Analytical methods and pharmacopoeia ----------------------------------
 # Assay names are international; a Spanish lab report says HPLC and ICP-MS too.
@@ -49,3 +56,8 @@ USP <71>
 mg
 mL
 mcg
+
+# --- Clinical trial registry IDs -------------------------------------------
+# NCT identifiers are the same string in every language; ClinicalTrials.gov
+# itself never translates them.
+NCT00267527
