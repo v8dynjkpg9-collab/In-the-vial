@@ -128,6 +128,18 @@ export const ROUTES = [
     }
   },
   {
+    "slug": "/nad-plus",
+    "view": "nad",
+    "en": {
+      "title": "NAD+ — not a peptide, Tier B precursor / Tier C IV · In The Vial",
+      "desc": "A coenzyme sold alongside peptides in the same clinics. Real trial evidence backs the oral precursor form; the popular IV version rests on a mechanism its own research says doesn't work as marketed."
+    },
+    "es": {
+      "title": "NAD+ — no es un péptido, nivel B precursor / nivel C vía IV · In The Vial",
+      "desc": "Una coenzima que se vende junto a los péptidos en las mismas clínicas. La evidencia de ensayos respalda la forma precursora oral; la popular versión intravenosa se apoya en un mecanismo que su propia investigación dice que no funciona como se anuncia."
+    }
+  },
+  {
     "slug": "/toolkit",
     "view": "toolkit",
     "en": {

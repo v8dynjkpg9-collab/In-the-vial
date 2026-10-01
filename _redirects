@@ -34,6 +34,7 @@
 /tb-500         /             200
 /cjc-1295       /             200
 /epitalon       /             200
+/nad-plus       /             200
 /toolkit        /             200
 /tracker        /             200
 /about          /             200
@@ -55,6 +56,7 @@
 /tb-500/        /tb-500       301
 /cjc-1295/      /cjc-1295     301
 /epitalon/      /epitalon     301
+/nad-plus/      /nad-plus     301
 /toolkit/       /toolkit      301
 /tracker/       /tracker      301
 /about/         /about        301
