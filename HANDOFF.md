@@ -1,6 +1,6 @@
 # Handoff — current state of In The Vial
 
-**Updated 2026-10-01 · HEAD `be1f22d`**
+**Updated 2026-10-01 · HEAD `d6679dd`**
 
 This file exists so a reviewer with no prior context can pick the project up without anyone
 pasting a transcript. It describes the project **as it is now**, not a changelog — `git log`
@@ -35,30 +35,41 @@ reasons behind them.
 | Site | **One** `index.html` (~300 KB, markup + CSS + JS inline). No build step, no dependencies. |
 | Hosting | Cloudflare **Worker** `in-the-vial`, static assets + Git integration. **Not Pages** — `wrangler pages project list` is empty. |
 | Deploy | Push to `main` → auto-publishes in **~40 s**. No branch preview URLs exist. |
-| Routing | 16 real page routes via `_redirects`; `src/index.js` rewrites `<head>` per route. |
+| Routing | 17 real page routes via `_redirects`; `src/index.js` rewrites `<head>` per route. |
 | API | Separate Worker `in-the-vial-subscribe` on `in-the-vial.com/api/*`. **Deploys manually only.** |
 | Storage | KV namespace `SUBS`. No D1, no R2. |
 | Checks | `bash .claude/verify.sh` — **9 gates**, exits non-zero. Includes secret scanning and CSP. |
 
 ## Current state
 
-- **16 routes live**, all 200, each with its own title/description in both languages,
-  server-rendered so scrapers see them. Newest: **`/tb-500`, `/cjc-1295`, `/epitalon`**
-  (2026-10-01) — the three compounds the science library's "More coming" card had promised
-  since the beginning. Each follows the existing evidence-tier template with real
-  PubMed/ClinicalTrials.gov citations: TB-500 (Tier C — distinguishes the marketed fragment
-  from the full-length Tβ4 molecule the only human trials actually tested), CJC-1295
-  (Tier B — genuine human PK/safety RCTs exist, alongside a 2006 phase 2 trial halted after a
-  participant's death that the marketing omits), Epitalon (Tier C — real rodent lifespan data,
-  but nearly all primary literature traces to one research group publishing in its own
-  journal). The science library's only remaining backlog item is the planned "not peptides"
-  section (NAD+ and similar).
+- **17 routes live**, all 200, each with its own title/description in both languages,
+  server-rendered so scrapers see them. Newest: **`/nad-plus`** (2026-10-01) — a new
+  **"Not peptides, sold alongside"** subsection on the science library, for compounds marketed
+  in the same storefronts/clinics as the peptides above but chemically unrelated. NAD+ is its
+  first entry: route-split like GHK-Cu (Tier B for oral precursors — NMN/NR — where genuine
+  RCTs reliably raise blood NAD+; Tier C for direct IV "NAD+ therapy," where the only
+  comparative human data is a small retrospective study showing more adverse events and a
+  mechanistic problem — NAD+ can't cross an intact cell membrane, so IV infusions hydrolyze
+  into the same NMN/NR precursor sold far cheaper as a pill). The addiction/detox claim gets
+  an honest **Tier D** — the evidence scale's bottom tier, used for the first time on this
+  site — because it traces almost entirely to a single 1961 case series with no RCT ever run.
+  No residue-chain diagram on this page; that's the point of the section.
+- Just before that, **`/tb-500`, `/cjc-1295`, `/epitalon`** shipped (2026-10-01) — the three
+  compounds the science library's "More coming" card had promised since the beginning. Each
+  follows the existing evidence-tier template with real PubMed/ClinicalTrials.gov citations:
+  TB-500 (Tier C — distinguishes the marketed fragment from the full-length Tβ4 molecule the
+  only human trials actually tested), CJC-1295 (Tier B — genuine human PK/safety RCTs exist,
+  alongside a 2006 phase 2 trial halted after a participant's death that the marketing omits),
+  Epitalon (Tier C — real rodent lifespan data, but nearly all primary literature traces to one
+  research group publishing in its own journal). The "More coming" card's promise is fully
+  delivered; the only compound items still open are Tesamorelin, Tirzepatide and Melanotan II
+  / PT-141, agreed but not started.
 - **A corrections log exists** at `/corrections` — the site's own record of what it got wrong,
   starting 2026-09-25 (not backfilled further; see Decisions). It currently lists the two
   tracker errors below. Keep entries newest-first and always state how long the error was live
   — that number is the part no vendor site would publish, and it's what gives the page weight.
-- **Spanish coverage is complete** — `check_i18n.py` reports 835 ES keys, 0 untranslated,
-  0 duplicate keys. 26 strings are deliberately English (brand, SI units, assay names,
+- **Spanish coverage is complete** — `check_i18n.py` reports 885 ES keys, 0 untranslated,
+  0 duplicate keys. 27 strings are deliberately English (brand, SI units, assay names,
   three-letter amino-acid codes, trial-registry IDs) and listed with reasons in
   `.claude/skills/i18n-check/intentionally-english.txt`.
 - **Newsletter issue 001's real-world deliverability has now been checked, not just flagged
@@ -84,8 +95,9 @@ reasons behind them.
   2026-09-30/10-01: Page Indexing and Performance still show **"Processing data, please check
   again in a day or so"** — a genuine empty state (confirmed via screenshot, not a loading
   glitch), not yet actionable. Also resubmitted to **IndexNow** (Bing/Yandex/Seznam/Naver) via
-  `bash scripts/indexnow.sh` on 2026-10-01 — **32 URLs accepted**, now covering `/corrections`,
-  `/tb-500`, `/cjc-1295` and `/epitalon` in both languages.
+  `bash scripts/indexnow.sh` on 2026-10-01 (two separate runs as routes shipped) — **34 URLs
+  accepted**, now covering `/corrections`, `/tb-500`, `/cjc-1295`, `/epitalon` and `/nad-plus`
+  in both languages.
 - **Tracker corrected 2026-09-24.** Two entries had gone factually stale; `lastReviewed` is
   now September 2026. Found by the monthly routine, verified against the Federal Register.
   This is what `/corrections` now documents publicly.
@@ -134,11 +146,15 @@ Every one of these cost real time in the last session. They all fail **silently*
     rather than trying to explain the 404.
 12. **`.chip-tier` and `.rtype` are `white-space:nowrap` by design** — a tier-chip subtitle or
     citation-type badge that runs long doesn't wrap, it pushes the whole page wider than the
-    viewport at 375px. This is invisible in English and only shows up once the Spanish
-    translation is even longer — caught twice while adding TB-500/CJC-1295/Epitalon. Keep both
-    under roughly 35 characters in both languages, and actually load the page at 375px in
-    Spanish before calling a new compound page done — `document.documentElement.scrollWidth`
-    vs `clientWidth` catches it in one line.
+    viewport. This is invisible in English and only shows up once the Spanish translation is
+    even longer, or the viewport narrower — caught **three** times now: twice at 375px while
+    adding TB-500/CJC-1295/Epitalon, then again at **320px** (not 375px!) on the NAD+ card,
+    after 375px had already passed clean. 390px is this project's stated test floor, but 320px
+    is a real, common device width and genuinely different fonts/chip text can clear one and
+    still fail the other. Keep chip/rtype text short (NAD+'s fix: "TIER B PRECURSOR · TIER C
+    IV" → "TIER B ORAL · TIER C IV"), and check **both** 375px and 320px, in both languages,
+    with `document.documentElement.scrollWidth` vs `clientWidth` — not just the one the hard
+    rule names.
 
 ## Unresolved
 
@@ -150,19 +166,23 @@ Every one of these cost real time in the last session. They all fail **silently*
   client. The endpoint accepts POST and rejects bad signatures; the button itself is untested.
 - **No per-claim provenance dates.** `tracker.json` has `lastReviewed` and 9 dated entries,
   but compound-page claims carry citations without machine-readable review dates, so nothing
-  can flag stale content. DOI links across all 8 compound pages are unchecked for rot.
+  can flag stale content. DOI links across all 9 compound pages are unchecked for rot.
 - **No link checking, no accessibility audit, no performance budget** in `verify.sh`.
 - **`worker/.claude/settings.json`** is untracked and shadows the project `.claude/` when
   working from `worker/`. Harmless, but surprising.
-- **Compound backlog, first wave resolved** — TB-500, CJC-1295 and Epitalon shipped 2026-10-01
-  (see Current state), closing out what the site's "More coming" card had promised. Still
-  open: Tesamorelin, Tirzepatide, Melanotan II / PT-141, and a "Not peptides, sold alongside"
-  section for NAD+ — agreed but not built.
+- **Compound backlog, the promised wave resolved** — TB-500, CJC-1295, Epitalon and the
+  "Not peptides, sold alongside" section (NAD+) all shipped 2026-10-01 (see Current state),
+  closing out everything the site's "More coming" card had promised. Still open, not yet
+  started: Tesamorelin, Tirzepatide, Melanotan II / PT-141.
+- **The "not peptides" section currently has one entry.** Nothing else is queued for it yet —
+  if a second non-peptide compound gets added later (a hormone, a small molecule), model its
+  page on NAD+'s: no chain plate, same evidence-tier rigor, and state up front why it's grouped
+  there rather than in the main compound grid.
 
 ## Recommended next steps
 
 1. **Check Search Console → Pages** (overdue — was due ~2026-10-02; still showing
-   "Processing data" as of 2026-10-01). How many of the 32 sitemap URLs are indexed, and why
+   "Processing data" as of 2026-10-01). How many of the 34 sitemap URLs are indexed, and why
    any are excluded. First real signal the site exists.
 2. **Read the 2026-10-01 routine report promptly** when it fires at 13:00 UTC today.
    September's sat unread for three weeks while the site served a false regulatory claim —
@@ -171,14 +191,16 @@ Every one of these cost real time in the last session. They all fail **silently*
    reports are on. If the Yahoo subscriber still doesn't receive it with clean auth and visible
    reports, that confirms reputation/warm-up rather than a config problem, and the fix is
    consistent low-volume sending over time, not another DNS change.
-4. Per-claim provenance dates across all 8 compound pages; DOI link rot.
-5. Remaining compound backlog: Tesamorelin, Tirzepatide, Melanotan II / PT-141, then the NAD+
-   "not peptides" section.
-6. **Apply the Tier-D question to the remaining backlog, not just what's shipped.** TB-500,
-   CJC-1295 and Epitalon were all checked against Tier D this session and each had enough real
-   preclinical (or, for CJC-1295, human) data to land at C or B instead — the bottom tier
-   genuinely hasn't been earned yet by anything catalogued. Worth re-asking once Tesamorelin,
-   Tirzepatide and Melanotan II / PT-141 are drafted.
+4. Per-claim provenance dates across all 9 compound pages; DOI link rot.
+5. Remaining compound backlog: Tesamorelin, Tirzepatide, Melanotan II / PT-141.
+6. **The Tier-D question has now been answered once — ask it again for what's left.**
+   TB-500, CJC-1295 and Epitalon were checked against Tier D and landed at C or B instead;
+   NAD+'s addiction claim is the first thing on this site actually graded D (a 1961 case
+   series, no RCT). The scale can clearly produce every grade now — worth re-checking against
+   Tesamorelin, Tirzepatide and Melanotan II / PT-141 once drafted, honestly, not reflexively.
+7. **Eyeball `/nad-plus` and the new "Not peptides" science-library subsection in a real
+   browser**, not just this session's automated checks — particularly the card's standalone
+   layout with no chain plate, which has no other precedent on the site to compare against.
 
 *Deferred deliberately:* splitting `/toolkit` into four routes. Structurally correct for SEO,
 but the landscape is eight established vendor domains and a new site will not beat them on
