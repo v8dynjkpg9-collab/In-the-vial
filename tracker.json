@@ -58,6 +58,29 @@
         },
         {
           "title": {
+            "en": "Upcoming PCAC meeting (by Feb 2027): five peptides on agenda",
+            "es": "Próxima reunión del PCAC (para feb. de 2027): cinco péptidos en agenda"
+          },
+          "status": "pending",
+          "statusLabel": {
+            "en": "Scheduled",
+            "es": "Programado"
+          },
+          "body": {
+            "en": "An FDA advisory committee page (current as of <strong>April 15, 2026</strong>) states FDA will host a Pharmacy Compounding Advisory Committee meeting <strong>before the end of February 2027</strong> — exact date, time, location, and Federal Register docket not yet published as of November 25, 2026 — to discuss five bulk drug substances for potential inclusion on the 503A bulks list: <strong>Cathelicidin (LL-37), GHK-Cu, Dihexa acetate, Melanotan II, and Mechano Growth Factor, Pegylated (PEG-MGF)</strong>.",
+            "es": "Una página del comité asesor de la FDA (vigente al <strong>15 de abril de 2026</strong>) indica que la FDA celebrará una reunión del Comité Asesor de Preparación Magistral de Farmacia <strong>antes de finales de febrero de 2027</strong> — fecha exacta, hora, ubicación y expediente del Federal Register aún no publicados al 25 de noviembre de 2026 — para debatir cinco sustancias a granel consideradas para su inclusión en la lista de sustancias a granel 503A: <strong>Cathelicidina (LL-37), GHK-Cu, acetato de Dihexa, Melanotan II y Factor de Crecimiento Mecánico Pegilado (PEG-MGF)</strong>."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> agenda placement is an upcoming scientific review, not authorization. As FDA notes, advisory committees make \"non-binding recommendations,\" and any change to the 503A Bulks List still requires formal FDA rulemaking.",
+            "es": "<strong>Qué significa:</strong> estar en la agenda es una próxima revisión científica, no una autorización. Como señala la FDA, los comités asesores hacen \"recomendaciones no vinculantes\", y cualquier cambio en la Lista de Sustancias a Granel 503A sigue requiriendo una reglamentación formal de la FDA."
+          },
+          "meta": {
+            "en": "Updated November 2026 · Source: FDA PCAC meeting page (Apr 15, 2026); FDA 503A categories PDF (May 14, 2026)",
+            "es": "Actualizado noviembre de 2026 · Fuente: página de reunión del PCAC de la FDA (15 de abr. de 2026); PDF de categorías 503A de la FDA (14 de may. de 2026)"
+          }
+        },
+        {
+          "title": {
             "en": "Category 2 removals (BPC-157, TB-500, CJC-1295)",
             "es": "Eliminaciones de Categoría 2 (BPC-157, TB-500, CJC-1295)"
           },
