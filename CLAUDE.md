@@ -192,7 +192,7 @@ Publishing an issue is three steps, and only the third sends mail:
 
 ```bash
 python3 newsletter/build.py && bash .claude/verify.sh
-cd worker && npx wrangler deploy
+cd worker && npx wrangler deploy --config wrangler.toml
 # then the broadcast: dry run, then {"confirm":true,"limit":1}, then the list
 ```
 
