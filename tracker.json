@@ -155,6 +155,29 @@
             "en": "Updated November 2026 · Source: FDA warning letter database (search \"telehealth\"; Sep 2025–Nov 2026)",
             "es": "Actualizado noviembre de 2026 · Fuente: base de datos de cartas de advertencia de la FDA (búsqueda \"telehealth\"; sep. 2025–nov. 2026)"
           }
+        },
+        {
+          "title": {
+            "en": "503A compounding warning letter (Empower Pharmacy)",
+            "es": "Carta de advertencia de preparación 503A (Empower Pharmacy)"
+          },
+          "status": "live",
+          "statusLabel": {
+            "en": "Warning letter",
+            "es": "Carta de advertencia"
+          },
+          "body": {
+            "en": "On <strong>September 18, 2026</strong> (posted September 22, 2026), FDA issued Warning Letter #738238 to 503A pharmacy Empower Clinic Services, LLC dba Empower Pharmacy after a November 2025 inspection. FDA cited high-volume compounding of <strong>tirzepatide/niacinamide</strong> and <strong>semaglutide/cyanocobalamin</strong> formulations as \"essentially copies\" of FDA-approved GLP-1 drugs with \"pretextual\" differences and verbatim or pre-selected prescriber \"significant difference\" justifications — stripping those products of Section 503A exemptions and triggering CGMP adulteration, insanitary-condition, misbranding, and unapproved-new-drug violations.",
+            "es": "El <strong>18 de septiembre de 2026</strong> (publicada el 22 de septiembre de 2026), la FDA emitió la Carta de Advertencia #738238 a la farmacia 503A Empower Clinic Services, LLC dba Empower Pharmacy tras una inspección de noviembre de 2025. La FDA citó la preparación a gran volumen de formulaciones de <strong>tirzepatida/niacinamida</strong> y <strong>semaglutida/cianocobalamina</strong> como \"esencialmente copias\" de fármacos GLP-1 aprobados por la FDA con diferencias \"pretextuales\" y justificaciones de \"diferencia significativa\" del prescriptor repetidas textualmente o preseleccionadas — lo que privó a esos productos de las exenciones de la Sección 503A y generó infracciones de adulteración CGMP, condiciones insalubres, etiquetado indebido y fármacos nuevos no aprobados."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> adding vitamin B3 or B12 or relying on templated prescriber dropdowns does not turn mass-produced GLP-1 copies into lawful patient-specific 503A compounding — and losing Section 503A protection exposes a pharmacy to full FDA CGMP and unapproved-drug enforcement.",
+            "es": "<strong>Qué significa:</strong> añadir vitamina B3 o B12 o apoyarse en menús desplegables preestablecidos para prescriptores no convierte las copias masivas de GLP-1 en preparación magistral 503A lícita específica para el paciente — y perder la protección de la Sección 503A expone a una farmacia a toda la aplicación de CGMP y fármacos no aprobados de la FDA."
+          },
+          "meta": {
+            "en": "Updated November 2026 · Source: FDA Warning Letter # 738238 (Sep 18, 2026)",
+            "es": "Actualizado noviembre de 2026 · Fuente: Carta de Advertencia de la FDA # 738238 (18 de sep. de 2026)"
+          }
         }
       ]
     },
