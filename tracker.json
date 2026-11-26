@@ -221,16 +221,16 @@
             "es": "En vigor"
           },
           "body": {
-            "en": "Under MoCRA, a business with average annual U.S. cosmetic sales under $1M (prior 3 years) is exempt from GMP, facility registration, and product listing. Safety substantiation and serious-adverse-event reporting (within 15 business days) still apply to everyone.",
-            "es": "Bajo MoCRA, un negocio con ventas cosméticas anuales promedio en EE. UU. inferiores a $1M (últimos 3 años) está exento de GMP, registro de instalaciones y listado de productos. La justificación de seguridad y el reporte de eventos adversos graves (dentro de 15 días hábiles) siguen aplicando a todos."
+            "en": "Under 21 U.S.C. 364h (MoCRA § 612), a business whose average gross annual U.S. cosmetic sales for \"the previous 3-year period\" is \"less than $1,000,000, adjusted for inflation\" (which FDA guidance recommends calculating using BEA's GDP implicit price deflator) is exempt from GMP, facility registration, and product listing — except that the exemption does not apply to cosmetic products that regularly contact the mucus membrane of the eye, are injected, are intended for internal use, or are intended to alter appearance for more than 24 hours under customary use without consumer removal. Safety substantiation and serious-adverse-event reporting (within 15 business days) still apply to everyone.",
+            "es": "Según 21 U.S.C. 364h (MoCRA § 612), una empresa cuyo promedio anual bruto de ventas cosméticas en EE. UU. para \"el periodo de 3 años anterior\" sea \"inferior a $1,000,000, ajustado por inflación\" (que la guía de la FDA recomienda calcular con el deflactor implícito del PIB de la BEA) está exenta de GMP, registro de instalaciones y listado de productos — salvo que la exención no aplica a productos cosméticos que entren regularmente en contacto con la membrana mucosa del ojo, que se inyecten, que estén destinados a uso interno o que estén destinados a alterar la apariencia durante más de 24 horas bajo uso habitual sin retirada por el consumidor. La justificación de seguridad y el reporte de eventos adversos graves (dentro de 15 días hábiles) siguen aplicando a todos."
           },
           "means": {
-            "en": "<strong>What it means:</strong> a small topical brand — e.g., a GHK-Cu serum — carries a fairly light mandatory burden, especially using an FDA-registered contract manufacturer. The line that matters most is cosmetic vs. drug claims.",
-            "es": "<strong>Qué significa:</strong> una pequeña marca de tópicos — p. ej., un sérum de GHK-Cu — conlleva una carga obligatoria bastante ligera, sobre todo usando un fabricante por contrato registrado ante la FDA. La línea que más importa son las afirmaciones cosméticas vs. de fármaco."
+            "en": "<strong>What it means:</strong> a small topical brand — e.g., a topical GHK-Cu serum — is still covered by the exemption (unlike injected or eye-mucus-membrane cosmetics) and carries a fairly light mandatory burden, especially using an FDA-registered contract manufacturer. The line that matters most is cosmetic vs. drug claims.",
+            "es": "<strong>Qué significa:</strong> una pequeña marca tópica — p. ej., un sérum tópico de GHK-Cu — sigue cubierta por la exención (a diferencia de los cosméticos inyectados o que contactan la mucosa ocular) y conlleva una carga obligatoria bastante ligera, sobre todo usando un fabricante por contrato registrado ante la FDA. La línea que más importa son las afirmaciones cosméticas vs. de fármaco."
           },
           "meta": {
-            "en": "Updated June 2026 · Source: FDA MoCRA guidance (Section 612)",
-            "es": "Actualizado junio de 2026 · Fuente: guía MoCRA de la FDA (Sección 612)"
+            "en": "Updated November 2026 · Source: 21 U.S.C. 364h (FD&C Act § 612); FDA Registration & Listing Guidance (Dec 2024)",
+            "es": "Actualizado noviembre de 2026 · Fuente: 21 U.S.C. 364h (Ley FD&C § 612); Guía de Registro y Listado de la FDA (dic. de 2024)"
           }
         },
         {
@@ -244,16 +244,16 @@
             "es": "Pendiente"
           },
           "body": {
-            "en": "Cosmetic GMP regulations still in development (expected to align with ISO 22716); fragrance-allergen labeling remains future rulemaking. Registrations renew every two years.",
-            "es": "Las regulaciones GMP de cosméticos siguen en desarrollo (se espera que se alineen con ISO 22716); el etiquetado de alérgenos de fragancias sigue siendo reglamentación futura. Los registros se renuevan cada dos años."
+            "en": "In the 2026 Unified Agenda, cosmetic GMP rulemaking (RIN <strong>0910-AJ00</strong>, expected to consider ISO 22716) sits in <strong>Long-Term Actions</strong> with a projected NPRM date of <strong>11/2027</strong> — even though its statutory NPRM deadline of <strong>December 29, 2024</strong> (21 U.S.C. 364b(c)) has passed. \"Disclosure of Fragrance Allergens in Cosmetic Labeling\" (RIN <strong>0910-AI90</strong>) is at <strong>Proposed Rule Stage</strong> (its statutory NPRM deadline of June 29, 2024 under 21 U.S.C. 364e(b) also passed; the Agenda projects 11/2026, with no NPRM published as of November 25, 2026). Facility registrations renew every two years.",
+            "es": "En la Agenda Unificada de 2026, la reglamentación GMP para cosméticos (RIN <strong>0910-AJ00</strong>, que prevé considerar la norma ISO 22716) figura en <strong>Acciones a Largo Plazo</strong> con una fecha proyectada de aviso de norma propuesta (NPRM) de <strong>11/2027</strong> — aun cuando su plazo legal de NPRM del <strong>29 de diciembre de 2024</strong> (21 U.S.C. 364b(c)) ya venció. \"Disclosure of Fragrance Allergens in Cosmetic Labeling\" (RIN <strong>0910-AI90</strong>) está en <strong>Etapa de Norma Propuesta</strong> (su plazo legal del 29 de junio de 2024 bajo 21 U.S.C. 364e(b) también venció; la Agenda proyecta 11/2026, sin NPRM publicado al 25 de noviembre de 2026). Los registros de instalaciones se renuevan cada dos años."
           },
           "means": {
-            "en": "<strong>What it means:</strong> requirements will tighten; build with a GMP-oriented manufacturer so you're not caught out.",
-            "es": "<strong>Qué significa:</strong> los requisitos se endurecerán; construye con un fabricante orientado a GMP para que no te pillen desprevenido."
+            "en": "<strong>What it means:</strong> Unified Agenda projected dates are planning estimates, not legal commitments — FDA has already missed statutory deadlines without issuing proposed rules. Requirements will eventually tighten; build with a GMP-oriented manufacturer so you're not caught out.",
+            "es": "<strong>Qué significa:</strong> las fechas proyectadas de la Agenda Unificada son estimaciones de planificación, no compromisos legales — la FDA ya dejó pasar plazos legales sin emitir normas propuestas. Los requisitos terminarán endureciéndose; trabaja con un fabricante orientado a GMP para no quedar desprevenido."
           },
           "meta": {
-            "en": "Updated June 2026 · Source: FDA cosmetics rulemaking",
-            "es": "Actualizado junio de 2026 · Fuente: reglamentación de cosméticos de la FDA"
+            "en": "Updated November 2026 · Source: 2026 Unified Agenda (reginfo.gov, RINs 0910-AJ00 & 0910-AI90); 21 U.S.C. 364b, 364e",
+            "es": "Actualizado noviembre de 2026 · Fuente: Agenda Unificada 2026 (reginfo.gov, RIN 0910-AJ00 y 0910-AI90); 21 U.S.C. 364b, 364e"
           }
         }
       ]
