@@ -12,6 +12,29 @@
       "entries": [
         {
           "title": {
+            "en": "HHS draft policy: no enforcement against compounding six peptides",
+            "es": "Borrador de política del HHS: sin aplicación contra la preparación magistral de seis péptidos"
+          },
+          "status": "pending",
+          "statusLabel": {
+            "en": "Draft policy",
+            "es": "Borrador de política"
+          },
+          "body": {
+            "en": "On <strong>October 30, 2026</strong>, the HHS Office of the Secretary (not the FDA) announced a draft, interim enforcement policy stating it \"does not intend to take enforcement action\" against State-licensed pharmacies, Federal facilities, or licensed physicians compounding using substances in Appendix A while FDA's 503A bulks-list rulemaking continues. According to the policy's appendix, those six substances are <strong>BPC-157, TB-500, Epitalon, Semax, KPV and MOTS-c</strong>. The policy is \"not binding on HHS or the public,\" approves nothing, adds nothing to the 503A list, and may be revisited; comments closed <strong>November 13, 2026</strong>, with no final version published as of November 25, 2026.",
+            "es": "El <strong>30 de octubre de 2026</strong>, la Oficina del Secretario del HHS (no la FDA) anunció un borrador de política provisional de aplicación en el que declara que \"no tiene la intención de emprender acciones de aplicación\" contra farmacias con licencia estatal, instalaciones federales o médicos con licencia que preparen fórmulas magistrales usando sustancias del Apéndice A mientras continúa la reglamentación de la lista de sustancias a granel 503A de la FDA. Según el apéndice de la política, esas seis sustancias son <strong>BPC-157, TB-500, Epitalón, Semax, KPV y MOTS-c</strong>. La política \"no es vinculante para el HHS ni para el público\", no aprueba nada, no añade nada a la lista 503A y puede ser revisada; los comentarios cerraron el <strong>13 de noviembre de 2026</strong>, sin que se haya publicado una versión final al 25 de noviembre de 2026."
+          },
+          "means": {
+            "en": "<strong>What it means:</strong> a stated intention not to enforce, under conditions, for state-licensed pharmacies, federal facilities, and licensed physicians — not a green light for the grey market. It is not FDA approval, adds nothing to the 503A list, can be withdrawn, and does not cover \"research use only\" sellers.",
+            "es": "<strong>Qué significa:</strong> una intención declarada de no ejercer aplicación, bajo condiciones, para farmacias con licencia estatal, instalaciones federales y médicos con licencia — no una luz verde para el mercado gris. No es una aprobación de la FDA, no añade nada a la lista 503A, puede retirarse y no cubre a los vendedores de \"solo para uso en investigación\"."
+          },
+          "meta": {
+            "en": "Updated November 2026 · Source: Federal Register, FR Doc. 2026-22192 (Oct 30, 2026); HHS Docket HHS-OASH-2026-0496",
+            "es": "Actualizado noviembre de 2026 · Fuente: Federal Register, FR Doc. 2026-22192 (30 de oct. de 2026); expediente del HHS HHS-OASH-2026-0496"
+          }
+        },
+        {
+          "title": {
             "en": "PCAC recommends six peptides — including BPC-157",
             "es": "El PCAC recomienda seis péptidos — incluido el BPC-157"
           },
@@ -25,12 +48,12 @@
             "es": "En su reunión del 23–24 de julio de 2026, el Comité Asesor de Preparación Magistral de Farmacia de la FDA votó a favor de recomendar <strong>BPC-157, TB-500, KPV, MOTS-c, Epitalón y Semax</strong> para la Lista de Sustancias a Granel 503A, y no recomendó la emideltida (DSIP). Los márgenes fueron estrechos — <strong>8–6 con una abstención</strong> para BPC-157, TB-500 y KPV, y 7–5 para MOTS-c — y los votos fueron en contra de las objeciones de los propios científicos de carrera de la FDA, que dijeron que carecían de evidencia para evaluar la seguridad y la eficacia. Su objeción central fue que no existe una fórmula química universalmente aceptada para estos compuestos."
           },
           "means": {
-            "en": "<strong>What it means:</strong> a recommendation, not a rule change. The committee does not bind the FDA, nothing has been added to any list, and any change requires formal rulemaking. Nothing about what you can lawfully buy changed on 24 July. And the reason FDA's scientists balked — that you cannot properly evaluate a substance whose identity is not pinned down — is the same argument this site makes about the vial in your hand.",
-            "es": "<strong>Qué significa:</strong> es una recomendación, no un cambio de norma. El comité no obliga a la FDA, nada se ha añadido a ninguna lista y cualquier cambio requiere una reglamentación formal. Nada de lo que puedes comprar legalmente cambió el 24 de julio. Y la razón por la que los científicos de la FDA se resistieron — que no se puede evaluar bien una sustancia cuya identidad no está fijada — es el mismo argumento que este sitio hace sobre el vial que tienes en la mano."
+            "en": "<strong>What it means:</strong> a recommendation, not a rule change. The committee does not bind the FDA, nothing has been added to any list, and any change requires formal rulemaking. Nothing about what you can lawfully buy changed on 24 July — see the October 30 HHS draft policy above for the interim enforcement stance that followed. And the reason FDA's scientists balked — that you cannot properly evaluate a substance whose identity is not pinned down — is the same argument this site makes about the vial in your hand.",
+            "es": "<strong>Qué significa:</strong> es una recomendación, no un cambio de norma. El comité no obliga a la FDA, nada se ha añadido a ninguna lista y cualquier cambio requiere una reglamentación formal. Nada de lo que puedes comprar legalmente cambió el 24 de julio — consulta el borrador de política del HHS del 30 de octubre arriba para ver la postura provisional de aplicación que siguió. Y la razón por la que los científicos de la FDA se resistieron — que no se puede evaluar bien una sustancia cuya identidad no está fijada — es el mismo argumento que este sitio hace sobre el vial que tienes en la mano."
           },
           "meta": {
-            "en": "Updated August 2026 · Source: FDA PCAC meeting, July 23–24 2026; RAPS and Pharmaceutical Executive reporting",
-            "es": "Actualizado agosto de 2026 · Fuente: reunión del PCAC de la FDA, 23–24 de julio de 2026; reportajes de RAPS y Pharmaceutical Executive"
+            "en": "Updated November 2026 · Source: FDA PCAC meeting, July 23–24 2026; RAPS and Pharmaceutical Executive reporting",
+            "es": "Actualizado noviembre de 2026 · Fuente: reunión del PCAC de la FDA, 23–24 de julio de 2026; reportajes de RAPS y Pharmaceutical Executive"
           }
         },
         {
